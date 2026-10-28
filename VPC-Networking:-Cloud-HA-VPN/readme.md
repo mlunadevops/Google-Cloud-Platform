@@ -26,11 +26,13 @@ The topology consists of four routers across different Autonomous Systems (AS 10
 
  four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
-## 3. BGP Configuration:
+###  Task 1. Cloud VPC setup
 
-**Router A (RTA - AS 100):**
+- From Cloud Shell, create a VPC network called `vpc-demo`:
 
 ```text
 ! 
-router bgp 100
+gcloud compute networks create vpc-demo --subnet-mode custom
 !
+
+
