@@ -32,6 +32,8 @@ The topology consists of four routers across different Autonomous Systems (AS 10
 
 - **`vpc-demo`**: User-defined name to be assigned to the new VPC network.
 
+- - **`--subnet-mode custom`**: Defines the subnet creation mode for this VPC, By choosing `custom` (custom mode), subnets are not created automatically in every region. This gives full control to manually decide which IP ranges (CIDR blocks) to assign, in which regions to create them, and how to structure your network topology (essential for enterprise environments and high-availability architectures like HA-VPN).
+
 ```text
 gcloud compute networks create vpc-demo --subnet-mode custom
 ```
