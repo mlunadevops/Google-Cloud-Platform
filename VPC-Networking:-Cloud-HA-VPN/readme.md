@@ -38,4 +38,11 @@ The topology consists of four routers across different Autonomous Systems (AS 10
 gcloud compute networks create vpc-demo --subnet-mode custom
 ```
 
+### Task 2. Create subnets
 
+1. Now, create subnet **`vpc-demo-subnet1`** in the **`REGION 1`** region:
+
+```text
+gcloud beta compute networks subnets create vpc-demo-subnet1 \
+--network vpc-demo --range 10.1.1.0/24 --region "REGION 1"
+```
