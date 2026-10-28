@@ -28,7 +28,9 @@ The topology consists of four routers across different Autonomous Systems (AS 10
 
 ###  Task 1. Cloud VPC setup
 
-- From Cloud Shell, create a VPC network called `vpc-demo`:
+- From Cloud Shell, create a VPC network called **`vpc-demo`**:
+
+- **`vpc-demo`**: User-defined name to be assigned to the new VPC network.
 
 ```text
 gcloud compute networks create vpc-demo --subnet-mode custom
