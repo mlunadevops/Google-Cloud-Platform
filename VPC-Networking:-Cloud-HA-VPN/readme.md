@@ -253,6 +253,11 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
   --region "REGION 1"
 ```
 
+view VPN Details.
+
+![Output12](images/12output.png)
+
+
 **6.2 Create the Cloud Routers for dynamic BGP routing**
 
 
