@@ -170,11 +170,15 @@ gcloud compute instances create on-prem-instance1 --zone "ZONE 1" --subnet on-pr
 - **`--region "REGION 1"`:** Defines the geographic region (e.g., `us-central1`) where the VPN gateway will be provisioned. (Unlike global VPCs, HA-VPN gateways are regional resources).
 
 ```text
-gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 --network vpc-demo --region "REGION 1"
+gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
+  --network vpc-demo \
+  --region "REGION 1"
 ```
 
 ```text
-gcloud beta compute vpn-gateways create on-prem-vpn-gw1 --network on-prem --region "REGION 1"
+gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
+  --network on-prem \
+  --region "REGION 1"
 ```
 
 **6.2 Create the Cloud Routers for dynamic BGP routing**
