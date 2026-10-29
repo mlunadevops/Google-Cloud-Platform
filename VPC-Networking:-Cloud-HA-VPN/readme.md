@@ -25,6 +25,19 @@ Feactures:
 
 
 
+To understand how any firewall rule works (including the one in this example), GCP network architecture follows these core principles:
+
+- **Default Deny (Ingress):**
+  - **All incoming traffic (ingress) into a VPC is blocked by default**. No virtual machine can receive external or internal traffic unless an explicit rule allows it.
+- **Default Allow (Egress):**
+  - Conversely, **outgoing traffic (egress)** from instances to the outside world or to other internal resources **is allowed by default**, unless a restrictive egress rule is configured.
+- **Priority Evaluation and Stateful Inspection:**
+  - GCP firewall rules are **stateful**. This means that if incoming traffic is allowed, the corresponding response traffic going back out is automatically permitted without needing a separate return rule.
+
+ - **The firewall rule:** Opens the ports at the **VPC level**.
+- **Without tags:** All VMs in the VPC inherit and apply these open ports automatically.
+- **With tags:** You filter access so that only VMs with that specific tag will be able to receive that traffic; all other VMs in the same VPC remain blocked.
+
 ## 2. Topology and BGP Neighbor Establishment
 
 The topology consists of four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
