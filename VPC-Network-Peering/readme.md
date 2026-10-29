@@ -113,6 +113,24 @@ At the top of the screen, click the Project 1 name. Ensure you are on the **All*
 
 ![Peeriing](images/02Screen.png)
 
+### Project A
+
+Go to the **VPC Network Peering** page in the Google Cloud Console by navigating to the **Networking** section and selecting **VPC Network > VPC Connectivity > VPC network peering** tab. Once there:
+
+1. Click **Create connection**.
+2. Click **Continue**.
+3. Type `peer-ab` as the **Name** for this side of the connection.
+4. Under **Your VPC network**, select the network you want to peer (`network-a`).
+5. Set the **Peered VPC network** radio button to **In another project**.
+6. Paste the **Project ID** of the second project.
+
+```text
+"PROJECT ID 2"
+```
+
+7.Type in the VPC network name of the other network (network-b).
+8. Click Create.
+
 
 ### 4. BGP Configuration:
 
