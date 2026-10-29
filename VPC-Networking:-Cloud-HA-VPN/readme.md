@@ -196,10 +196,17 @@ gcloud beta compute networks subnets create on-prem-subnet1 \
 
 **5.3** **Create firewall rules for the local network:**
 
+
 ```text
 gcloud compute firewall-rules create on-prem-allow-internal \
-  --network on-prem --allow tcp:0-65535,udp:0-65535,icmp --source-ranges 192.168.0.0/16
+  --network on-prem \
+  --allow tcp:0-65535,udp:0-65535,icmp \
+  --source-ranges 192.168.0.0/16
 ```
+
+![Output9](images/09output.png)
+
+
 ```text
 gcloud compute firewall-rules create on-prem-allow-ssh-icmp \
   --network on-prem --allow tcp:22,icmp
