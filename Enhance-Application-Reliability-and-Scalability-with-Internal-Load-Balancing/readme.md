@@ -49,7 +49,6 @@ In this lab, you will set up an internal service by creating two managed instanc
 ![Topoogia](images/01Topologia.png)
 
 
-
 ## Configuration:
 
 ## Task 1: Configure HTTP and Health Check Firewall Rules
@@ -85,6 +84,19 @@ Create an ingress firewall rule to allow HTTP traffic to your backend instances 
    > **Note:** Ensure you include `/16` in the **Source IPv4 ranges** field to specify all targeted networks.
 
 5. Click **Create**.
+
+### Create the Health Check Firewall Rules
+
+Health checks determine which instances behind a load balancer can receive new traffic. For Google Cloud Internal TCP/UDP Load Balancing, health check probes originate from specific IP address ranges: `130.211.0.0/22` and `35.191.0.0/16`. Your firewall rules must allow ingress traffic from these sources.
+
+1. Remaining on the **Firewall** page, click **+ Create Firewall Rule**.
+2. Configure the following parameter values, leaving all other settings at their defaults:
+
+![Tabla](images/03Tabla.png)
+
+   Note: Make sure to enter the two Source IPv4 ranges one-by-one and pressing SPACE in between them.
+3. Click Create.
+
 
 ## Configure the Instance Templates
 
