@@ -183,10 +183,10 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
 
 **6.2 Create the Cloud Routers for dynamic BGP routing**
 
-**network: vpc-demo**
+**network**: vpc-demo
 **ASN**: 65001
 
-**network: on-prem**
+**network**: on-prem
 **ASN:** 65002
 
 ```text
