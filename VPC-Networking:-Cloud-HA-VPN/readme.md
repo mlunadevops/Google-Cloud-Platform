@@ -156,6 +156,7 @@ gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
 gcloud compute instances create vpc-demo-instance1 --zone "ZONE 2" --subnet vpc-demo-subnet1 --machine-type e2-medium
 ```
 
+07output.png
 ```text
 gcloud compute instances create vpc-demo-instance1 --zone us-east1-b --subnet vpc-demo-subnet1 --machine-type e2-medium
 ```
@@ -178,6 +179,7 @@ gcloud compute instances create vpc-demo-instance2 --zone us-east4-b --subnet vp
 ```text
 gcloud compute networks create on-prem --subnet-mode custom
 ```
+![Output7](images/07output.png)
 
 **5.2** **Create the local subnet:**
 
