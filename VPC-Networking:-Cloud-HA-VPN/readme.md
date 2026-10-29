@@ -46,6 +46,14 @@ To understand how any firewall rule works (including the one in this example), G
 
 ## 2. Topology and BGP Neighbor Establishment
 
+Overview
+
+You will set up two VPCs and add a Cloud HA-VPN gateway in each. You will run two tunnels from each VPN gateway to demonstrate the HA-VPN gateway configuration required for a 99.99% SLA.
+
+You will create a global VPC network, **`vpc-demo`**, with two custom subnets in **`us-east4`** and **`us-east1`**. In this VPC, you will add a Compute Engine instance in each region. You will then create a second VPC, `on-prem`, to simulate a customer's on-premises data center. In this VPC, you will add a subnet in the **`us-east1`** region and an instance running within it.
+
+Finally, you will add a Cloud HA-VPN gateway and a Cloud Router in each VPC, and establish two tunnels from each Cloud HA-VPN gateway.
+
 
 ![Topology](images/01Topologia.jpg)
 
