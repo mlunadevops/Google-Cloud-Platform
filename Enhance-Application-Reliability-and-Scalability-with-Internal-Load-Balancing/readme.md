@@ -86,6 +86,27 @@ Create an ingress firewall rule to allow HTTP traffic to your backend instances 
 
 5. Click **Create**.
 
+## Configure the Instance Templates
+
+An instance template is an API resource you can use to create VM instances and managed instance groups (MIGs). Instance templates define the machine type, boot disk image, subnet, network tags, and other instance properties. You will create an instance template to be used across the subnets of the `my-internal-app` network.
+
+1. In the Google Cloud Console, navigate to **Navigation menu > Compute Engine > Instance templates**.
+2. Click **Create instance template**.
+3. For **Name**, type `instance-template-1`.
+4. For **Location**, select **Global**.
+5. For **Series**, select **E2**.
+6. For **Machine type**, select **Shared-core > e2-micro**.
+7. Click **Advanced options**.
+8. Click **Networking**.
+9. For **Network tags**, specify `lb-backend`.
+
+> **Note:** The network tag `lb-backend` ensures that your previously created HTTP and health check firewall rules apply correctly to these backend instances.
+
+10. For **Network interfaces**, click the dropdown icon to edit the interface settings.
+11. Configure the following values, leaving all other fields at their defaults:
+
+![Tabla](images/04Tabla.png)
+
 ---
 
 ### Create the Health Check Firewall Rules
