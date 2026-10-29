@@ -109,8 +109,9 @@ Consider an organization that needs to establish VPC Network Peering between `ne
 
 ![Peeriing](images/01Topology.jpg)
 
+At the top of the screen, click the Project 1 name. Ensure you are on the **All** tab, then select the correct project ID in the console before applying the settings.
 
-
+![Peeriing](images/02Screen.png)
 
 
 ### 4. BGP Configuration:
