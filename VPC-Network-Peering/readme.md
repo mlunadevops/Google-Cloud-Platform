@@ -121,10 +121,19 @@ gcloud compute networks subnets create network-b-subnet --network network-b \
     --range 10.8.0.0/16 --region "REGION 2"
 ```
 
+```text
+gcloud compute networks subnets create network-b-subnet --network network-b \
+    --range 10.8.0.0/16 --region us-east4
+```
+
 **1.9** Create a VM instance:
 
 ```text
 gcloud compute instances create vm-b --zone "ZONE 2" --network network-b --subnet network-b-subnet --machine-type e2-small
+```
+
+```text
+
 ```
 
 **1.10** Run the following to enable SSH and icmp, because you'll need a secure shell to communicate with VMs during connectivity testing:
