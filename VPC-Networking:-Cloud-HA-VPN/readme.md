@@ -159,3 +159,15 @@ gcloud compute firewall-rules create on-prem-allow-ssh-icmp \
 ```text
 gcloud compute instances create on-prem-instance1 --zone "ZONE 1" --subnet on-prem-subnet1 --machine-type e2-medium
 ```
+
+## Task 6: Configuring HA-VPN and Tunnels:
+
+**6.1 Create the HA-VPN gateways in both networks:**
+
+```text
+gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 --network vpc-demo --region "REGION 1"
+```
+
+```text
+gcloud beta compute vpn-gateways create on-prem-vpn-gw1 --network on-prem --region "REGION 1"
+```
