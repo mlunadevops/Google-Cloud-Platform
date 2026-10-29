@@ -157,8 +157,19 @@ gcloud compute instances create vpc-demo-instance1 --zone "ZONE 2" --subnet vpc-
 ```
 
 ```text
+gcloud compute instances create vpc-demo-instance1 --zone us-east1-b --subnet vpc-demo-subnet1 --machine-type e2-medium
+```
+
+![Output5](images/05output.png)
+
+```text
 gcloud compute instances create vpc-demo-instance2 --zone "ZONE" --subnet vpc-demo-subnet2 --machine-type e2-medium
 ```
+
+```text
+gcloud compute instances create vpc-demo-instance2 --zone us-east4-b --subnet vpc-demo-subnet2 --machine-type e2-medium
+```
+![Output6](images/06output.png)
 
 ## Task 5: On-Premises Local Environment Simulation
 
