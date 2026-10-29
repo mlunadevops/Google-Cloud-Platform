@@ -30,7 +30,6 @@
 ![Peeriing](images/01gcloud.png)
 
 
-
 **Task 1: Create a Custom Network in Both Projects:**
 
 Within the same organization node, a network can host services that need to be accessible from other VPC networks in the same or different projectsAlternatively, an organization may want to access services offered by a third-party provider.
@@ -125,6 +124,9 @@ gcloud compute networks subnets create network-b-subnet --network network-b \
 gcloud compute networks subnets create network-b-subnet --network network-b \
     --range 10.8.0.0/16 --region us-east4
 ```
+
+![Peeriing](images/06gcloud.png)
+
 
 **1.9** Create a VM instance:
 
