@@ -50,7 +50,7 @@ To understand how any firewall rule works (including the one in this example), G
 ![Topology](images/01Topologia.jpg)
 
 
-###  Task 1. Cloud VPC setup
+##  Task 1. Cloud VPC setup
 
 **1.1** From Cloud Shell, create a VPC network called **`vpc-demo`**:
 
@@ -62,7 +62,7 @@ To understand how any firewall rule works (including the one in this example), G
 gcloud compute networks create vpc-demo --subnet-mode custom
 ```
 
-### Task 2. Create subnets
+## Task 2. Create subnets
 
 - **`vpc-demo-subnet1`:** The name assigned to this specific new subnet (must be unique within that region and project).
 - **`--network vpc-demo`:** Specifies the main VPC or parent network to which this subnet will belong (in this case, a network named **`vpc-demo`** that must already exist).
@@ -85,7 +85,7 @@ gcloud beta compute networks subnets create vpc-demo-subnet2 \
 --network vpc-demo --range 10.2.1.0/24 --region "REGION 2"
 ```
 
-### Task 3. Create firewall rules for internal, SSH, and ICMP traffic:
+## Task 3. Create firewall rules for internal, SSH, and ICMP traffic:
 
 **3.1**
 
@@ -108,7 +108,7 @@ gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
   --network vpc-demo --allow tcp:22,icmp
 ```
 
-### Task 4: Create Test Virtual Machine Instances:
+## Task 4: Create Test Virtual Machine Instances:
 
 **4.1**instances create: The combined action to create a new virtual machine (VM) instance.
 
