@@ -126,6 +126,35 @@ An instance template is an API resource you can use to create VM instances and m
 
 ![Tabla](images/04Tabla.png)
 
+1. Click **Done**.
+2. Click **Management**.
+3. In the **Automation > Startup script** field, paste the following script:
+
+```text
+#!/bin/bash
+apt-get update
+apt-get install -y apache2 php libapache2-mod-php
+cat <<'EOF' > /var/www/html/index.php
+<h1>Internal Load Balancing Lab</h1>
+<h2>Client IP</h2>
+Your IP address : <?php echo $_SERVER['REMOTE_ADDR']; ?>
+<h2>Hostname</h2>
+Server Hostname: <?php echo gethostname(); ?>
+<h2>Server Location</h2>
+Region and Zone: <?php
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, "http://metadata.google.internal/computeMetadata/v1/instance/zone");
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array('Metadata-Flavor: Google'));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  $zone = curl_exec($ch);
+  $parts = explode('/', $zone);
+  echo end($parts);
+?>
+EOF
+rm -f /var/www/html/index.html
+systemctl restart apache2
+```
+
 ---
 
 ### Create the Health Check Firewall Rules
@@ -143,7 +172,7 @@ Click Check my progress to verify the objective.
 
 **R:**
 
-```text
+
 
 ```
 
