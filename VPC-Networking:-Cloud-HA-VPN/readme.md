@@ -176,3 +176,55 @@ gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 --network vpc-demo --re
 ```text
 gcloud beta compute vpn-gateways create on-prem-vpn-gw1 --network on-prem --region "REGION 1"
 ```
+
+**6.2 Create the Cloud Routers for dynamic BGP routing**
+
+```text
+gcloud compute routers create vpc-demo-router1 --region "REGION 1" --network vpc-demo --asn 65001
+```
+
+```text
+gcloud compute routers create on-prem-router1 --region "REGION 1" --network on-prem --asn 65002
+```
+
+## Task 7: Configuring HA-VPN and Tunnels:
+
+**7.1 Create the VPN tunnels (two tunnels per gateway to ensure the 99.99% SLA):**
+
+
+# 7.1.1 Túneles desde vpc-demo hacia on-prem
+```text
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 --peer-gcp-gateway on-prem-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router vpc-demo-router1 --vpn-gateway vpc-demo-vpn-gw1 --interface 0
+```
+
+```text
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 --peer-gcp-gateway on-prem-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router vpc-demo-router1 --vpn-gateway vpc-demo-vpn-gw1 --interface 1
+```
+
+#7.1.2  Túneles desde on-prem hacia vpc-demo
+
+```text
+gcloud beta compute vpn-tunnels create on-prem-tunnel0 --peer-gcp-gateway vpc-demo-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router on-prem-router1 --vpn-gateway on-prem-vpn-gw1 --interface 0
+```
+
+```text
+gcloud beta compute vpn-tunnels create on-prem-tunnel1 --peer-gcp-gateway vpc-demo-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router on-prem-router1 --vpn-gateway on-prem-vpn-gw1 --interface 1
+```
+
+## Task 8: Configure BGP peering for both routers and interfaces: (Configure the link interfaces with link-local IP addresses `169.254.0.x` and `169.254.1.x`, assigning the corresponding ASNs).
+
+```text
+gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem --network vpc-demo --allow tcp,udp,icmp --source-ranges 192.168.1.0/24
+```
+
+```text
+gcloud compute firewall-rules create on-prem-allow-subnets-from-vpc-demo --network on-prem --allow tcp,udp,icmp --source-ranges 10.1.1.0/24,10.2.1.0/24
+```
+
+## Task 9: Global Routing and High Availability
+
+- Since HA-VPN is a regional resource, to reach instances in regions other than that of the Cloud Router, you must enable global routing mode:
+  
+```text
+gcloud compute networks update vpc-demo-bgp-routing-mode GLOBAL
+```
