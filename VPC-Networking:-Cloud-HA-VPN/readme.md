@@ -108,7 +108,17 @@ gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
   --network vpc-demo --allow tcp:22,icmp
 ```
 
-### Task 4: Create Test Virtual Machine Instances
+### Task 4: Create Test Virtual Machine Instances:
+
+instances create: The combined action to create a new virtual machine (VM) instance.
+
+**vpc-demo-instance1:** The name you are assigning to this specific virtual machine (must be unique within the zone and project).
+
+**--zone "ZONE 2":** Defines the specific zone (e.g., us-central1-a) where the virtual machine will be physically hosted. (Remember that subnets are regional, but instances live inside a specific zone within that region).
+
+**--subnet vpc-demo-subnet1:** Specifies the subnetwork to which this VM's primary network interface will be connected, tying it directly to your VPC and its IP addressing scheme.
+
+**--machine-type e2-medium:** Defines the hardware configuration (CPU and RAM) for the VM. An e2-medium provides a balanced configuration (typically 2 vCPUs and 4 GB of memory) ideal for general-purpose workloads.
 
 ```text
 gcloud compute instances create vpc-demo-instance1 --zone "ZONE 2" --subnet vpc-demo-subnet1 --machine-type e2-medium
