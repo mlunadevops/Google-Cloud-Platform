@@ -275,6 +275,7 @@ gcloud compute routers create vpc-demo-router1 \
   --network vpc-demo \
   --asn 65001
 ```
+![Output13](images/13output.png)
 
 ```text
 gcloud compute routers create on-prem-router1 \
@@ -282,6 +283,8 @@ gcloud compute routers create on-prem-router1 \
   --network on-prem \
   --asn 65002
 ```
+
+![Output14](images/14output.png)
 
 ## Task 7: Configuring HA-VPN and Tunnels:
 
