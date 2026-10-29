@@ -1,1 +1,55 @@
+# TECHNICAL LOG & BGP ENGINEERING GUIDE
+
+## VPC PEERING
+**CCNP Miguelangel Luna**
+
+---
+
+## CONTENIDOS:
+
+| Case | Title | Description |
+| :--- | :--- | :--- |
+| **01** | [Claude & n8n AI Agents](./case-01-Google-Auth/) | Agentes Claude . |
+
+
+[Google](https://www.google.com)
+
+## 1. Introduction and Theoretical Framework
+
+
+
+## 2. Topology and BGP Neighbor Establishment
+
+The topology consists of four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
+
+![BGP WEIGTH](images/01Topologia.jpg)
+
+ four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
+
+## 3. BGP Configuration:
+
+**Task 1: Create a Custom Network in Both Projects:**
+
+Within the same organization node, a network can host services that need to be accessible from other VPC networks in the same or different projectsAlternatively, an organization may want to access services offered by a third-party provider.
+
+Project names are unique across all of Google Cloud, so you do not need to specify the organization when setting up peering. Google Cloud identifies the organization based on the project name.
+
+In this lab, you have been provisioned two projects: the first project is `project-A`, and the second is `project-B`.
+
+1. In each project, start a new Cloud Shell session by clicking the **+** icon.
+2. In the Cloud Shell for `project-A`, set the project ID for `project-A`:
+
+```text
+gcloud config set project Project ID 1
+```
+
+```text
+gcloud config set project Project ID 2
+```
+### Project A
+
+1. Return to the first Cloud Shell tab and run the following command to create a custom network:
+
+
+### 4. BGP Configuration:
 
