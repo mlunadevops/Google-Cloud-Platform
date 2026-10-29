@@ -16,7 +16,7 @@
 
 ## 1. Introduction and Theoretical Framework
 
-
+**VPC:** is essentially your own **private IP address** space—an isolated virtual network environment—that has a global scope within your Google Cloud project. This allows any resource connected to it to communicate securely, **regardless of where in the world (region) that resource is physically located**.
 
 ## 2. Topology and BGP Neighbor Establishment
 
