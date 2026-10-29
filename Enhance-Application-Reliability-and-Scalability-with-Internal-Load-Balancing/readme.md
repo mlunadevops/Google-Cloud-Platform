@@ -52,6 +52,38 @@ In this lab, you will set up an internal service by creating two managed instanc
 
 ## Configuration:
 
+## Task 1: Configure HTTP and Health Check Firewall Rules
+
+Proper firewall rules form the foundation of a secure and functional internal load-balanced environment. They ensure that only authorized traffic reaches your backend services and that the load balancer can accurately assess the health of your instances.
+
+You will configure firewall rules to allow HTTP traffic to the backends as well as TCP traffic from the Google Cloud health checker.
+
+---
+
+### Explore the `my-internal-app` Network
+
+The `my-internal-app` network—complete with `subnet-a`, `subnet-b`, and pre-configured firewall rules for RDP, SSH, and ICMP traffic—has already been set up for you.
+
+1. In the Google Cloud Console, navigate to **Navigation menu > VPC network > VPC networks**.
+2. Scroll down and verify the `my-internal-app` network and its associated subnets (`subnet-a` and `subnet-b`).
+3. While every Google Cloud project starts with a default network, `my-internal-app` has been pre-provisioned as part of your lab architecture diagram.
+4. You will create your managed instance groups in `subnet-a` and `subnet-b`. Because an Internal Load Balancer is a regional service, both subnets must reside in the same region (`REGION`). Placing the managed instance groups in different zones ensures your service remains resilient against zonal outages.
+
+---
+
+### Create the HTTP Firewall Rule
+
+Create an ingress firewall rule to allow HTTP traffic to your backend instances both from the load balancer and from the internet (which is required to install the Apache web server on your backend VMs).
+
+1. In the **VPC networks** section, click **Firewall** in the left navigation pane.
+2. Review the pre-created `app-allow-icmp` and `app-allow-ssh-rdp` firewall rules.
+3. Click **+ Create Firewall Rule**.
+4. Configure the following parameter values, leaving all other fields at their defaults:
+
+![Tabla](images/02Tabla.png)
+
+   
+
 **R:**
 
 ```text
