@@ -80,7 +80,7 @@ gcloud compute networks subnets create network-a-subnet --network network-a \
 gcloud compute networks subnets create network-a-subnet --network network-a \
     --range 10.0.0.0/16 --region us-west1
 ```
-
+![Peeriing](images/03Screen.jpg)
 
 **1.5**  Create a VM instance:
 
