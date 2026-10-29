@@ -2,11 +2,11 @@
 
 ## Enterprise Multi-Region Hybrid Network Architecture using Google Cloud HA-VPN & Dynamic BGP Routing
 
-**CCNP Miguelangel Luna**
+**CCNP Miguelangel Luna** 
 
 ---
 
-## CONTENT:
+## CONTENT GSP619:
 
 | Case | Title | Description |
 | :--- | :--- | :--- |
