@@ -393,6 +393,24 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
     --region "REGION 1"
 ```
 
+Create router interface for tunnel1 in network vpc-demo:
+
+```text
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel1-to-on-prem \
+    --ip-address 169.254.1.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel1 \
+    --region "REGION 1"
+```
+```text
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel1 \
+    --interface if-tunnel1-to-on-prem \
+    --peer-ip-address 169.254.1.2 \
+    --peer-asn 65002 \
+    --region "REGION 1"
+```
 And the bgp peer for tunnel0 in network vpc-demo:
 
 ## Task 9: Allow traffic from remote subnets via firewall rules:.
@@ -409,6 +427,28 @@ gcloud compute firewall-rules create on-prem-allow-subnets-from-vpc-demo \
   --network on-prem \
   --allow tcp,udp,icmp \
   --source-ranges 10.1.1.0/24,10.2.1.0/24
+```
+
+Create router interface for tunnel1 in network on-prem:
+
+```text
+gcloud compute routers add-interface  on-prem-router1 \
+    --interface-name if-tunnel1-to-vpc-demo \
+    --ip-address 169.254.1.2 \
+    --mask-length 30 \
+    --vpn-tunnel on-prem-tunnel1 \
+    --region "REGION 1"
+```
+And the bgp peer for tunnel1 in network on-prem:
+
+```text
+gcloud compute routers add-bgp-peer  on-prem-router1 \
+    --peer-name bgp-vpc-demo-tunnel1 \
+    --interface if-tunnel1-to-vpc-demo \
+    --peer-ip-address 169.254.1.1 \
+    --peer-asn 65001 \
+    --region "REGION 1"
+
 ```
 
 ## Task 10: Global Routing and High Availability
