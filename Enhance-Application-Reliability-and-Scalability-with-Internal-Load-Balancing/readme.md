@@ -94,8 +94,15 @@ Health checks determine which instances behind a load balancer can receive new t
 
 ![Tabla](images/03Tabla.png)
 
-   Note: Make sure to enter the two Source IPv4 ranges one-by-one and pressing SPACE in between them.
-3. Click Create.
+> **Note:** Ensure you enter the two source IPv4 ranges one by one, pressing **Space** or **Enter** after each range to add them correctly in the console.
+
+3. Click **Create**.
+
+## Task 2: Configure Instance Templates and Create Instance Groups
+
+Instance templates and managed instance groups (MIGs) are the backbone of scalable, resilient, and manageable cloud applications. They enable you to define a standardized configuration for your virtual machines and automatically manage their lifecycle, ensuring operational consistency while supporting automated scaling and self-healing.
+
+A managed instance group uses an instance template to deploy and manage a group of identical VM instances. You will use these groups to configure the backend infrastructure for the Internal Load Balancer.
 
 
 ## Configure the Instance Templates
