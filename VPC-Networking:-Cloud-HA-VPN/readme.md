@@ -214,7 +214,9 @@ gcloud compute routers create on-prem-router1 \
 **7.1 Create the VPN tunnels (two tunnels per gateway to ensure the 99.99% SLA):**
 
 
-#7.1.1 Túneles desde vpc-demo hacia on-prem
+#7.1.1 Túneles desde vpc-demo hacia on-prem:
+
+![Topology Cloud VPN Gateway](images/06VPNconection.jpg)
 
 ```text
 gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
