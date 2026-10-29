@@ -373,6 +373,8 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
 
 ## Task 8: Create BGP peering for each tunnel:.
 
+![Output16](images/07ConexionBGP.jpg)
+
 Create the router interface for tunnel0 in network `vpc-demo`:
 
 ```text
@@ -413,7 +415,7 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
 ```
 And the bgp peer for tunnel0 in network vpc-demo:
 
-![Output16](images/07ConexionBGP.jpg)
+
 
 
 ## Task 9: Allow traffic from remote subnets via firewall rules:.
