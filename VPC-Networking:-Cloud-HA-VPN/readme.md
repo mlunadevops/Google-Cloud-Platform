@@ -123,15 +123,22 @@ gcloud beta compute networks subnets create vpc-demo-subnet2 \
   - **Note:** Combined, this rule allows virtually all types of network traffic.
 - **`--source-ranges 10.0.0.0/8`:** Defines where the traffic must come from for this rule to apply. In this case, it applies only to traffic originating from any IP address inside the `10.0.0.0/8` private network range (a very common internal corporate/cloud range).
 
+
 ```text
 gcloud compute firewall-rules create vpc-demo-allow-internal \
-  --network vpc-demo --allow tcp:0-65535,udp:0-65535,icmp --source-ranges 10.0.0.0/8
+  --network vpc-demo \
+  --allow tcp:0-65535,udp:0-65535,icmp \
+  --source-ranges 10.0.0.0/8
 ```
+![Output3](images/03output.png)
+
 
 ```text
 gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
-  --network vpc-demo --allow tcp:22,icmp
+    --network vpc-demo \
+    --allow tcp:22,icmp
 ```
+![Output3](images/04output.png)
 
 ## Task 4: Create Test Virtual Machine Instances:
 
