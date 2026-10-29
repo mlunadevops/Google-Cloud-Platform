@@ -47,8 +47,17 @@ gcloud config set project Project ID 1
 ```
 
 ```text
+gcloud config set project qwiklabs-gcp-02-3702c4666c88
+```
+
+```text
 gcloud config set project Project ID 2
 ```
+```text
+gcloud config set project qwiklabs-gcp-04-cf6e1da2a924
+```
+![Peeriing](images/02gcloud.png)
+
 ### Project A
 
 **1.3** Return to the first Cloud Shell tab and run the following command to create a custom network:
