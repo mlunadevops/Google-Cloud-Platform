@@ -144,6 +144,10 @@ gcloud compute instances create vm-b --zone us-east4-c --network network-b --sub
 ```text
 gcloud compute firewall-rules create network-b-fw --network network-b --allow tcp:22,icmp
 ```
+```text
+gcloud compute firewall-rules create network-b-fw --network network-b --allow tcp:22,icmp
+```
+![Peeriing](images/08gcloud.png)
 
 ## Task 2: Set Up a VPC Network Peering Session
 
