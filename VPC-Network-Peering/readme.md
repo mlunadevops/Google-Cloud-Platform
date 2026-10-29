@@ -50,6 +50,20 @@ gcloud config set project Project ID 2
 
 1. Return to the first Cloud Shell tab and run the following command to create a custom network:
 
+```text
+gcloud compute networks create network-a --subnet-mode custom
+```
+
+2. Create a subnet within this VPC and specify a region and IP range by running:
+  
+```text
+gcloud compute networks subnets create network-a-subnet --network network-a \
+    --range 10.0.0.0/16 --region "REGION 1"
+```
+
+
+3. 
+
 
 ### 4. BGP Configuration:
 
