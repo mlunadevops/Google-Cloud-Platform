@@ -209,13 +209,30 @@ gcloud compute routers create on-prem-router1 \
 
 
 #7.1.1 Túneles desde vpc-demo hacia on-prem
-```text
-gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 --peer-gcp-gateway on-prem-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router vpc-demo-router1 --vpn-gateway vpc-demo-vpn-gw1 --interface 0
-```
 
 ```text
-gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 --peer-gcp-gateway on-prem-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router vpc-demo-router1 --vpn-gateway vpc-demo-vpn-gw1 --interface 1
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
+  --peer-gcp-gateway on-prem-vpn-gw1 \
+  --region "REGION 1" \
+  --ike-version 2 \
+  --shared-secret [SHARED SECRET] \
+  --router vpc-demo-router1 \
+  --vpn-gateway vpc-demo-vpn-gw1 \
+  --interface 0
 ```
+
+
+```text
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 \
+  --peer-gcp-gateway on-prem-vpn-gw1 \
+  --region "REGION 1" \
+  --ike-version 2 \
+  --shared-secret [SHARED SECRET] \
+  --router vpc-demo-router1 \
+  --vpn-gateway vpc-demo-vpn-gw1 \
+  --interface 1
+```
+
 
 #7.1.2  Túneles desde on-prem hacia vpc-demo
 
