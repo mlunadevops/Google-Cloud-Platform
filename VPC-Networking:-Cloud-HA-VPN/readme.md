@@ -413,6 +413,9 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
 ```
 And the bgp peer for tunnel0 in network vpc-demo:
 
+![Output16](images/07ConexionBGP.jpg)
+
+
 ## Task 9: Allow traffic from remote subnets via firewall rules:.
 
 ```text
