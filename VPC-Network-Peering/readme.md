@@ -25,7 +25,11 @@
 
  
 
-## 3. BGP Configuration:
+## 3. Configuration:
+
+![Peeriing](images/01gcloud.png)
+
+
 
 **Task 1: Create a Custom Network in Both Projects:**
 
