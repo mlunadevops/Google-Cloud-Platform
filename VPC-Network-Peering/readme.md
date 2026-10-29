@@ -194,20 +194,25 @@ Go to the **VPC Network Peering** page in the Google Cloud Console by navigating
 ```text
 "PROJECT ID 1"
 ```
+7. Specify the **VPC network name** of the peered network (`network-a`).
+8. Click **Create**.
 
-7.Specify VPC network name of the other network (network-a).
-8. Click Create.
-**In the VPC network peering, you should now see peer-ba listed in the property list.**
+> **Note:** In the **VPC network peering** section, you should now see `peer-ba` listed in the properties list.
 
-VPC Network Peering becomes ACTIVE and routes are exchanged As soon as the peering moves to an ACTIVE state, traffic flows are set up:
+---
 
-Between VM instances in the peered networks: Full mesh connectivity.
-From VM instances in one network to Internal Load Balancing endpoints in the peered network.
+### Understanding VPC Network Peering States
 
-**At this point, the peering state remains INACTIVE because there is no matching configuration in network-b in project-B. You should see the Status message, Waiting for the connection to be created by network-b.**
+VPC Network Peering becomes **ACTIVE** and routes are exchanged automatically once both ends of the peering connection are configured. As soon as the peering transitions to an **ACTIVE** state, the following traffic flows are established:
 
-The routes to peered network CIDR prefixes are now visible across the VPC network peers. These routes are implicit routes generated for active peerings. They don't have corresponding route resources. The following command lists routes for all VPC networks for project-A.
+- **Between VM instances in the peered networks:** Full-mesh IP connectivity.
+- **From VM instances in one network to Internal Load Balancing endpoints in the peered network.**
 
+> **Current Status:** At this point, the peering state remains **INACTIVE** because there is no matching peering configuration in `network-b` within `project-B`. You will see the status message: *"Waiting for the connection to be created by network-b."*
+
+Once peering is active, routes to peered network CIDR prefixes become visible across the VPC network peers. These routes are **implicit routes** generated automatically for active peerings; they do not exist as standalone, manually managed route resources.
+
+Run the following command to list routes for all VPC networks in `project-A`:
 ```text
 gcloud compute routes list --project
 ```
