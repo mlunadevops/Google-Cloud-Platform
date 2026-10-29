@@ -131,6 +131,7 @@ Go to the **VPC Network Peering** page in the Google Cloud Console by navigating
 7.Type in the VPC network name of the other network (network-b).
 8. Click Create.
 
+**At this point, the peering state remains INACTIVE because there is no matching configuration in network-b in project-B. You should see the Status message, Waiting for the connection to be created by network-b.**
 
 ### 4. BGP Configuration:
 
