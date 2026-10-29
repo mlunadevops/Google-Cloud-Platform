@@ -131,6 +131,31 @@ Go to the **VPC Network Peering** page in the Google Cloud Console by navigating
 7.Type in the VPC network name of the other network (network-b).
 8. Click Create.
 
+
+### Project-B
+
+1. Click Create connection.
+2. Click Continue.
+3. Type "peer-ba" as the Name for this side of the connection.
+4. Under Your VPC network, select the network you want to peer (network-b).
+5. Set the Peering VPC network radio buttons to In another project, unless you wish to peer within the same project.
+6. Specify the Project ID of the first project.
+
+```text
+"PROJECT ID 1"
+```
+
+7.Specify VPC network name of the other network (network-a).
+8. Click Create.
+**In the VPC network peering, you should now see peer-ba listed in the property list.**
+
+VPC Network Peering becomes ACTIVE and routes are exchanged As soon as the peering moves to an ACTIVE state, traffic flows are set up:
+
+Between VM instances in the peered networks: Full mesh connectivity.
+From VM instances in one network to Internal Load Balancing endpoints in the peered network.
+
+
+
 **At this point, the peering state remains INACTIVE because there is no matching configuration in network-b in project-B. You should see the Status message, Waiting for the connection to be created by network-b.**
 
 ### 4. BGP Configuration:
