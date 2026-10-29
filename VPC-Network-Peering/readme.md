@@ -60,6 +60,8 @@ gcloud config set project qwiklabs-gcp-04-cf6e1da2a924
 
 ### Project A
 
+Context PROJECT-A
+
 ```text
 gcloud config set project qwiklabs-gcp-02-3702c4666c88
 ```
@@ -101,6 +103,11 @@ gcloud compute firewall-rules create network-a-fw --network network-a --allow tc
 
 ### Project B
 
+Context PROJECT-B
+
+```text
+gcloud config set project qwiklabs-gcp-04-cf6e1da2a924
+```
 **1.7** Switch to the second Cloud Shell tab and create a custom network:
 
 ```text
