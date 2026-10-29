@@ -61,3 +61,15 @@ gcloud beta compute networks subnets create vpc-demo-subnet1 \
 gcloud beta compute networks subnets create vpc-demo-subnet2 \
 --network vpc-demo --range 10.2.1.0/24 --region "REGION 2"
 ```
+
+### Create firewall rules for internal, SSH, and ICMP traffic:
+
+```text
+gcloud compute firewall-rules create vpc-demo-allow-internal \
+  --network vpc-demo --allow tcp:0-65535,udp:0-65535,icmp --source-ranges 10.0.0.0/8
+```
+
+```text
+gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
+  --network vpc-demo --allow tcp:22,icmp
+```
