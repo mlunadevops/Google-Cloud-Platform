@@ -276,7 +276,7 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
   --interface 1
 ```
 
-## Task 8: Configure BGP peering for both routers and interfaces: (Configure the link interfaces with link-local IP addresses `169.254.0.x` and `169.254.1.x`, assigning the corresponding ASNs).
+## Task 8: Allow traffic from remote subnets via firewall rules:.
 
 ```text
 gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem \
