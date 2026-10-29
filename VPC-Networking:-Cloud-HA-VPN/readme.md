@@ -70,6 +70,10 @@ Finally, you will add a Cloud HA-VPN gateway and a Cloud Router in each VPC, and
 gcloud compute networks create vpc-demo --subnet-mode custom
 ```
 
+![Output0](images/0output.png)
+
+
+
 ## Task 2. Create subnets
 
 - **`vpc-demo-subnet1`:** The name assigned to this specific new subnet (must be unique within that region and project).
