@@ -88,6 +88,13 @@ gcloud compute networks create vpc-demo --subnet-mode custom
 gcloud beta compute networks subnets create vpc-demo-subnet1 \
 --network vpc-demo --range 10.1.1.0/24 --region "REGION 1"
 ```
+![Output0](images/01output.png)
+
+```text
+gcloud beta compute networks subnets create vpc-demo-subnet1 \
+--network vpc-demo --range 10.1.1.0/24 --region us-east1
+```
+
 ### Create subnets
 
 **2.2** Create subnet **`vpc-demo-subnet2`** in the **`REGION 2`** region:
