@@ -23,8 +23,6 @@
 
 
 
- 
-
 ## 3. Configuration:
 
 ![Peeriing](images/01gcloud.png)
@@ -233,5 +231,3 @@ In this task, you will perform a connectivity test between instances across the 
 3. In the SSH terminal of `vm-b`, run the following command, replacing `<INTERNAL_IP_OF_VM_A>` with the internal IP address of `vm-a`:
 
    
-### 4. BGP Configuration:
-
