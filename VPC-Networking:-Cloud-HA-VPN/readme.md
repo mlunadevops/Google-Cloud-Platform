@@ -203,6 +203,16 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 --peer-gcp-gateway on-pr
 
 #7.1.2  Túneles desde on-prem hacia vpc-demo
 
+- **`vpn-tunnels create`**: The specific action to create a new VPN tunnel that securely connects your VPN gateway to a peer gateway.
+- **`vpc-demo-tunnel0`**: The name assigned to this specific VPN tunnel.
+- **`--peer-gcp-gateway on-prem-vpn-gw1`**: Specifies the peer VPN gateway to which this tunnel connects (in this context, representing the remote or on-premises gateway configuration).
+- **`--region "REGION 1"`**: Defines the geographic region where the VPN tunnel resource is deployed (must match the region of your VPN gateway).
+- **`--ike-version 2`**: Sets the Internet Key Exchange (IKE) protocol version to version 2, which is standard for establishing security associations and negotiating encryption parameters.
+- **`--shared-secret [SHARED SECRET]`**: Provides the pre-shared authentication key (PSK) that must match on both sides of the VPN tunnel to authenticate the connection.
+- **`--router vpc-demo-router1`**: Associates this tunnel with a Cloud Router, which dynamically exchanges routes between your VPC and the peer network using BGP (Border Gateway Protocol).
+- **`--vpn-gateway vpc-demo-vpn-gw1`**: Specifies the local Cloud VPN gateway (created in the previous command) that terminates one end of this tunnel.
+- **`--interface 0`**: Specifies which interface number (e.g., interface 0) on your local HA-VPN gateway this tunnel is bound to. (HA-VPN gateways use two interfaces, `0` and `1`, for redundancy).
+
 ```text
 gcloud beta compute vpn-tunnels create on-prem-tunnel0 --peer-gcp-gateway vpc-demo-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router on-prem-router1 --vpn-gateway on-prem-vpn-gw1 --interface 0
 ```
@@ -214,7 +224,10 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 --peer-gcp-gateway vpc-de
 ## Task 8: Configure BGP peering for both routers and interfaces: (Configure the link interfaces with link-local IP addresses `169.254.0.x` and `169.254.1.x`, assigning the corresponding ASNs).
 
 ```text
-gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem --network vpc-demo --allow tcp,udp,icmp --source-ranges 192.168.1.0/24
+gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem \
+  --network vpc-demo \
+  --allow tcp,udp,icmp \
+  --source-ranges 192.168.1.0/24
 ```
 
 ```text
