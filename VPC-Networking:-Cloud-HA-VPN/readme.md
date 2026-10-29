@@ -384,6 +384,15 @@ gcloud compute routers add-interface vpc-demo-router1 \
     --region "REGION 1"
 ```
 
+```text
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel0 \
+    --interface if-tunnel0-to-on-prem \
+    --peer-ip-address 169.254.0.2 \
+    --peer-asn 65002 \
+    --region "REGION 1"
+```
+
 And the bgp peer for tunnel0 in network vpc-demo:
 
 ## Task 9: Allow traffic from remote subnets via firewall rules:.
