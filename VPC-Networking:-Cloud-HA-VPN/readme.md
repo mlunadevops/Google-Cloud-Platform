@@ -46,15 +46,13 @@ To understand how any firewall rule works (including the one in this example), G
 
 ## 2. Topology and BGP Neighbor Establishment
 
-The topology consists of four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
 ![Topology](images/01Topologia.jpg)
 
- four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
 ###  Task 1. Cloud VPC setup
 
-- From Cloud Shell, create a VPC network called **`vpc-demo`**:
+**1.1** From Cloud Shell, create a VPC network called **`vpc-demo`**:
 
 - **`vpc-demo`**: User-defined name to be assigned to the new VPC network.
 
@@ -72,7 +70,7 @@ gcloud compute networks create vpc-demo --subnet-mode custom
 - **`--region "REGION 1"`:** Defines the geographical location (GCP region) where this subnet will be deployed (for example, `us-central1` or **`europe-west1`**, as subnets in GCP are regional).
 
 
-1. Now, create subnet **`vpc-demo-subnet1`** in the **`REGION 1`** region:
+**2.1** Now, create subnet **`vpc-demo-subnet1`** in the **`REGION 1`** region:
 
 ```text
 gcloud beta compute networks subnets create vpc-demo-subnet1 \
@@ -80,7 +78,7 @@ gcloud beta compute networks subnets create vpc-demo-subnet1 \
 ```
 ### Create subnets
 
-2. Create subnet **`vpc-demo-subnet2`** in the **`REGION 2`** region:
+**2.2** Create subnet **`vpc-demo-subnet2`** in the **`REGION 2`** region:
 
 ```text
 gcloud beta compute networks subnets create vpc-demo-subnet2 \
@@ -88,6 +86,8 @@ gcloud beta compute networks subnets create vpc-demo-subnet2 \
 ```
 
 ### Task 3. Create firewall rules for internal, SSH, and ICMP traffic:
+
+**3.1**
 
 - **`vpc-demo-allow-internal`**: The name assigned to this specific firewall rule (must be unique within the project).
 - **`--network vpc-demo`:** Specifies the **target VPC network (**`vpc-demo`**) where this firewall rule will be enforced**.
@@ -110,7 +110,7 @@ gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
 
 ### Task 4: Create Test Virtual Machine Instances:
 
-instances create: The combined action to create a new virtual machine (VM) instance.
+**4.1**instances create: The combined action to create a new virtual machine (VM) instance.
 
 **vpc-demo-instance1:** The name you are assigning to this specific virtual machine (must be unique within the zone and project).
 
@@ -126,4 +126,36 @@ gcloud compute instances create vpc-demo-instance1 --zone "ZONE 2" --subnet vpc-
 
 ```text
 gcloud compute instances create vpc-demo-instance2 --zone "ZONE" --subnet vpc-demo-subnet2 --machine-type e2-medium
+```
+
+## Task 5: On-Premises Local Environment Simulation
+
+**5.1** **Create the on-prem VPC network:**
+
+```text
+gcloud compute networks create on-prem --subnet-mode custom
+```
+
+**5.2** **Create the local subnet:**
+
+```text
+gcloud beta compute networks subnets create on-prem-subnet1 \
+  --network on-prem --range 192.168.1.0/24 --region "REGION 1"
+```
+
+**5.3** **Create firewall rules for the local network:**
+
+```text
+gcloud compute firewall-rules create on-prem-allow-internal \
+  --network on-prem --allow tcp:0-65535,udp:0-65535,icmp --source-ranges 192.168.0.0/16
+```
+```text
+gcloud compute firewall-rules create on-prem-allow-ssh-icmp \
+  --network on-prem --allow tcp:22,icmp
+```
+
+**5.3 Create the local test instance:**
+
+```text
+gcloud compute instances create on-prem-instance1 --zone "ZONE 1" --subnet on-prem-subnet1 --machine-type e2-medium
 ```
