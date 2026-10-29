@@ -188,6 +188,12 @@ gcloud beta compute networks subnets create on-prem-subnet1 \
   --network on-prem --range 192.168.1.0/24 --region "REGION 1"
 ```
 
+```text
+gcloud beta compute networks subnets create on-prem-subnet1 \
+--network on-prem --range 192.168.1.0/24 --region us-east1
+```
+![Output7](images/08output.png)
+
 **5.3** **Create firewall rules for the local network:**
 
 ```text
