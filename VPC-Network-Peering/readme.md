@@ -21,7 +21,7 @@
 ## 2. Topology and BGP Neighbor Establishment
 
 
-![BGP WEIGTH](images/01Topologia.jpg)
+
 
  
 
@@ -106,6 +106,9 @@ gcloud compute firewall-rules create network-b-fw --network network-b --allow tc
 Consider an organization that needs to establish VPC Network Peering between `network-A` in `project-A` and `network-B` in `project-B`. To establish VPC Network Peering successfully, the administrators of `network-A` and `network-B` must separately configure their respective sides of the peering association.
 
 ### Peer `network-A` with `network-B`:
+
+![Peeriing](images/01Topology.jpg)
+
 
 
 
