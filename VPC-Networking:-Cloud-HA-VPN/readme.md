@@ -231,7 +231,10 @@ gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem \
 ```
 
 ```text
-gcloud compute firewall-rules create on-prem-allow-subnets-from-vpc-demo --network on-prem --allow tcp,udp,icmp --source-ranges 10.1.1.0/24,10.2.1.0/24
+gcloud compute firewall-rules create on-prem-allow-subnets-from-vpc-demo \
+  --network on-prem \
+  --allow tcp,udp,icmp \
+  --source-ranges 10.1.1.0/24,10.2.1.0/24
 ```
 
 ## Task 9: Global Routing and High Availability
