@@ -94,6 +94,7 @@ gcloud compute instances create vm-a --zone "ZONE 1" --network network-a --subne
 ```text
 gcloud compute firewall-rules create network-a-fw --network network-a --allow tcp:22,icmp
 ```
+![Peeriing](images/05gcloud.png)
 
 **Next you set up Project-B in the same way..**
 
