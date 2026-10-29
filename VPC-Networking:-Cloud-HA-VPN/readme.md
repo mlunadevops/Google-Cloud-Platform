@@ -38,11 +38,14 @@ To understand how any firewall rule works (including the one in this example), G
 - **Without tags:** All VMs in the VPC inherit and apply these open ports automatically.
 - **With tags:** You filter access so that only VMs with that specific tag will be able to receive that traffic; all other VMs in the same VPC remain blocked.
 
+![Firewall Rules](images/02FirewallRules.jpg)
+ 
+
 ## 2. Topology and BGP Neighbor Establishment
 
 The topology consists of four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
-![BGP WEIGTH](images/01Topologia.jpg)
+![Topology](images/01Topologia.jpg)
 
  four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
