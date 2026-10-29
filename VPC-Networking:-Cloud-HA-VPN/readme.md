@@ -23,7 +23,7 @@ Feactures:
 - **True global scope:** A VM in the `us-central1` (Iowa) region can communicate directly with a VM in `europe-west1` (Belgium) using their internal private IP addresses within the same VPC, **as if they were in the same building**.
 - **Project-level scope:** By default, a **VPC belongs to a specific Google Cloud project** (although tools like Shared VPC exist if you need to share that same network with other projects in your organization).
 
-
+**GCP firewall** is a virtual security guard that controls network traffic: it decides which connections are allowed to enter or leave your virtual machines and resources, blocking everything that is not explicitly authorized.
 
 To understand how any firewall rule works (including the one in this example), GCP network architecture follows these core principles:
 
@@ -33,6 +33,9 @@ To understand how any firewall rule works (including the one in this example), G
   - Conversely, **outgoing traffic (egress)** from instances to the outside world or to other internal resources **is allowed by default**, unless a restrictive egress rule is configured.
 - **Priority Evaluation and Stateful Inspection:**
   - GCP firewall rules are **stateful**. This means that if incoming traffic is allowed, the corresponding response traffic going back out is automatically permitted without needing a separate return rule.
+
+**IMPORTANT The "If it isn't allowed, it's blocked" principle:** If no rule in your **VPC specifies port 443**, it doesn't matter whether you try to communicate from the internet or from the VM next door—GCP's networking system will drop the packet.
+
 
  - **The firewall rule:** Opens the ports at the **VPC level**.
 - **Without tags:** All VMs in the VPC inherit and apply these open ports automatically.
