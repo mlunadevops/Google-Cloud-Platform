@@ -183,12 +183,24 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
 
 **6.2 Create the Cloud Routers for dynamic BGP routing**
 
+**network: vpc-demo**
+**ASN**: 65001
+
+**network: on-prem**
+**ASN:** 65002
+
 ```text
-gcloud compute routers create vpc-demo-router1 --region "REGION 1" --network vpc-demo --asn 65001
+gcloud compute routers create vpc-demo-router1 \
+  --region "REGION 1" \
+  --network vpc-demo \
+  --asn 65001
 ```
 
 ```text
-gcloud compute routers create on-prem-router1 --region "REGION 1" --network on-prem --asn 65002
+gcloud compute routers create on-prem-router1 \
+  --region "REGION 1" \
+  --network on-prem \
+  --asn 65002
 ```
 
 ## Task 7: Configuring HA-VPN and Tunnels:
