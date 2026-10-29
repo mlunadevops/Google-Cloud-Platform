@@ -101,6 +101,14 @@ gcloud compute instances create vm-b --zone "ZONE 2" --network network-b --subne
 gcloud compute firewall-rules create network-b-fw --network network-b --allow tcp:22,icmp
 ```
 
+## Task 2: Set Up a VPC Network Peering Session
+
+Consider an organization that needs to establish VPC Network Peering between `network-A` in `project-A` and `network-B` in `project-B`. To establish VPC Network Peering successfully, the administrators of `network-A` and `network-B` must separately configure their respective sides of the peering association.
+
+### Peer `network-A` with `network-B`:
+
+
+
 
 ### 4. BGP Configuration:
 
