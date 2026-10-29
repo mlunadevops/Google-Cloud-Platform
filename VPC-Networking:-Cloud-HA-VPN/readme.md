@@ -164,6 +164,11 @@ gcloud compute instances create on-prem-instance1 --zone "ZONE 1" --subnet on-pr
 
 **6.1 Create the HA-VPN gateways in both networks:**
 
+- **`vpn-gateways create`:** The specific action to create a **Cloud VPN gateway** (specifically, a Highly Available / HA-VPN gateway).
+- **`vpc-demo-vpn-gw1`:** The name assigned to this **VPN gateway** resource.
+- **`--network vpc-demo`:** Specifies the **Virtual Private Cloud (VPC)** network where this VPN gateway will be deployed, connecting your VPN tunnels to this network's infrastructure.
+- **`--region "REGION 1"`:** Defines the geographic region (e.g., `us-central1`) where the VPN gateway will be provisioned. (Unlike global VPCs, HA-VPN gateways are regional resources).
+
 ```text
 gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 --network vpc-demo --region "REGION 1"
 ```
