@@ -73,5 +73,34 @@ gcloud compute firewall-rules create network-a-fw --network network-a --allow tc
 
 **Next you set up Project-B in the same way..**
 
+
+### Project B
+
+**1.7** Switch to the second Cloud Shell tab and create a custom network:
+
+```text
+gcloud compute networks create network-b --subnet-mode custom
+```
+
+**1.8** Create a subnet within this VPC and specify a region and IP range by running:
+
+```text
+gcloud compute networks subnets create network-b-subnet --network network-b \
+    --range 10.8.0.0/16 --region "REGION 2"
+```
+
+**1.9** Create a VM instance:
+
+```text
+gcloud compute instances create vm-b --zone "ZONE 2" --network network-b --subnet network-b-subnet --machine-type e2-small
+```
+
+**1.10** Run the following to enable SSH and icmp, because you'll need a secure shell to communicate with VMs during connectivity testing:
+
+```text
+gcloud compute firewall-rules create network-b-fw --network network-b --allow tcp:22,icmp
+```
+
+
 ### 4. BGP Configuration:
 
