@@ -371,7 +371,22 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
 ```
 ![Output16](images/16output.png)
 
-## Task 8: Allow traffic from remote subnets via firewall rules:.
+## Task 8: Create BGP peering for each tunnel:.
+
+Create the router interface for tunnel0 in network `vpc-demo`:
+
+```text
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel0-to-on-prem \
+    --ip-address 169.254.0.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel0 \
+    --region "REGION 1"
+```
+
+And the bgp peer for tunnel0 in network vpc-demo:
+
+## Task 9: Allow traffic from remote subnets via firewall rules:.
 
 ```text
 gcloud compute firewall-rules create vpc-demo-allow-subnets-from-on-prem \
@@ -387,7 +402,7 @@ gcloud compute firewall-rules create on-prem-allow-subnets-from-vpc-demo \
   --source-ranges 10.1.1.0/24,10.2.1.0/24
 ```
 
-## Task 9: Global Routing and High Availability
+## Task 10: Global Routing and High Availability
 
 - Since HA-VPN is a regional resource, to reach instances in regions other than that of the Cloud Router, you must enable global routing mode:
   
