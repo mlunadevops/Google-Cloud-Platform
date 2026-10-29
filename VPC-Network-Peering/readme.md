@@ -134,6 +134,8 @@ Go to the **VPC Network Peering** page in the Google Cloud Console by navigating
 
 ### Project-B
 
+![Peeriing](images/03Screen.jpg)
+
 1. Click Create connection.
 2. Click Continue.
 3. Type "peer-ba" as the Name for this side of the connection.
