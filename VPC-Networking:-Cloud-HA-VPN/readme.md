@@ -241,6 +241,11 @@ gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
   --network vpc-demo \
   --region "REGION 1"
 ```
+```text
+gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 --network vpc-demo --region us-east1
+```
+![Output11](images/11output.png)
+
 
 ```text
 gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
