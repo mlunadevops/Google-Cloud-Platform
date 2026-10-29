@@ -186,6 +186,9 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
 
 **6.2 Create the Cloud Routers for dynamic BGP routing**
 
+
+![Topology Cloud VPN Gateway](images/05VPNandCloud.jpg)
+
 **network**: vpc-demo
 **ASN**: 65001
 
