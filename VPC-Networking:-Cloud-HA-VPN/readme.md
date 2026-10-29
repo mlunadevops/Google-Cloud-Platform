@@ -107,3 +107,13 @@ gcloud compute firewall-rules create vpc-demo-allow-internal \
 gcloud compute firewall-rules create vpc-demo-allow-ssh-icmp \
   --network vpc-demo --allow tcp:22,icmp
 ```
+
+### Task 4: Create Test Virtual Machine Instances
+
+```text
+gcloud compute instances create vpc-demo-instance1 --zone "ZONE 2" --subnet vpc-demo-subnet1 --machine-type e2-medium
+```
+
+```text
+gcloud compute instances create vpc-demo-instance2 --zone "ZONE" --subnet vpc-demo-subnet2 --machine-type e2-medium
+```
