@@ -192,7 +192,7 @@ gcloud compute routers create on-prem-router1 --region "REGION 1" --network on-p
 **7.1 Create the VPN tunnels (two tunnels per gateway to ensure the 99.99% SLA):**
 
 
-# 7.1.1 Túneles desde vpc-demo hacia on-prem
+#7.1.1 Túneles desde vpc-demo hacia on-prem
 ```text
 gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 --peer-gcp-gateway on-prem-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router vpc-demo-router1 --vpn-gateway vpc-demo-vpn-gw1 --interface 0
 ```
