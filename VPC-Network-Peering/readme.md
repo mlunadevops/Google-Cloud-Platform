@@ -156,9 +156,29 @@ VPC Network Peering becomes ACTIVE and routes are exchanged As soon as the peeri
 Between VM instances in the peered networks: Full mesh connectivity.
 From VM instances in one network to Internal Load Balancing endpoints in the peered network.
 
-
-
 **At this point, the peering state remains INACTIVE because there is no matching configuration in network-b in project-B. You should see the Status message, Waiting for the connection to be created by network-b.**
 
+The routes to peered network CIDR prefixes are now visible across the VPC network peers. These routes are implicit routes generated for active peerings. They don't have corresponding route resources. The following command lists routes for all VPC networks for project-A.
+
+```text
+gcloud compute routes list --project
+```
+
+## Task 3: Test Connectivity
+
+In this task, you will perform a connectivity test between instances across the peered networks.
+
+### Project A
+
+1. Navigate to the VM instances page in the Cloud Console by clicking **Navigation menu > Compute Engine > VM instances**.
+2. Copy the **Internal IP** address (`INTERNAL_IP`) for `vm-a`.
+
+### Project B
+
+1. Click **Navigation menu > Compute Engine > VM instances**.
+2. Connect via SSH to the `vm-b` instance by clicking **SSH** next to the VM name.
+3. In the SSH terminal of `vm-b`, run the following command, replacing `<INTERNAL_IP_OF_VM_A>` with the internal IP address of `vm-a`:
+
+   
 ### 4. BGP Configuration:
 
