@@ -87,6 +87,8 @@ gcloud compute networks subnets create network-a-subnet --network network-a \
 ```text
 gcloud compute instances create vm-a --zone "ZONE 1" --network network-a --subnet network-a-subnet --machine-type e2-small
 ```
+![Peeriing](images/04gcloud.png)
+
 **1.6** Run the following command to enable SSH and ICMP, as you will need a secure shell to communicate with VMs during connectivity testing:
 
 ```text
