@@ -47,6 +47,12 @@ gcloud compute networks create vpc-demo --subnet-mode custom
 
 ### Task 2. Create subnets
 
+- **`vpc-demo-subnet1`:** The name assigned to this specific new subnet (must be unique within that region and project).
+- **`--network vpc-demo`:** Specifies the main VPC or parent network to which this subnet will belong (in this case, a network named **`vpc-demo`** that must already exist).
+- **`--range 10.1.1.0/24`:** Defines the block of **private IP** addresses within this subnet. Here, you are reserving 256 IP addresses (ranging from `10.1.1.0` to `10.1.1.255`).
+- **`--region "REGION 1"`:** Defines the geographical location (GCP region) where this subnet will be deployed (for example, `us-central1` or **`europe-west1`**, as subnets in GCP are regional).
+
+
 1. Now, create subnet **`vpc-demo-subnet1`** in the **`REGION 1`** region:
 
 ```text
