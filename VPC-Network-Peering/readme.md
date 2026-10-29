@@ -60,6 +60,10 @@ gcloud config set project qwiklabs-gcp-04-cf6e1da2a924
 
 ### Project A
 
+```text
+gcloud config set project qwiklabs-gcp-02-3702c4666c88
+```
+
 **1.3** Return to the first Cloud Shell tab and run the following command to create a custom network:
 
 ```text
@@ -72,6 +76,11 @@ gcloud compute networks create network-a --subnet-mode custom
 gcloud compute networks subnets create network-a-subnet --network network-a \
     --range 10.0.0.0/16 --region "REGION 1"
 ```
+```text
+gcloud compute networks subnets create network-a-subnet --network network-a \
+    --range 10.0.0.0/16 --region us-west1
+```
+
 
 **1.5**  Create a VM instance:
 
