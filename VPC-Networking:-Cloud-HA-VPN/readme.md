@@ -331,6 +331,8 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 \
 - **`--vpn-gateway vpc-demo-vpn-gw1`**: Specifies the local Cloud VPN gateway (created in the previous command) that terminates one end of this tunnel.
 - **`--interface 0`**: Specifies which interface number (e.g., interface 0) on your local HA-VPN gateway this tunnel is bound to. (HA-VPN gateways use two interfaces, `0` and `1`, for redundancy).
 
+7.1.2 Create the first VPN tunnels in network **vpc-demo**:
+
 ```text
 gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
   --peer-gcp-gateway vpc-demo-vpn-gw1 \
@@ -343,6 +345,21 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
 ```
 
 ```text
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
+    --peer-gcp-gateway on-prem-vpn-gw1 \
+    --region "REGION 1" \
+    --ike-version 2 \
+    --shared-secret [SHARED_SECRET] \
+    --router vpc-demo-router1 \
+    --vpn-gateway vpc-demo-vpn-gw1 \
+    --interface 0
+```
+![Output15](images/15output.png)
+
+
+7.1.2 Create the second VPN tunnels in network **vpc-demo**:
+
+```text
 gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
   --peer-gcp-gateway vpc-demo-vpn-gw1 \
   --region "REGION 1" \
@@ -352,6 +369,7 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
   --vpn-gateway on-prem-vpn-gw1 \
   --interface 1
 ```
+![Output16](images/16output.png)
 
 ## Task 8: Allow traffic from remote subnets via firewall rules:.
 
