@@ -46,7 +46,8 @@ In this lab, you will set up an internal service by creating two managed instanc
 
 ## 2. Topology and BGP Neighbor Establishment
 
-![BGP WEIGTH](images/01Topologia.jpg)
+![Topoogia](images/01Topologia.png)
+
 
 
 ## Configuration:
