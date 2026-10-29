@@ -255,11 +255,25 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 \
 - **`--interface 0`**: Specifies which interface number (e.g., interface 0) on your local HA-VPN gateway this tunnel is bound to. (HA-VPN gateways use two interfaces, `0` and `1`, for redundancy).
 
 ```text
-gcloud beta compute vpn-tunnels create on-prem-tunnel0 --peer-gcp-gateway vpc-demo-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router on-prem-router1 --vpn-gateway on-prem-vpn-gw1 --interface 0
+gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
+  --peer-gcp-gateway vpc-demo-vpn-gw1 \
+  --region "REGION 1" \
+  --ike-version 2 \
+  --shared-secret [SHARED SECRET] \
+  --router on-prem-router1 \
+  --vpn-gateway on-prem-vpn-gw1 \
+  --interface 0
 ```
 
 ```text
-gcloud beta compute vpn-tunnels create on-prem-tunnel1 --peer-gcp-gateway vpc-demo-vpn-gw1 --region "REGION 1" --ike-version 2 --shared-secret [SHARED SECRET] --router on-prem-router1 --vpn-gateway on-prem-vpn-gw1 --interface 1
+gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
+  --peer-gcp-gateway vpc-demo-vpn-gw1 \
+  --region "REGION 1" \
+  --ike-version 2 \
+  --shared-secret [SHARED SECRET] \
+  --router on-prem-router1 \
+  --vpn-gateway on-prem-vpn-gw1 \
+  --interface 1
 ```
 
 ## Task 8: Configure BGP peering for both routers and interfaces: (Configure the link interfaces with link-local IP addresses `169.254.0.x` and `169.254.1.x`, assigning the corresponding ASNs).
