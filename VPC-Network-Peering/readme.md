@@ -135,8 +135,9 @@ gcloud compute instances create vm-b --zone "ZONE 2" --network network-b --subne
 ```
 
 ```text
-
+gcloud compute instances create vm-b --zone us-east4-c --network network-b --subnet network-b-subnet --machine-type e2-small
 ```
+![Peeriing](images/07gcloud.png)
 
 **1.10** Run the following to enable SSH and icmp, because you'll need a secure shell to communicate with VMs during connectivity testing:
 
