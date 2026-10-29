@@ -18,6 +18,13 @@
 
 **VPC:** is essentially your own **private IP address** space—an isolated virtual network environment—that has a global scope within your Google Cloud project. This allows any resource connected to it to communicate securely, **regardless of where in the world (region) that resource is physically located**.
 
+Feactures:
+- **Your own network block:** You decide which private IP ranges to use (for example, `10.0.0.0/16`) and how to divide them into subnets across different regions.
+- **True global scope:** A VM in the `us-central1` (Iowa) region can communicate directly with a VM in `europe-west1` (Belgium) using their internal private IP addresses within the same VPC, **as if they were in the same building**.
+- **Project-level scope:** By default, a **VPC belongs to a specific Google Cloud project** (although tools like Shared VPC exist if you need to share that same network with other projects in your organization).
+
+
+
 ## 2. Topology and BGP Neighbor Establishment
 
 The topology consists of four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
