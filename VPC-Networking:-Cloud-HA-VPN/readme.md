@@ -73,7 +73,6 @@ gcloud compute networks create vpc-demo --subnet-mode custom
 ![Output0](images/0output.png)
 
 
-
 ## Task 2. Create subnets
 
 - **`vpc-demo-subnet1`:** The name assigned to this specific new subnet (must be unique within that region and project).
@@ -103,6 +102,13 @@ gcloud beta compute networks subnets create vpc-demo-subnet1 \
 gcloud beta compute networks subnets create vpc-demo-subnet2 \
 --network vpc-demo --range 10.2.1.0/24 --region "REGION 2"
 ```
+
+```text
+gcloud beta compute networks subnets create vpc-demo-subnet2 \
+--network vpc-demo --range 10.2.1.0/24 --region us-east4
+```
+![Output0](images/02output.png)
+
 
 ## Task 3. Create firewall rules for internal, SSH, and ICMP traffic:
 
