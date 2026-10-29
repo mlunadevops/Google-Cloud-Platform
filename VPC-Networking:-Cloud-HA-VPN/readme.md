@@ -68,7 +68,16 @@ gcloud beta compute networks subnets create vpc-demo-subnet2 \
 --network vpc-demo --range 10.2.1.0/24 --region "REGION 2"
 ```
 
-### Create firewall rules for internal, SSH, and ICMP traffic:
+### Task 3. Create firewall rules for internal, SSH, and ICMP traffic:
+
+- **`vpc-demo-allow-internal`**: The name assigned to this specific firewall rule (must be unique within the project).
+- **`--network vpc-demo`:** Specifies the **target VPC network (**`vpc-demo`**) where this firewall rule will be enforced**.
+- **`--allow tcp:0-65535,udp:0-65535,icmp`:** Defines what traffic is permitted by this rule:
+  - **`tcp:0-65535`:** Allows all TCP ports from port 0 to 65535 (full TCP traffic).
+  - **`udp:0-65535`:** Allows all UDP ports from 0 to 65535 (full UDP traffic).
+  - **`icmp`:** Allows Internet Control Message Protocol traffic (used for tools like `ping`).
+  - **Note:** Combined, this rule allows virtually all types of network traffic.
+- **`--source-ranges 10.0.0.0/8`:** Defines where the traffic must come from for this rule to apply. In this case, it applies only to traffic originating from any IP address inside the `10.0.0.0/8` private network range (a very common internal corporate/cloud range).
 
 ```text
 gcloud compute firewall-rules create vpc-demo-allow-internal \
