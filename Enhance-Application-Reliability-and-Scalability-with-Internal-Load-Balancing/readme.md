@@ -184,3 +184,7 @@ You will configure one Managed Instance Group in `subnet-a` and another in `subn
 
 ![Tabla](images/05Tabla.png)
 
+Click Create.
+
+
+
