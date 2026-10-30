@@ -157,4 +157,30 @@ systemctl restart apache2
 
 ---
 
-### 
+### ### Configure the Next Instance Template
+
+Create a second instance template for `subnet-b` by cloning `instance-template-1`. This demonstrates the ease of replicating configurations across different subnets or zones to support high availability (HA) and disaster recovery (DR) strategies.
+
+1. Remaining on the **Instance templates** page, select the checkbox next to `instance-template-1`, then click **Copy**. 
+2. Update the **Name** to `instance-template-2`.
+3. Click **Advanced options**.
+4. Select the **Networking** tab.
+5. In **Network interfaces**, click the edit icon (pencil/dropdown).
+6. Select `subnet-b` as the **Subnetwork**.
+7. Click **Done**, then click **Create**.
+
+---
+
+### Create the Managed Instance Groups
+
+Managed Instance Groups (MIGs) are essential for building robust, self-healing, and dynamically scalable applications. They automatically replace unhealthy VM instances and scale capacity based on real-time demand, maintaining high availability and meeting Service Level Objectives (SLOs) without manual intervention.
+
+You will configure one Managed Instance Group in `subnet-a` and another in `subnet-b`.
+
+> **Note:** Select a different zone within the same region for `subnet-b` to achieve zonal redundancy. For example, if `subnet-a` resides in `us-west2-a`, place `subnet-b` in `us-west2-b`.
+
+1. In **Compute Engine**, click **Instance groups** in the left navigation menu, then click **Create instance group**.
+2. Configure the following parameter values, leaving all other fields at their defaults:
+
+![Tabla](images/05Tabla.png)
+
