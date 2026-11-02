@@ -246,3 +246,37 @@ Configuring the ILB centralizes access to your backend services, provides a sing
 Configure the Internal Load Balancer to balance traffic between the two backends (`instance-group-1` and `instance-group-2`), as illustrated in this diagram:
 
 ![Tabla](images/11Tabla.png)
+
+## Start the configuration
+
+4.1 From the Navigation Menu, select **View All Products**. Under **Networking**, select **Network Services**.
+4.2 Select the **Load balancing** page.
+4.3 Click **Create load balancer**.
+4.4 For **Type of load balancer**, select **Network Load Balancer (TCP/UDP/SSL)**.
+4.5 For **Proxy or passthrough**, select **Passthrough load balancer**.
+4.6 For **Public facing or internal**, select **Internal**.
+4.7 Click **CONFIGURE**.
+4.8 For **Name**, type `my-ilb`.
+4.9 For **Region**, select `REGION`.
+4.10 For **Network**, select `my-internal-app`.
+
+
+## Configure the regional backend service
+
+The backend service is the intelligence behind the ILB, defining how traffic is distributed and how instance health is monitored. It's essential for ensuring traffic only flows to operational instances and preventing overload. This is also where you configure advanced features like session affinity, to keep a user's connection to the same backend or connection draining, for graceful backend updates.
+
+The backend service monitors instance groups and prevents them from exceeding configured usage.
+
+1. Click on **Backend configuration**.
+2. Set the following values, leaving all other values at their defaults:
+
+![Tabla](images/12Tabla.png)   
+
+Click Add a backend.
+
+For Instance group, select instance-group-2.
+
+For Health Check, select Create a health check.
+
+Set the following values, leave all other values at their defaults:
+
