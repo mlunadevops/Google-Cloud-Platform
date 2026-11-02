@@ -249,7 +249,8 @@ Configure the Internal Load Balancer to balance traffic between the two backends
 
 ## Start the configuration
 
-4.1 From the Navigation Menu, select **View All Products**. Under **Networking**, select **Network Services**.
+
+4.1 From the **Navigation Menu**, select **View All Products**. Under **Networking**, select **Network Services**.
 4.2 Select the **Load balancing** page.
 4.3 Click **Create load balancer**.
 4.4 For **Type of load balancer**, select **Network Load Balancer (TCP/UDP/SSL)**.
