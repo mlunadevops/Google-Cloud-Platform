@@ -195,3 +195,13 @@ Click Create.
 
 ![Tabla](images/06Tabla.png)
 
+## Verify the backends
+
+Verify that VM instances are being created in both subnets and create a utility VM to access the backends' HTTP sites directly. This step confirms individual backend functionality before introducing the load balancer, ensuring proper setup of your service tier.
+
+1. Still in **Compute Engine**, click **VM instances**.
+2. Notice two instances that start with `instance-group-1` and `instance-group-2`.
+3. These instances are in separate zones and their internal IP addresses are part of the `subnet-a` and `subnet-b` CIDR blocks.
+4. To create a new instance, click **Create Instance**.
+5. In the **Machine configuration**:
+6. Select the following values:
