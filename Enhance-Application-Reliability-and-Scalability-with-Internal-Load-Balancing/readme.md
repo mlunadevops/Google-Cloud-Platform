@@ -312,3 +312,22 @@ Specify the following, leaving all other values with their defaults:
 
 ![Tabla](images/15Tabla.png)
 
+1. Click **Reserve**.
+2. In **Port number**, type `80`.
+3. Click **Done**.
+
+## Task 4. Test the Internal Load Balancer
+
+The final test validates that the ILB is correctly distributing traffic across healthy backend instances. This confirms that your internal services are now more resilient and scalable, leveraging the core benefits of the ILB, and that the private connectivity is correctly established.
+
+Verify that the `my-ilb` IP address forwards traffic to `instance-group-1` and `instance-group-2`.
+
+### Task 5. Access the Internal Load Balancer
+
+1. In the Cloud Console, navigate to **Navigation menu** > **Compute Engine** > **VM instances**.
+2. For `utility-vm`, click **SSH** to launch a terminal and connect.
+3. To verify that the Internal Load Balancer forwards traffic, run the following command:
+
+```text
+curl 10.10.30.5
+```
