@@ -296,3 +296,16 @@ Set the following values, leave all other values at their defaults:
 
 1. Click **Create**.
 2. Verify that there is a blue check mark next to **Backend configuration** in the Cloud Console. If not, double-check that you have completed all the steps above.
+
+## Task 5. Configure the frontend
+
+The frontend is the exposed interface of your `ILB`. By assigning a static internal IP address, you provide a consistent and predictable endpoint for other internal services to connect to, simplifying your application architecture, enabling easy service discovery within your VPC, and improving reliability.
+
+The frontend forwards traffic to the backend.
+
+1. Click on **Frontend configuration**.
+2. Specify the following, leaving all other values with their defaults:
+
+![Tabla](images/14Tabla.png)
+
+Specify the following, leaving all other values with their defaults:
