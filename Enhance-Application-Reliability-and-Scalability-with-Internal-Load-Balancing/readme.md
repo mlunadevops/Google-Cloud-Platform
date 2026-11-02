@@ -207,3 +207,10 @@ Verify that VM instances are being created in both subnets and create a utility 
 6. Select the following values:
 
 ![Tabla](images/07Tabla.png)
+
+1. Click **Networking**.
+2. For **Network interfaces**, click **Toggle to Edit network interface**.
+3. Specify the following:
+
+![Tabla](images/08Tabla.png)
+
