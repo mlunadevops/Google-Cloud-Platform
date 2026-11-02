@@ -109,20 +109,20 @@ A managed instance group uses an instance template to deploy and manage a group 
 
 An instance template is an API resource you can use to create VM instances and managed instance groups (MIGs). Instance templates define the machine type, boot disk image, subnet, network tags, and other instance properties. You will create an instance template to be used across the subnets of the `my-internal-app` network.
 
-1. In the Google Cloud Console, navigate to **Navigation menu > Compute Engine > Instance templates**.
-2. Click **Create instance template**.
-3. For **Name**, type `instance-template-1`.
-4. For **Location**, select **Global**.
-5. For **Series**, select **E2**.
-6. For **Machine type**, select **Shared-core > e2-micro**.
-7. Click **Advanced options**.
-8. Click **Networking**.
-9. For **Network tags**, specify `lb-backend`.
+2.1. In the Google Cloud Console, navigate to **Navigation menu > Compute Engine > Instance templates**.
+2.2 Click **Create instance template**.
+2.3 For **Name**, type `instance-template-1`.
+2.4 For **Location**, select **Global**.
+2.5 For **Series**, select **E2**.
+2.6 For **Machine type**, select **Shared-core > e2-micro**.
+2.7 Click **Advanced options**.
+2.8 Click **Networking**.
+2.9 For **Network tags**, specify `lb-backend`.
 
 > **Note:** The network tag `lb-backend` ensures that your previously created HTTP and health check firewall rules apply correctly to these backend instances.
 
-10. For **Network interfaces**, click the dropdown icon to edit the interface settings.
-11. Configure the following values, leaving all other fields at their defaults:
+2.10 For **Network interfaces**, click the dropdown icon to edit the interface settings.
+2.11 Configure the following values, leaving all other fields at their defaults:
 
 ![Tabla](images/04Tabla.png)
 
@@ -161,17 +161,17 @@ systemctl restart apache2
 
 Create a second instance template for `subnet-b` by cloning `instance-template-1`. This demonstrates the ease of replicating configurations across different subnets or zones to support high availability (HA) and disaster recovery (DR) strategies.
 
-1. Remaining on the **Instance templates** page, select the checkbox next to `instance-template-1`, then click **Copy**. 
-2. Update the **Name** to `instance-template-2`.
-3. Click **Advanced options**.
-4. Select the **Networking** tab.
-5. In **Network interfaces**, click the edit icon (pencil/dropdown).
-6. Select `subnet-b` as the **Subnetwork**.
-7. Click **Done**, then click **Create**.
+2.1 Remaining on the **Instance templates** page, select the checkbox next to `instance-template-1`, then click **Copy**. 
+2.2 Update the **Name** to `instance-template-2`.
+2.3 Click **Advanced options**.
+2.4 Select the **Networking** tab.
+2.5 In **Network interfaces**, click the edit icon (pencil/dropdown).
+2.6 Select `subnet-b` as the **Subnetwork**.
+2.7 Click **Done**, then click **Create**.
 
 ---
 
-### Create the Managed Instance Groups
+## Task 3: Create the Managed Instance Groups
 
 Managed Instance Groups (MIGs) are essential for building robust, self-healing, and dynamically scalable applications. They automatically replace unhealthy VM instances and scale capacity based on real-time demand, maintaining high availability and meeting Service Level Objectives (SLOs) without manual intervention.
 
@@ -179,8 +179,8 @@ You will configure one Managed Instance Group in `subnet-a` and another in `subn
 
 > **Note:** Select a different zone within the same region for `subnet-b` to achieve zonal redundancy. For example, if `subnet-a` resides in `us-west2-a`, place `subnet-b` in `us-west2-b`.
 
-1. In **Compute Engine**, click **Instance groups** in the left navigation menu, then click **Create instance group**.
-2. Configure the following parameter values, leaving all other fields at their defaults:
+3.1 In **Compute Engine**, click **Instance groups** in the left navigation menu, then click **Create instance group**.
+3.2 Configure the following parameter values, leaving all other fields at their defaults:
 
 ![Tabla](images/05Tabla.png)
 
@@ -195,15 +195,15 @@ Click Create.
 
 
 
-## Verify the backends
+## Task 4: Verify the backends
 
 Verify that VM instances are being created in both subnets and create a utility VM to access the backends' HTTP sites directly. This step confirms individual backend functionality before introducing the load balancer, ensuring proper setup of your service tier.
 
-1. Still in **Compute Engine**, click **VM instances**.
-2. Notice two instances that start with `instance-group-1` and `instance-group-2`.
-3. These instances are in separate zones and their internal IP addresses are part of the `subnet-a` and `subnet-b` CIDR blocks.
-4. To create a new instance, click **Create Instance**.
-5. In the **Machine configuration**:
+4.1 Still in **Compute Engine**, click **VM instances**.
+4.2 Notice two instances that start with `instance-group-1` and `instance-group-2`.
+4.3 These instances are in separate zones and their internal IP addresses are part of the `subnet-a` and `subnet-b` CIDR blocks.
+4.4 To create a new instance, click **Create Instance**.
+4.5 In the **Machine configuration**:
 6. Select the following values:
 
 ![Tabla](images/07Tabla.png)
@@ -213,4 +213,8 @@ Verify that VM instances are being created in both subnets and create a utility 
 3. Specify the following:
 
 ![Tabla](images/08Tabla.png)
+
+
+
+
 
