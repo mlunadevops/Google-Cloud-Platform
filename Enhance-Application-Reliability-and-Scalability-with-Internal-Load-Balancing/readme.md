@@ -157,7 +157,7 @@ systemctl restart apache2
 
 ---
 
-### ### Configure the Next Instance Template
+### Configure the Next Instance Template
 
 Create a second instance template for `subnet-b` by cloning `instance-template-1`. This demonstrates the ease of replicating configurations across different subnets or zones to support high availability (HA) and disaster recovery (DR) strategies.
 
