@@ -237,3 +237,12 @@ curl 10.10.30.2
 The output should look like this:
 
 ![Tabla](images/10Tabla.png)
+
+
+## Task 4. Configure the Internal Load Balancer
+
+Configuring the ILB centralizes access to your backend services, provides a single point of entry for internal traffic, and ensures intelligent traffic distribution based on the health and capacity of your instances. This step is crucial for achieving the high availability and scalability benefits discussed earlier, acting as a centralized access point for your distributed service.
+
+Configure the Internal Load Balancer to balance traffic between the two backends (`instance-group-1` and `instance-group-2`), as illustrated in this diagram:
+
+![Tabla](images/11Tabla.png)
