@@ -186,5 +186,12 @@ You will configure one Managed Instance Group in `subnet-a` and another in `subn
 
 Click Create.
 
+> **Note:** Autoscaling is a critical feature of managed instance groups that dynamically scales resources based on measured load. This capability lets your application smoothly handle variable traffic and optimizes cloud spend.
 
+1. Click **Create**.
+2. Repeat the same procedure for `instance-group-2` in a different zone of the same region as `subnet-a`.
+3. Click **Create Instance group**.
+4. Set the following values, leaving all other values at their defaults:
+
+![Tabla](images/06Tabla.png)
 
