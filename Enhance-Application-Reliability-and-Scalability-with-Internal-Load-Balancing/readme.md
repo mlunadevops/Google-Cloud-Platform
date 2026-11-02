@@ -251,14 +251,23 @@ Configure the Internal Load Balancer to balance traffic between the two backends
 
 
 4.1 From the **Navigation Menu**, select **View All Products**. Under **Networking**, select **Network Services**.
+
 4.2 Select the **Load balancing** page.
+
 4.3 Click **Create load balancer**.
+
 4.4 For **Type of load balancer**, select **Network Load Balancer (TCP/UDP/SSL)**.
+
 4.5 For **Proxy or passthrough**, select **Passthrough load balancer**.
+
 4.6 For **Public facing or internal**, select **Internal**.
+
 4.7 Click **CONFIGURE**.
+
 4.8 For **Name**, type `my-ilb`.
+
 4.9 For **Region**, select `REGION`.
+
 4.10 For **Network**, select `my-internal-app`.
 
 
