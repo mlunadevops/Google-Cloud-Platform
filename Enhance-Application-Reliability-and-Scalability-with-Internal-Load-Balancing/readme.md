@@ -309,3 +309,6 @@ The frontend forwards traffic to the backend.
 ![Tabla](images/14Tabla.png)
 
 Specify the following, leaving all other values with their defaults:
+
+![Tabla](images/15Tabla.png)
+
