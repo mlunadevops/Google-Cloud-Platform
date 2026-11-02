@@ -290,3 +290,4 @@ For Health Check, select Create a health check.
 
 Set the following values, leave all other values at their defaults:
 
+![Tabla](images/13Tabla.png)
