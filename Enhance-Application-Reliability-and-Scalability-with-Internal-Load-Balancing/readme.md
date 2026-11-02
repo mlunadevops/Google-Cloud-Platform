@@ -291,3 +291,8 @@ For Health Check, select Create a health check.
 Set the following values, leave all other values at their defaults:
 
 ![Tabla](images/13Tabla.png)
+
+> **Note:** Health checks determine which instances can receive new connections. This HTTP health check polls instances every 5 seconds, waits up to 5 seconds for a response, and treats 2 successful or 2 failed attempts as healthy or unhealthy, respectively. This continuous monitoring is vital for quick recovery from instance failures and maintaining your Service Level Agreements (SLAs).
+
+1. Click **Create**.
+2. Verify that there is a blue check mark next to **Backend configuration** in the Cloud Console. If not, double-check that you have completed all the steps above.
