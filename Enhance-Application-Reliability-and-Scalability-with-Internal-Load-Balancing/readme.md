@@ -214,7 +214,26 @@ Verify that VM instances are being created in both subnets and create a utility 
 
 ![Tabla](images/08Tabla.png)
 
+1. The internal IP addresses for the backends are `10.10.20.2` and `10.10.30.2`.
 
+> **Note:** If these IP addresses are different, replace them in the two `curl` commands below.
 
+1. For `utility-vm`, click **SSH** to launch a terminal and connect.
+2. To verify the welcome page for `instance-group-1-xxxx`, run the following command:
 
+```text
+curl 10.10.20.2
+```
+The output should look like this:
 
+![Tabla](images/09Tabla.png)
+
+To verify the welcome page for instance-group-2-xxxx, run the following command:
+
+```text
+curl 10.10.30.2
+```
+
+The output should look like this:
+
+![Tabla](images/10Tabla.png)
