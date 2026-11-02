@@ -193,7 +193,7 @@ Click Create.
 3. Click **Create Instance group**.
 4. Set the following values, leaving all other values at their defaults:
 
-![Tabla](images/06Tabla.png)
+
 
 ## Verify the backends
 
@@ -205,3 +205,5 @@ Verify that VM instances are being created in both subnets and create a utility 
 4. To create a new instance, click **Create Instance**.
 5. In the **Machine configuration**:
 6. Select the following values:
+
+![Tabla](images/07Tabla.png)
