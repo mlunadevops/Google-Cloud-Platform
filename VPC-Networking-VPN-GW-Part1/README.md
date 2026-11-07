@@ -111,26 +111,6 @@ gcloud compute routers create on-prem-router1 \
 
 ![Cloud router creation](images/06Cloudcreation.jpg)
 
-### 3. HA VPN Gateway Deployment
-Create high-availability dual-interface VPN gateways in both networks:
-* `vpc-demo-vpn-gw1`
-* `on-prem-vpn-gw1`
-
-### 4. IPsec Tunnels & BGP Peering
-Establish cross-connected IPsec encrypted tunnels between gateway interfaces:
-* **Tunnel 0**: Connects Gateway 1 (Interface 0) to Gateway 2 (Interface 0).
-* **Tunnel 1**: Connects Gateway 1 (Interface 1) to Gateway 2 (Interface 1).
-* Configure BGP sessions on top of both tunnels to enable dynamic topology propagation and immediate failover.
-
----
-
-## Network Performance & Path Verification
-
-### Routing & Failover Test Matrix
-* **Active-Active Forwarding**: Traffic load-balances across both operational IPsec tunnels.
-* **Path Resilience**: Disconnecting Interface 0 triggers automatic BGP route convergence to Interface 1 without traffic loss.
-
----
 
 ## Key Features & Production Considerations
 * **SLA Compliance**: Dual-tunnel layout achieves GCP's top 99.99% availability tier.
