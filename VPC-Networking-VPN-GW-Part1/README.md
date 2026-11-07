@@ -90,6 +90,10 @@ Command show **(on-prem-vpn-gw)**
 
 ![Gateway VPN output](images/05VPNGWoutput.png)
 
+The command creates the following:
+1. Two automatically assigned public IP addresses on `interface0` and `interface1` for High Availability (HA).
+2. The VPN Gateway connects to the VPC using GCP's Software-Defined Networking (SDN).
+
 ### 3. Cloud Router Configuration
 Deploy Cloud Routers in both networks to manage dynamic BGP route exchanges.
 
