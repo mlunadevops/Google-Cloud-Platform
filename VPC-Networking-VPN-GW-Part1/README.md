@@ -109,6 +109,8 @@ gcloud compute routers create on-prem-router1 \
     --asn 65002
 ```
 
+![Cloud router creation](images/06Cloudcreation.jpg)
+
 ### 3. HA VPN Gateway Deployment
 Create high-availability dual-interface VPN gateways in both networks:
 * `vpc-demo-vpn-gw1`
