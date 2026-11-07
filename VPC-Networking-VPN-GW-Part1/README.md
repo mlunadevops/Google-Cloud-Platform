@@ -1,19 +1,3 @@
-# TECHNICAL LOG & BGP ENGINEERING GUIDE
-
-## Traffic Manipulation via the Weight Attribute
-**CCNP Miguelangel Luna**
-
----
-
-## CONTENIDOS:
-
-| Case | Title | Description |
-| :--- | :--- | :--- |
-| **01** | [Claude & n8n AI Agents](./case-01-Google-Auth/) | Agentes Claude . |
-
-
-[Google](https://www.google.com)
-
 ## 1. Introduction and Theoretical Framework
 
 The Weight attribute is a Cisco proprietary parameter used in BGP (Border Gateway Protocol) for best path selection. Its main characteristics are:
@@ -21,7 +5,7 @@ The Weight attribute is a Cisco proprietary parameter used in BGP (Border Gatewa
 * **Local Scope:** It has meaning exclusively within the local router where it is configured and is not propagated via BGP routing updates to neighbors.
 
 
-## 2. Topology and BGP Neighbor Establishment
+## 2. and BGP Neighbor Establishment
 
 
 
@@ -40,20 +24,27 @@ The Weight attribute is a Cisco proprietary parameter used in BGP (Border Gatewa
 
 
 
+# TECHNICAL LOG & BGP ENGINEERING GUIDE Visualizing GCP Network Performance: Cloud HA VPN
+
+## Traffic Manipulation via the Weight Attribute
+**CCNP Miguelangel Luna**
+
+---
+
+## CONTENT:
+
+| Case | Title | Description |
+| :--- | :--- | :--- |
+| **01** | [Claude & n8n AI Agents](./case-01-Google-Auth/) | Agentes Claude . |
 
 
-
-
-
-
-
-# Visualizing GCP Network Performance: Cloud HA VPN
+[Google Skills](https://www.skills.google/)
 
 An end-to-end hands-on demonstration of configuring, testing, and optimizing high-availability hybrid connectivity using **Google Cloud HA VPN** and dynamic BGP routing between Google Cloud VPCs and simulated on-premises environments.
 
 ---
 
-## Architecture Overview
+## Architecture Overview (Topology) 
 
 This project simulates a hybrid enterprise environment connecting a production VPC in Google Cloud (`vpc-demo`) to a remote simulated data center (`on-prem`) via Cloud HA VPN over public internet infrastructure.
 
