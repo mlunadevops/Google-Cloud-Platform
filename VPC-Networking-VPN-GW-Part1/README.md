@@ -1,29 +1,3 @@
-## 1. Introduction and Theoretical Framework
-
-The Weight attribute is a Cisco proprietary parameter used in BGP (Border Gateway Protocol) for best path selection. Its main characteristics are:
-
-* **Local Scope:** It has meaning exclusively within the local router where it is configured and is not propagated via BGP routing updates to neighbors.
-
-
-## 2. and BGP Neighbor Establishment
-
-
-
-
- four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
-
-## 3. BGP Configuration:
-
-**Router A (RTA - AS 100):**
-
-```text
-
-```
-
-### 4. BGP Configuration:
-
-
-
 # TECHNICAL LOG & BGP ENGINEERING GUIDE Visualizing GCP Network Performance: Cloud HA VPN
 
 ## Traffic Manipulation via the Weight Attribute
@@ -80,7 +54,7 @@ This project simulates a hybrid enterprise environment connecting a production V
 
 ---
 
-## Implementation Steps
+## Implementation Steps (Configuration)
 
 ### 1. Prerequisites & VPC Preparation
 Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subnets are initialized:
