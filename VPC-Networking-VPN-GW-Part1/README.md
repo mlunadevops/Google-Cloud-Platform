@@ -24,7 +24,7 @@ The Weight attribute is a Cisco proprietary parameter used in BGP (Border Gatewa
 ## 2. Topology and BGP Neighbor Establishment
 
 
-![BGP WEIGTH](images/01Topologia.jpg)
+
 
  four routers across different Autonomous Systems (AS 100, AS 200, AS 300, and AS 400). Before advertising prefixes, BGP neighbor adjacencies were established on each device.
 
@@ -71,6 +71,8 @@ This project simulates a hybrid enterprise environment connecting a production V
 |         - Tunnel 1 (BGP Session 1)     |              |  - Tunnel 1 (BGP Session 1)     |
 +----------------------------------------+              +----------------------------------------+
 ```
+
+![Topology](images/01Topologia.png)
 
 ---
 
