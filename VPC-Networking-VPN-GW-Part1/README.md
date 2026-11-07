@@ -1,6 +1,6 @@
-# TECHNICAL LOG & IMPLEMENTING CLOUD HA VPN AND BGP
+# TECHNICAL LOG & IMPLEMENTING CLOUD HA VPN IPSEC AND BGP
 
-## Traffic Manipulation via the Weight Attribute
+## GCP CLOUD HA
 **CCNP Miguelangel Luna**
 
 ---
