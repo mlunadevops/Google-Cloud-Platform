@@ -66,11 +66,22 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
+2.1) Create the VPN Gateway for vpc-demo network **(vpc-demo-vpn-gw1)**
+
 ```bash
 gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
 --network vpc-demo \
 --region us-west1
 ```
+
+2.2) Create the VPN Gateway for on-prem network **(on-prem-vpn-gw)**
+
+```bash
+gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
+--network on-prem \
+--region us-west1
+```
+
 
 
 ### 3. Cloud Router Configuration
