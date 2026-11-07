@@ -1,4 +1,4 @@
-# TECHNICAL LOG & BGP ENGINEERING GUIDE Visualizing GCP Network Performance: Cloud HA VPN
+# TECHNICAL LOG & IMPLEMENTING CLOUD HA VPN AND BGP
 
 ## Traffic Manipulation via the Weight Attribute
 **CCNP Miguelangel Luna**
@@ -61,7 +61,19 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 * **Cloud VPC (`vpc-demo`)**: Contains workload subnets representing production infrastructure.
 * **On-Prem VPC (`on-prem`)**: Represents external corporate network infrastructure.
 
-### 2. Cloud Router Configuration
+
+### 2. VPN Gateway (Configuration)
+
+**Creating VPN Gateways (vpc-demo-vpn-gw1):**
+
+```bash
+gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
+--network vpc-demo \
+--region us-west1
+```
+
+
+### 3. Cloud Router Configuration
 Deploy Cloud Routers in both networks to manage dynamic BGP route exchanges.
 
 **Cloud Router (`vpc-demo-router1`):**
