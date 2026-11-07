@@ -75,7 +75,7 @@ gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
 --network vpc-demo \
 --region us-west1
 ```
-![Topology](images/03VPNGatewayvpc-demo.png)
+![Gateway VPN Creation vpc-demo-vpn-gw1](images/03VPNGatewayvpc-demo.png)
 
 2.2) Create the VPN Gateway for on-prem network **(on-prem-vpn-gw)**
 
@@ -84,7 +84,7 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
 --network on-prem \
 --region us-west1
 ```
-
+![Gateway VPN Creation on-prem-vpn-gw](images/04VPNGatewayon-prem.png)
 
 
 ### 3. Cloud Router Configuration
