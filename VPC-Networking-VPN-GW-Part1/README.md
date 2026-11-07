@@ -62,7 +62,9 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 * **On-Prem VPC (`on-prem`)**: Represents external corporate network infrastructure.
 
 
-### 2. VPN Gateway (Configuration)
+### 2. VPN Gateway (Configuration):
+
+![Topology](images/02VPNGateway.png)
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
