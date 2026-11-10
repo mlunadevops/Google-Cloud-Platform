@@ -68,25 +68,10 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
-2.1) Create the VPN Gateway for vpc-demo network **(vpc-demo-vpn-gw1)**
+| CONFIGURACION VPN (vpc-demo-vpn-gw1) | CONFIGURACION VPN (on-prem-vpn-gw1) |
+| :--- | :--- |
+| `gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \`<br>`  --peer-gcp-gateway on-prem-vpn-gw1 \`<br>`  --region us-west1 \`<br>`  --ike-version 2 \`<br>`  --shared-secret [SHARED_SECRET] \`<br>`  --router vpc-demo-router1 \`<br>`  --vpn-gateway vpc-demo-vpn-gw1 \`<br>`  --interface 0` | `gcloud beta compute vpn-tunnels create on-prem-tunnel0 \`<br>`  --peer-gcp-gateway vpc-demo-vpn-gw1 \`<br>`  --region us-west1 \`<br>`  --ike-version 2 \`<br>`  --shared-secret [SHARED_SECRET] \`<br>`  --router on-prem-router1 \`<br>`  --vpn-gateway on-prem-vpn-gw1 \`<br>`  --interface 0` |****
 
-```bash
-gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
---network vpc-demo \
---region us-west1
-```
-![Gateway VPN Creation vpc-demo-vpn-gw1](images/03VPNGatewayvpc-demo.png)
-
-2.2) Create the VPN Gateway for on-prem network **(on-prem-vpn-gw)**
-
-```bash
-gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
---network on-prem \
---region us-west1
-```
-![Gateway VPN Creation on-prem-vpn-gw](images/04VPNGatewayon-prem.png)
-
-Command show **(on-prem-vpn-gw)**
 
 ![Gateway VPN output](images/05VPNGWoutput.png)
 
