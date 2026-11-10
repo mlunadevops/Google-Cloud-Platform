@@ -112,6 +112,7 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 \
     --vpn-gateway vpc-demo-vpn-gw1 \
     --interface 1
 ```
+### 2.3) IPsec configuration on VPN gateway named (on-prem-vpn-gw1) on interface 1:
 
 ```bash
 gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
