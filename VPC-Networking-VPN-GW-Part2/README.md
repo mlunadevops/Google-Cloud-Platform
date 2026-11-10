@@ -64,7 +64,7 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 ### 2. VPN Gateway (Configuration):
 
-![Topology](images/02VPNGateway.png)
+![Topology](images/02VPNconfiguration.png)
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
