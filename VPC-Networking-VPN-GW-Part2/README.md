@@ -72,6 +72,10 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 | :--- | :--- |
 | `gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \`<br>`  --peer-gcp-gateway on-prem-vpn-gw1 \`<br>`  --region us-west1 \`<br>`  --ike-version 2 \`<br>`  --shared-secret [SHARED_SECRET] \`<br>`  --router vpc-demo-router1 \`<br>`  --vpn-gateway vpc-demo-vpn-gw1 \`<br>`  --interface 0` | `gcloud beta compute vpn-tunnels create on-prem-tunnel0 \`<br>`  --peer-gcp-gateway vpc-demo-vpn-gw1 \`<br>`  --region us-west1 \`<br>`  --ike-version 2 \`<br>`  --shared-secret [SHARED_SECRET] \`<br>`  --router on-prem-router1 \`<br>`  --vpn-gateway on-prem-vpn-gw1 \`<br>`  --interface 0` |****
 
+| CONFIGURACION VPN (vpc-demo-vpn-gw1) | CONFIGURACION VPN (on-prem-vpn-gw1) |
+| :--- | :--- |
+| ```bash<br>gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \<br>  --peer-gcp-gateway on-prem-vpn-gw1 \<br>  --region us-west1 \<br>  --ike-version 2 \<br>  --shared-secret [SHARED_SECRET] \<br>  --router vpc-demo-router1 \<br>  --vpn-gateway vpc-demo-vpn-gw1 \<br>  --interface 0<br>``` | ```bash<br>gcloud beta compute vpn-tunnels create on-prem-tunnel0 \<br>  --peer-gcp-gateway vpc-demo-vpn-gw1 \<br>  --region us-west1 \<br>  --ike-version 2 \<br>  --shared-secret [SHARED_SECRET] \<br>  --router on-prem-router1 \<br>  --vpn-gateway on-prem-vpn-gw1 \<br>  --interface 0<br>``` |
+
 
 ![Gateway VPN output](images/05VPNGWoutput.png)
 
