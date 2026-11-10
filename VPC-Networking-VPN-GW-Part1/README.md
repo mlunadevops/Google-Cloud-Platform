@@ -54,7 +54,7 @@ This project simulates a hybrid enterprise environment connecting a production V
 
 ---
 
-## Implementation Steps (Configuration)
+## Implementation Steps (Creation)
 
 ### 1. Prerequisites & VPC Preparation
 Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subnets are initialized:
