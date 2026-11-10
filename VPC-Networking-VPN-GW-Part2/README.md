@@ -56,7 +56,7 @@ This project simulates a hybrid enterprise environment connecting a production V
 
 ## Implementation Steps (Configuration)
 
-### 1. Prerequisites & VPC Preparation
+### 1. Prerequisites
 
 Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
 
