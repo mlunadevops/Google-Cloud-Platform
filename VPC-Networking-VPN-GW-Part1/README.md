@@ -63,7 +63,7 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 **VPN Gateways:** function They act as the secure endpoints for establishing the encrypted VPN tunnel connection over the Internet.
 
-
+**Cloud Routers:** They dynamically manage traffic routing between the cloud network (VPC) and the external network using routing protocols such as BGP (Border Gateway Protocol).
 
 ### 2. VPN Gateway (Configuration):
 
