@@ -95,6 +95,9 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
   --interface 0
 ```
 
+![Topology](images/02VPNconfigIPSECGatewayoutput.png)
+
+
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
 ![Gateway VPN output](images/05VPNGWoutput.png)
