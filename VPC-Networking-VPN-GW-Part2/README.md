@@ -96,7 +96,7 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
   --vpn-gateway on-prem-vpn-gw1 \
   --interface 0
 ```
-### IPSEC configuration command outputs on the Gateways
+### IPSEC configuration command outputs on the Gateways on interface 0:
 
 ![Topology](images/02VPNconfigIPSECGatewayoutput.png)
 
@@ -126,6 +126,8 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
 ```
 
 ![Topology](images/03VPNconfiguration.png)
+
+### IPSEC configuration command outputs on the Gateways on interface 1:
 
 ![Topology](images/03Configtabla.png)
 
