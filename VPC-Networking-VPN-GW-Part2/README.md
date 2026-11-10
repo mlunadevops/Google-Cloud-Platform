@@ -100,6 +100,11 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
 
 ![Topology](images/02VPNconfigIPSECGatewayoutput.png)
 
+### 2.3) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1) in interface 1:
+
+![Topology](images/03VPNconfiguration.png)
+
+![Topology](images/01Configtabla.png)
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
