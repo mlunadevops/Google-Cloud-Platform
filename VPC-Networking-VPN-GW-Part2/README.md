@@ -70,7 +70,7 @@ Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
 
 ![Topology](images/01Configtabla.png)
 
-### 2.1) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1) in interface 0:
+### 2.1) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1) on interface 0:
 
 ```bash
 gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
@@ -83,7 +83,7 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
   --interface 0
 ```
 
-### 2.2) IPsec configuration on VPN gateway named (on-prem-vpn-gw1) in interface 0:
+### 2.2) IPsec configuration on VPN gateway named (on-prem-vpn-gw1) on interface 0:
 
 
 ```bash
@@ -100,7 +100,29 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
 
 ![Topology](images/02VPNconfigIPSECGatewayoutput.png)
 
-### 2.3) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1) in interface 1:
+### 2.3) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1) on interface 1:
+
+```bash
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel1 \
+    --peer-gcp-gateway on-prem-vpn-gw1 \
+    --region us-west1 \
+    --ike-version 2 \
+    --shared-secret [SHARED_SECRET] \
+    --router vpc-demo-router1 \
+    --vpn-gateway vpc-demo-vpn-gw1 \
+    --interface 1
+```
+
+```bash
+gcloud beta compute vpn-tunnels create on-prem-tunnel1 \
+    --peer-gcp-gateway vpc-demo-vpn-gw1 \
+    --region us-west1 \
+    --ike-version 2 \
+    --shared-secret [SHARED_SECRET] \
+    --router on-prem-router1 \
+    --vpn-gateway on-prem-vpn-gw1 \
+    --interface 1
+```
 
 ![Topology](images/03VPNconfiguration.png)
 
