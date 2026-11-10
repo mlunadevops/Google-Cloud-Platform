@@ -64,6 +64,17 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 ### 2. VPN Gateway (Configuration):
 
+```bash
+gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
+  --peer-gcp-gateway on-prem-vpn-gw1 \
+  --region us-west1 \
+  --ike-version 2 \
+  --shared-secret [SHARED_SECRET] \
+  --router vpc-demo-router1 \
+  --vpn-gateway vpc-demo-vpn-gw1 \
+  --interface 0
+```
+
 ![Topology](images/02VPNconfiguration.png)
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
