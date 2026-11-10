@@ -81,6 +81,17 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
   --interface 0
 ```
 
+```bash
+gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
+  --peer-gcp-gateway vpc-demo-vpn-gw1 \
+  --region us-west1 \
+  --ike-version 2 \
+  --shared-secret [SHARED_SECRET] \
+  --router on-prem-router1 \
+  --vpn-gateway on-prem-vpn-gw1 \
+  --interface 0
+```
+
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
 | CONFIGURACION VPN (vpc-demo-vpn-gw1) | CONFIGURACION VPN (on-prem-vpn-gw1) |
