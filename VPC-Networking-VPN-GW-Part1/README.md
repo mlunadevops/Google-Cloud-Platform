@@ -68,7 +68,7 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
-2.1) Create the VPN Gateway for VPC **vpc-demo** network **this Gatewall will be called (vpc-demo-vpn-gw1)**
+2.1) Create the VPN Gateway for VPC **vpc-demo** network **this Gatewall will be called (vpc-demo-vpn-gw1):**
 
 ```bash
 gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
@@ -77,7 +77,7 @@ gcloud beta compute vpn-gateways create vpc-demo-vpn-gw1 \
 ```
 ![Gateway VPN Creation vpc-demo-vpn-gw1](images/03VPNGatewayvpc-demo.png)
 
-2.2) Create the VPN Gateway for VPC **on-prem** network **this Gatewall will be called (on-prem-vpn-gw)**
+2.2) Create the VPN Gateway for VPC **on-prem** network **this Gatewall will be called (on-prem-vpn-gw):**
 
 ```bash
 gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
