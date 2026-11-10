@@ -60,10 +60,8 @@ This project simulates a hybrid enterprise environment connecting a production V
 
 Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
 
-* **Cloud VPC (`vpc-demo`)**: Contains workload subnets representing production infrastructure.
-* **On-Prem VPC (`on-prem`)**: Represents external corporate network infrastructure.
-
-  Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
+* **VPN GATEWAY (vpc-demo-vpn-gw1)**: VPN Gateway on premises in cloud GCP.
+* **VPN GATEWAY (on-prem-vpn-gw)**: VPN Gateway on premises (simulated).
 
 
 ### 2. VPN Gateway (Configuration):
