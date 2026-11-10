@@ -61,6 +61,9 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 * **Cloud VPC (`vpc-demo`)**: Contains workload subnets representing production infrastructure.
 * **On-Prem VPC (`on-prem`)**: Represents external corporate network infrastructure.
 
+**VPN Gateways:** function They act as the secure endpoints for establishing the encrypted VPN tunnel connection over the Internet.
+
+
 
 ### 2. VPN Gateway (Configuration):
 
