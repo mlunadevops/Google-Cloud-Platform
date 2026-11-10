@@ -57,9 +57,13 @@ This project simulates a hybrid enterprise environment connecting a production V
 ## Implementation Steps (Configuration)
 
 ### 1. Prerequisites & VPC Preparation
-Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subnets are initialized:
+
+Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
+
 * **Cloud VPC (`vpc-demo`)**: Contains workload subnets representing production infrastructure.
 * **On-Prem VPC (`on-prem`)**: Represents external corporate network infrastructure.
+
+  Ensure both VPN Gateways (vpc-demo-vpn-gw1) and (on-prem-vpn-gw) are created:
 
 
 ### 2. VPN Gateway (Configuration):
