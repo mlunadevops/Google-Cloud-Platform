@@ -101,33 +101,7 @@ gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
 
 **Creating VPN Gateways (vpc-demo-vpn-gw1):**
 
-![Gateway VPN output](images/05VPNGWoutput.png)
 
-The command creates the following:
-1. Two automatically assigned public IP addresses (The public IP addresses are ephemeral) on `interface0` and `interface1` for High Availability (HA).
-2. The VPN Gateway connects to the VPC using GCP's Software-Defined Networking (SDN).
-
-
-### 3. Cloud Router Configuration
-Deploy Cloud Routers in both networks to manage dynamic BGP route exchanges.
-
-**Cloud Router (`vpc-demo-router1`):**
-```bash
-gcloud compute routers create vpc-demo-router1 \
-    --region us-west1 \
-    --network vpc-demo \
-    --asn 65001
-```
-
-**On-Prem Router (`on-prem-router1`):**
-```bash
-gcloud compute routers create on-prem-router1 \
-    --region us-west1 \
-    --network on-prem \
-    --asn 65002
-```
-
-![Cloud router creation](images/06Cloudcreation.jpg)
 
 
 ## Key Features & Production Considerations
