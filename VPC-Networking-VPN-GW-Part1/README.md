@@ -87,7 +87,7 @@ gcloud beta compute vpn-gateways create on-prem-vpn-gw1 \
 
 ![Gateway VPN Creation on-prem-vpn-gw](images/04VPNGatewayon-prem.png)
 
-Command show **(on-prem-vpn-gw)**
+Command output show **(on-prem-vpn-gw)**
 
 ![Gateway VPN output](images/05VPNGWoutput.png)
 
