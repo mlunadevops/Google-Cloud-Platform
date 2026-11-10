@@ -66,10 +66,9 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 ![Topology](images/02VPNconfiguration.png)
 
-
-
 ![Topology](images/01Configtabla.png)
 
+### CONFIGURACION VPN (vpc-demo-vpn-gw1)
 ```bash
 gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
   --peer-gcp-gateway on-prem-vpn-gw1 \
