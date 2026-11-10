@@ -68,7 +68,7 @@ Ensure both Google Cloud Virtual Private Clouds (VPCs) and their respective subn
 
 ![Topology](images/01Configtabla.png)
 
-### IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1)
+### 2.1) IPsec configuration on VPN gateway named (vpc-demo-vpn-gw1):
 
 ```bash
 gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
@@ -80,6 +80,9 @@ gcloud beta compute vpn-tunnels create vpc-demo-tunnel0 \
   --vpn-gateway vpc-demo-vpn-gw1 \
   --interface 0
 ```
+
+### 2.2) IPsec configuration on VPN gateway named (on-prem-vpn-gw1):
+
 
 ```bash
 gcloud beta compute vpn-tunnels create on-prem-tunnel0 \
