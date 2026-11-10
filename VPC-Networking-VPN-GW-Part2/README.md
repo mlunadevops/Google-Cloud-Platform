@@ -43,15 +43,15 @@ This project simulates a hybrid enterprise environment connecting a production V
 
 ## Technical Specifications
 
-| Parameter | VPC Environment (`vpc-demo`) | Simulated On-Prem Environment (`on-prem`) |
+| Parameter | VPC Environment (vpc-demo) | VPC Environment (on-prem) |
 | :--- | :--- | :--- |
 | **VPC Region** | `us-west1` | `us-west1` |
-| **Subnet Range** | `10.1.2.0/24` | `192.168.1.0/24` |
-| **BGP Autonomous System Number (ASN)** | `65001` | `65002` |
+| **VPN Tunnel name Interface 0** | `vpc-demo-tunnel0` | `on-prem-tunnel0` |
+| **VPN Tunnel name Interface 1** | `vpc-demo-tunnel1` | `on-prem-tunnel1` |
+| **Ike version** | 2 | 2 |
+| **Shared secret** | `[SHARED_SECRET]` | `[SHARED_SECRET]` |
 | **Router Name** | `vpc-demo-router1` | `on-prem-router1` |
 | **VPN Gateway Name** | `vpc-demo-vpn-gw1` | `on-prem-vpn-gw1` |
-| **High Availability SLA** | 99.99% Availability | 99.99% Availability |
-
 ---
 
 ## Implementation Steps (Configuration)
