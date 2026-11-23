@@ -6,12 +6,9 @@
 ![Diagrama de VPN](./images/diagram.svg)
 
 ![Diagrama de VPN](./images/diagram1.svg)
-
-
-![End-to-End Hybrid Packet Flow](./images/01-hybrid-vpn-flow.svg)
 ---
 
-## CONTENIDOS:
+## CONTENT:
 
 | Case | Title | Description |
 | :--- | :--- | :--- |
