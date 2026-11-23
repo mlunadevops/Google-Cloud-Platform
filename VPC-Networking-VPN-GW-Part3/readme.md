@@ -33,6 +33,8 @@
 
 ## 3. IMPLEMENTATION:
 
+![CONFIGURACION](images/01tunnel0.png)
+
 **1.1) Create the working folder and enter it::**
 
 ```text
