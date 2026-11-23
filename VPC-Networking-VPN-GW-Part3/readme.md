@@ -90,5 +90,19 @@ We already have tunnel0 configured on both ends, as shown in the following image
 ![Tunnel0](images/Configtunnel0.jpg)
 
 
+**TUNNEL1** INTERFACE CONFIGURATION OF THE ROUTER **(vpc-demo-router1)**:
 
+**3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel0-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel0)**:
 
+```text
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel0-to-on-prem \
+    --ip-address 169.254.0.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel0 \
+    --region us-west1
+```
+
+```text
+
+```
