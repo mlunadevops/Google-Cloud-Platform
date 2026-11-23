@@ -24,11 +24,9 @@
 
 ![BGP WEIGTH](images/01Topologia.png)
 
-## 3. IMPLEMENTATION:
+## 3. IMPLEMENTATION ROUTER TUNNEL0 INTERFACE CONFIGURATION (vpc-demo-router1):
 
 ![CONFIGURACION](images/01tunnel0.png)
-
-## ROUTER TUNNEL0 INTERFACE CONFIGURATION (vpc-demo-router1):
 
 We have to create 2 tunnel interfaces per Cloud Router:
 
