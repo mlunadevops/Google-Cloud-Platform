@@ -18,7 +18,7 @@
 
 ## 1. Introduction and Theoretical Framework
 
-**pyATS =** The infrastructure for organizing, running, and reporting automated network tests in a professional way.
+**pyATS =**
 
 ## 2. Topology and BGP Neighbor Establishment
 
@@ -60,9 +60,10 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
     --peer-asn 65002 \
     --region us-west1
 ```
-CONFIGURACION DE INTERFACES **TUNNEL0** DEL ROUTER **(on-prem-router1)**:
 
-**2.1)** Creacion en CLOUD ROUTER **(on-prem-router1)** de la interface **(if-tunnel0-to-vpc-demo)** que se conectara al tunel **(if-tunnel0-to-vpc-demo)**:
+**TUNNEL0** INTERFACE CONFIGURATION OF THE ROUTER **(on-prem-router1)**:
+
+**2.1)** Creation in CLOUD ROUTER **(on-prem-router1)** of the interface **(if-tunnel0-to-vpc-demo)** that will connect to the tunnel **(if-tunnel0-to-vpc-demo)**:
 
 ```text
 gcloud compute routers add-interface on-prem-router1 \
@@ -73,7 +74,7 @@ gcloud compute routers add-interface on-prem-router1 \
     --region us-west1
 ```
 
-**2.1)** Configuracion en CLOUD ROUTER **(on-prem-router1)** del peer BGP **(169.254.0.1)** que se conectara a la interface tunel **(if-tunnel0-to-on-prem**) creada en el paso **2.1**:
+**2.2)** Configuration in CLOUD ROUTER **(on-prem-router1)** of the BGP peer **(169.254.0.1)** that will connect to the tunnel interface **(if-tunnel0-to-on-prem)** created in step **2.1**:
 
 ```text
 gcloud compute routers add-bgp-peer on-prem-router1 \
