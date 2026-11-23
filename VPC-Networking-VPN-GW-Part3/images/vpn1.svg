@@ -1,1 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 350" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; rx: 12px; }
+      .zone-cloud { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+      .zone-wan { fill: #12161c; stroke: #21262d; stroke-width: 1; rx: 8px; }
+      .zone-onprem { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
 
+      .node-router { fill: #1f242d; stroke: #79c0ff; stroke-width: 1.8; rx: 8px; }
+      .node-vpn { fill: #1f242d; stroke: #3fb950; stroke-width: 1.8; rx: 8px; }
+
+      .title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .subtitle { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; }
+      .zone-label { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; }
+      .node-title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11.5px; font-weight: 600; text-anchor: middle; }
+      .node-ip { fill: #8b949e; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9.5px; text-anchor: middle; }
+      .bgp-badge { fill: #d29922; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9.5px; font-weight: 700; text-anchor: middle; }
+
+      .link-line { stroke: #30363d; stroke-width: 3; }
+      .tunnel-pipe { fill: rgba(63, 185, 80, 0.08); stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 5 3; rx: 14px; }
+      .tunnel-label { fill: #3fb950; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 600; text-anchor: middle; }
+      .bgp-link { stroke: #d29922; stroke-width: 1.3; stroke-dasharray: 3 3; }
+
+      /* Recorrido del paquete entre interfaces y túneles de TUNNEL1 (ciclo de 9s) */
+      @keyframes packetJourney {
+        0%   { transform: translate(120px, 182px); opacity: 0; }
+        8%   { transform: translate(120px, 182px); opacity: 1; }
+        28%  { transform: translate(345px, 182px); opacity: 1; } /* vpc-demo-tunnel1 */
+        62%  { transform: translate(635px, 182px); opacity: 1; } /* on-prem-tunnel1 */
+        85%  { transform: translate(860px, 182px); opacity: 1; } /* on-prem-router1 */
+        94%  { transform: translate(860px, 182px); opacity: 1; }
+        100% { transform: translate(860px, 182px); opacity: 0; }
+      }
+
+      /* Estado plano vs cifrado IPsec */
+      @keyframes plainState {
+        0%, 36%   { opacity: 1; }
+        38%, 62%  { opacity: 0; }
+        64%, 100% { opacity: 1; }
+      }
+
+      @keyframes encryptedState {
+        0%, 36%   { opacity: 0; }
+        38%, 62%  { opacity: 1; }
+        64%, 100% { opacity: 0; }
+      }
+
+      /* Pulso del intercambio BGP (169.254.1.1 &lt;-&gt; 169.254.1.2) */
+      @keyframes bgpPulse {
+        0%, 15%  { opacity: 0.35; }
+        25%, 45% { opacity: 1; }
+        55%, 100%{ opacity: 0.35; }
+      }
+
+      /* Resaltado de pasos inferiores */
+      @keyframes step1 { 0%, 28% { fill: #79c0ff; font-weight: 700; } 29%, 100% { fill: #6e7681; font-weight: 400; } }
+      @keyframes step2 { 0%, 28% { fill: #6e7681; } 29%, 38% { fill: #d29922; font-weight: 700; } 39%, 100% { fill: #6e7681; } }
+      @keyframes step3 { 0%, 38% { fill: #6e7681; } 39%, 62% { fill: #3fb950; font-weight: 700; } 63%, 100% { fill: #6e7681; } }
+      @keyframes step4 { 0%, 62% { fill: #6e7681; } 63%, 100% { fill: #79c0ff; font-weight: 700; } }
+
+      .packet-mover { animation: packetJourney 9s ease-in-out infinite; }
+      .pkt-plain { animation: plainState 9s linear infinite; }
+      .pkt-enc { animation: encryptedState 9s linear infinite; }
+      .bgp-active { animation: bgpPulse 9s ease-in-out infinite; }
+
+      .s1 { animation: step1 9s infinite; }
+      .s2 { animation: step2 9s infinite; }
+      .s3 { animation: step3 9s infinite; }
+      .s4 { animation: step4 9s infinite; }
+    </style>
+  </defs>
+
+  
+  <rect class="bg" x="0" y="0" width="980" height="350" />
+
+  
+  <text class="title" x="28" y="34">GCP HA VPN TUNNEL1 &amp; BGP Configuration (GSP619)</text>
+  <text class="subtitle" x="28" y="54">Peering 169.254.1.1 (ASN 65001) ↔ 169.254.1.2 (ASN 65002) across us-west1</text>
+
+  
+  <rect class="zone-cloud" x="20" y="74" width="435" height="215" />
+  <text class="zone-label" x="34" y="94">CLOUD ROUTER: vpc-demo-router1 (us-west1)</text>
+
+  <rect class="zone-wan" x="463" y="74" width="54" height="215" />
+  <text class="zone-label" x="490" y="94" text-anchor="middle">WAN</text>
+
+  <rect class="zone-onprem" x="525" y="74" width="435" height="215" />
+  <text class="zone-label" x="539" y="94">ON-PREMISE ROUTER: on-prem-router1 (us-west1)</text>
+
+  
+  <line class="link-line" x1="195" y1="182" x2="275" y2="182" />
+  <line class="link-line" x1="705" y1="182" x2="785" y2="182" />
+
+  
+  <rect class="tunnel-pipe" x="445" y="164" width="90" height="36" />
+  <text class="tunnel-label" x="490" y="155">IPsec Tunnel 1</text>
+
+  
+  <g class="bgp-active">
+    <path class="bgp-link" d="M 120 148 L 120 112 L 860 112 L 860 148" fill="none" />
+    <rect x="375" y="101" width="230" height="20" rx="4" fill="#161b22" stroke="#d29922" stroke-width="1" />
+    <text class="bgp-badge" x="490" y="114">BGP 169.254.1.1 ↔ 169.254.1.2</text>
+  </g>
+
+  
+  <g transform="translate(45, 148)">
+    <rect class="node-router" width="150" height="68" />
+    <text class="node-title" x="75" y="22">vpc-demo-router1</text>
+    <text class="node-ip" x="75" y="38">ASN 65001 | Peer: .1.2</text>
+    <text class="node-ip" x="75" y="53">bgp-on-prem-tunnel1</text>
+  </g>
+
+  
+  <g transform="translate(275, 148)">
+    <rect class="node-vpn" width="140" height="68" />
+    <text class="node-title" x="70" y="22">if-tunnel1-to-on-prem</text>
+    <text class="node-ip" x="70" y="38">169.254.1.1/30</text>
+    <text class="node-ip" x="70" y="53">vpc-demo-tunnel1</text>
+  </g>
+
+  
+  <g transform="translate(565, 148)">
+    <rect class="node-vpn" width="140" height="68" />
+    <text class="node-title" x="70" y="22">if-tunnel1-to-vpc-demo</text>
+    <text class="node-ip" x="70" y="38">169.254.1.2/30</text>
+    <text class="node-ip" x="70" y="53">on-prem-tunnel1</text>
+  </g>
+
+  
+  <g transform="translate(785, 148)">
+    <rect class="node-router" width="150" height="68" />
+    <text class="node-title" x="75" y="22">on-prem-router1</text>
+    <text class="node-ip" x="75" y="38">ASN 65002 | Peer: .1.1</text>
+    <text class="node-ip" x="75" y="53">bgp-vpc-demo-tunnel1</text>
+  </g>
+
+  
+  <g class="packet-mover">
+    <g class="pkt-plain">
+      <rect x="-40" y="-13" width="80" height="26" rx="6" fill="#1f6feb" stroke="#79c0ff" stroke-width="1.5" />
+      <text x="0" y="4" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">IP PACKET</text>
+    </g>
+    <g class="pkt-enc">
+      <rect x="-48" y="-13" width="96" height="26" rx="6" fill="#238636" stroke="#7ee787" stroke-width="1.5" />
+      <text x="0" y="4" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9.5" font-weight="700" text-anchor="middle">🔒 ESP TUNNEL</text>
+    </g>
+  </g>
+
+  
+  <g font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, sans-serif" font-size="11">
+    <text class="s1" x="28" y="318">3.1 if-tunnel1-to-on-prem (.1.1/30)</text>
+    <text class="s2" x="265" y="318">3.2 Peer bgp-on-prem-tunnel1</text>
+    <text class="s3" x="505" y="318">4.1–4.2 on-prem-tunnel1 (.1.2/30)</text>
+    <text class="s4" x="755" y="318">BGP ASN 65001 ↔ 65002</text>
+  </g>
+</svg>
