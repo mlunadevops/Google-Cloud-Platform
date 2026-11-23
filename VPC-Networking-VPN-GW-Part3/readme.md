@@ -94,7 +94,7 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ![CONFIGURACION](images/01tunnel1.png)
 
-**3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel0-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel0)**:
+**3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel1-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel1)**:
 
 ```text
 gcloud compute routers add-interface vpc-demo-router1 \
@@ -104,7 +104,7 @@ gcloud compute routers add-interface vpc-demo-router1 \
     --vpn-tunnel vpc-demo-tunnel1 \
     --region us-west1
 ```
-**3.2)** Configuration in CLOUD ROUTER **(vpc-demo-router1)** of the BGP peer **(169.254.0.2)** that will connect to the tunnel interface **(if-tunnel0-to-on-prem)** created in step **1.1**:
+**3.2)** Configuration in CLOUD ROUTER **(vpc-demo-router1)** of the BGP peer **(169.254.1.2)** that will connect to the tunnel interface **(if-tunnel1-to-on-prem)** created in step **3.1**:
 
 ```text
 gcloud compute routers add-bgp-peer vpc-demo-router1 \
