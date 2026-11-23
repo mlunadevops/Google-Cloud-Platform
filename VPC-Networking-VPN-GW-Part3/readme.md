@@ -37,7 +37,7 @@
 
 Configuracion 
 
-**1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(vpc-demo-router1)** que se conectara al tunel **(vpc-demo-tunnel0)**:
+**1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
 
 ```text
 gcloud compute routers add-interface vpc-demo-router1 \
