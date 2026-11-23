@@ -89,6 +89,9 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ![CONFIGURACION](images/01tunnel1.png)
 
+![Tunnel0](images/vpn1.svg)
+
+
 **3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel1-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel1)**:
 
 ```text
