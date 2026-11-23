@@ -9,6 +9,8 @@
 
 ![Diagrama de VPN](./images/negro.svg)
 
+![Diagrama de VPN](./images/negro1.svg)
+
 
 ![End-to-End Hybrid Packet Flow](./images/01-hybrid-vpn-flow.svg)
 ---
