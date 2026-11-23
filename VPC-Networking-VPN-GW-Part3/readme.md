@@ -61,13 +61,15 @@ A) **vpc-demo-router1**:
 
 B) **on-prem-router1**: 
 
+
+
+CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER **(vpc-demo-router1)**:
+
 Tenemos que crear 2 interfaces tunnel por Cloud Router:
 
 A) Interface tunnel0
 
 B) Interface tunnel1
-
-CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER **(vpc-demo-router1)** :
 
 ![CONFIGURACION](images/vpn.svg)
 
