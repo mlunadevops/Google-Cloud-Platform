@@ -90,7 +90,27 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
     --peer-asn 65002 \
     --region us-west1
 ```
+CONFIGURACION DE INTERFACES **TUNNEL0** DEL ROUTER **(on-prem-router1)**:
 
+**1.1)** Creacion en CLOUD ROUTER **( on-prem-router1)** de la interface **(if-tunnel0-to-vpc-demo)** que se conectara al tunel **(if-tunnel0-to-vpc-demo)**:
+
+```text
+gcloud compute routers add-interface on-prem-router1 \
+    --interface-name if-tunnel0-to-vpc-demo \
+    --ip-address 169.254.0.2 \
+    --mask-length 30 \
+    --vpn-tunnel on-prem-tunnel0 \
+    --region us-west1
+```
+
+```text
+gcloud compute routers add-bgp-peer on-prem-router1 \
+    --peer-name bgp-vpc-demo-tunnel0 \
+    --interface if-tunnel0-to-vpc-demo \
+    --peer-ip-address 169.254.0.1 \
+    --peer-asn 65001 \
+    --region us-west1
+```
 
 **Part 3:** Use the pyATS Testing Library
 
