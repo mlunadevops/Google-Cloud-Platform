@@ -47,7 +47,6 @@ B) Interface tunnel1
 
 ![Tunnel0](images/Configtunnel0.jpg)
 
-Configtunnel0.jpg
 **1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
 
 ```text
