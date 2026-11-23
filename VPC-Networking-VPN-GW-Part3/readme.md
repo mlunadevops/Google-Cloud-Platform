@@ -16,7 +16,7 @@
 
 ## 1. Introduction and Theoretical Framework
 
-**pyATS =**
+![CONFIGURACION](images/01Topologia.png)
 
 ## 2. Topology and BGP Neighbor Establishment
 
