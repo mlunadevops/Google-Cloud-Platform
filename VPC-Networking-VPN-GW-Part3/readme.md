@@ -89,21 +89,6 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ![Tunnel0](images/Configtunnel0.jpg)
 
-**Part 3:** Use the pyATS Testing Library
 
-**3.1) Install pyATS**
 
-Inside the virtual environment (make sure you see (csr1kv) in your terminal), run:
-
-```text
-pip3 install pyats[full]
-```
-
-**3.2) Verify the installation**
-
-Verify that it was installed correctly by running:
-
-```text
-pyats --help
-```
 
