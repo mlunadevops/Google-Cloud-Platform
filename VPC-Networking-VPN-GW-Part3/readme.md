@@ -19,7 +19,7 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
-![BGP WEIGTH](images/01Topologia.jpg)
+![BGP WEIGTH](images/01Topologia.png)
 
 ## 3. IMPLEMENTATION:
 
