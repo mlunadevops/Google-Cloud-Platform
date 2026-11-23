@@ -69,6 +69,8 @@ B) Interface tunnel1
 
 CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER **(vpc-demo-router1)** :
 
+![CONFIGURACION](images/vpn.svg)
+
 **1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
 
 ```text
@@ -79,8 +81,6 @@ gcloud compute routers add-interface vpc-demo-router1 \
     --vpn-tunnel vpc-demo-tunnel0 \
     --region us-west1
 ```
-
-![CONFIGURACION](images/vpn.svg)
 
 
 **1.2)** Configuracion en CLOUD ROUTER **(vpc-demo-router1)** del peer BGP **(169.254.0.2)** que se conectara a la interface tunel **(if-tunnel0-to-on-prem**) creada en el paso **1.1**:
