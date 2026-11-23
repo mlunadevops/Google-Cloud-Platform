@@ -125,7 +125,7 @@ gcloud compute routers add-interface  on-prem-router1 \
     --region us-west1
 ```
 
-**4.2)** Configuration in CLOUD ROUTER **(on-prem-router1)** of the BGP peer **(169.254.1.2)** that will connect to the tunnel interface **(if-tunnel1-to-on-prem)** created in step **4.1**:
+**4.2)** Configuration in CLOUD ROUTER **(on-prem-router1)** of the BGP peer **(169.254.1.1)** that will connect to the tunnel interface **(if-tunnel1-to-vpc-demo)** created in step **4.1**:
 
 ```text
 gcloud compute routers add-bgp-peer  on-prem-router1 \
