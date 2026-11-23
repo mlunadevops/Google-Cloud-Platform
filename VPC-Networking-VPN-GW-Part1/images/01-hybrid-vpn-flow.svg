@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; rx: 12px; }
+      .zone-cloud { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+      .zone-wan { fill: #12161c; stroke: #21262d; stroke-width: 1; rx: 8px; }
+      .zone-onprem { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+
+      .node-box { fill: #1f242d; stroke: #58a6ff; stroke-width: 1.8; rx: 8px; }
+      .node-vpn { fill: #1f242d; stroke: #3fb950; stroke-width: 1.8; rx: 8px; }
+      .node-onprem { fill: #1f242d; stroke: #d2a8ff; stroke-width: 1.8; rx: 8px; }
+
+      .title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .subtitle { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; }
+      .zone-label { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; }
+      .node-title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .node-ip { fill: #8b949e; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; text-anchor: middle; }
+
+      .link-line { stroke: #30363d; stroke-width: 3; }
+      .tunnel-pipe { fill: rgba(63, 185, 80, 0.08); stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 5 3; rx: 14px; }
+      .tunnel-label { fill: #3fb950; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 600; text-anchor: middle; }
+
+      /* Animación del paquete extremo a extremo (ciclo de 8s) */
+      @keyframes packetJourney {
+        0%   { transform: translate(95px, 162px); opacity: 0; }
+        6%   { transform: translate(95px, 162px); opacity: 1; }
+        22%  { transform: translate(275px, 162px); opacity: 1; } /* Llega a Cloud Router */
+        38%  { transform: translate(435px, 162px); opacity: 1; } /* Llega a Cloud VPN GW */
+        62%  { transform: translate(635px, 162px); opacity: 1; } /* Cruza túnel IPsec hacia On-Prem VPN GW */
+        80%  { transform: translate(835px, 162px); opacity: 1; } /* Llega a On-Prem Instance */
+        92%  { transform: translate(835px, 162px); opacity: 1; }
+        100% { transform: translate(835px, 162px); opacity: 0; }
+      }
+
+      /* Cambio de estado: Paquete IP plano vs Paquete Cifrado en el túnel */
+      @keyframes plainState {
+        0%, 36%   { opacity: 1; }
+        38%, 62%  { opacity: 0; }
+        64%, 100% { opacity: 1; }
+      }
+
+      @keyframes encryptedState {
+        0%, 36%   { opacity: 0; }
+        38%, 62%  { opacity: 1; }
+        64%, 100% { opacity: 0; }
+      }
+
+      /* Resaltado de paso en barra de estado inferior */
+      @keyframes step1 { 0%, 22% { fill: #58a6ff; font-weight: 700; } 23%, 100% { fill: #6e7681; font-weight: 400; } }
+      @keyframes step2 { 0%, 22% { fill: #6e7681; } 23%, 38% { fill: #58a6ff; font-weight: 700; } 39%, 100% { fill: #6e7681; } }
+      @keyframes step3 { 0%, 38% { fill: #6e7681; } 39%, 62% { fill: #3fb950; font-weight: 700; } 63%, 100% { fill: #6e7681; } }
+      @keyframes step4 { 0%, 62% { fill: #6e7681; } 63%, 100% { fill: #d2a8ff; font-weight: 700; } }
+
+      .packet-mover { animation: packetJourney 8s ease-in-out infinite; }
+      .pkt-plain { animation: plainState 8s linear infinite; }
+      .pkt-enc { animation: encryptedState 8s linear infinite; }
+
+      .s1 { animation: step1 8s infinite; }
+      .s2 { animation: step2 8s infinite; }
+      .s3 { animation: step3 8s infinite; }
+      .s4 { animation: step4 8s infinite; }
+    </style>
+  </defs>
+
+  
+  <rect class="bg" x="0" y="0" width="960" height="320" />
+
+  
+  <text class="title" x="28" y="34">End-to-End Hybrid Packet Flow (Cloud VPS ↔ On-Premise)</text>
+  <text class="subtitle" x="28" y="54">Routing via Cloud Router &amp; Site-to-Site IPsec VPN Tunnel (10.10.1.10 → 192.168.1.20)</text>
+
+  
+  <rect class="zone-cloud" x="24" y="74" width="465" height="176" />
+  <text class="zone-label" x="38" y="94">CLOUD VPC (10.10.0.0/16)</text>
+
+  <rect class="zone-wan" x="498" y="74" width="84" height="176" />
+  <text class="zone-label" x="540" y="94" text-anchor="middle">WAN</text>
+
+  <rect class="zone-onprem" x="590" y="74" width="346" height="176" />
+  <text class="zone-label" x="604" y="94">ON-PREMISE NETWORK (192.168.0.0/16)</text>
+
+  
+  <line class="link-line" x1="150" y1="162" x2="225" y2="162" />
+  <line class="link-line" x1="335" y1="162" x2="390" y2="162" />
+  <line class="link-line" x1="695" y1="162" x2="775" y2="162" />
+
+  
+  <rect class="tunnel-pipe" x="485" y="146" width="110" height="32" />
+  <text class="tunnel-label" x="540" y="138">IPsec VPN Tunnel</text>
+
+  
+  <g transform="translate(40, 128)">
+    <rect class="node-box" width="110" height="68" />
+    <text class="node-title" x="55" y="28">Cloud VPS</text>
+    <text class="node-ip" x="55" y="46">10.10.1.10</text>
+  </g>
+
+  
+  <g transform="translate(225, 128)">
+    <rect class="node-box" width="110" height="68" />
+    <text class="node-title" x="55" y="28">Cloud Router</text>
+    <text class="node-ip" x="55" y="46">Next-Hop: VPN GW</text>
+  </g>
+
+  
+  <g transform="translate(390, 128)">
+    <rect class="node-vpn" width="105" height="68" />
+    <text class="node-title" x="52" y="28">Cloud VPN GW</text>
+    <text class="node-ip" x="52" y="46">203.0.113.10</text>
+  </g>
+
+  
+  <g transform="translate(590, 128)">
+    <rect class="node-vpn" width="105" height="68" />
+    <text class="node-title" x="52" y="28">On-Prem GW</text>
+    <text class="node-ip" x="52" y="46">198.51.100.20</text>
+  </g>
+
+  
+  <g transform="translate(775, 128)">
+    <rect class="node-onprem" width="120" height="68" />
+    <text class="node-title" x="60" y="28">On-Prem Host</text>
+    <text class="node-ip" x="60" y="46">192.168.1.20</text>
+  </g>
+
+  
+  <g class="packet-mover">
+    
+    <g class="pkt-plain">
+      <rect x="-42" y="-14" width="84" height="28" rx="6" fill="#1f6feb" stroke="#79c0ff" stroke-width="1.5" />
+      <text x="0" y="4" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">IP PACKET</text>
+    </g>
+    
+    <g class="pkt-enc">
+      <rect x="-48" y="-14" width="96" height="28" rx="6" fill="#238636" stroke="#7ee787" stroke-width="1.5" />
+      <text x="0" y="4" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">🔒 ESP ENCRYPTED</text>
+    </g>
+  </g>
+
+  
+  <g font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, sans-serif" font-size="11">
+    <text class="s1" x="28" y="286">1. Egress from VPS</text>
+    <text class="s2" x="210" y="286">2. Cloud Router Lookup</text>
+    <text class="s3" x="420" y="286">3. IPsec Encapsulation &amp; Transit</text>
+    <text class="s4" x="680" y="286">4. Decapsulate &amp; Deliver</text>
+  </g>
+</svg>
