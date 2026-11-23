@@ -16,6 +16,8 @@
 
 An end-to-end hands-on demonstration of configuring, testing, and optimizing high-availability hybrid connectivity using **Google Cloud HA VPN** and dynamic BGP routing between Google Cloud VPCs and simulated on-premises environments.
 
+![End-to-End Hybrid Packet Flow](./images/01-hybrid-vpn-flow.svg)
+
 ---
 
 ## Architecture Overview (Topology) 
