@@ -1,1 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="100%">
+  <defs>
+    <style>
+      /* Estilos base basados en tu código */
+      .bg { fill: #0d1117; rx: 12px; }
+      .zone-gcp { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+      .zone-onprem { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+      .zone-wan { fill: #12161c; stroke: #21262d; stroke-width: 1; rx: 8px; }
 
+      .node-box { fill: #1f242d; stroke: #58a6ff; stroke-width: 1.8; rx: 8px; }
+      .node-vpn { fill: #1f242d; stroke: #3fb950; stroke-width: 1.8; rx: 8px; }
+      .node-onprem { fill: #1f242d; stroke: #d2a8ff; stroke-width: 1.8; rx: 8px; }
+      .node-bgp { fill: #1f242d; stroke: #f85149; stroke-width: 1.8; rx: 8px; }
+
+      .title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .subtitle { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; }
+      .zone-label { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; }
+      
+      .node-title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .node-ip { fill: #8b949e; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; text-anchor: middle; }
+      .node-cmd { fill: #58a6ff; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: bold; text-anchor: middle; }
+      .node-cmd-red { fill: #f85149; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: bold; text-anchor: middle; }
+
+      .tunnel-pipe { fill: rgba(63, 185, 80, 0.08); stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 5 3; rx: 14px; }
+      .tunnel-label { fill: #3fb950; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10px; font-weight: 600; text-anchor: middle; }
+
+      .link-line { stroke: #30363d; stroke-width: 3; }
+      
+      /* Animaciones de aparición (Fases) */
+      /* Fase 1: Interfaces (0s a 4s) */
+      @keyframes fadeInStep1 { 0%, 5% { opacity: 0; } 10%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      /* Fase 2: BGP Peers (4s a 8s) */
+      @keyframes fadeInStep2 { 0%, 40% { opacity: 0; } 45%, 95% { opacity: 1; } 100% { opacity: 0; } }
+      /* Fase 3: Sesión BGP Establecida (8s a 12s) */
+      @keyframes fadeInStep3 { 0%, 80% { opacity: 0; } 85%, 95% { opacity: 1; } 100% { opacity: 0; } }
+
+      /* Animación de flujo de datos en la sesión BGP */
+      @keyframes dashFlow { to { stroke-dashoffset: -20; } }
+      @keyframes bgpPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+      /* Clases para aplicar animaciones */
+      .step1 { animation: fadeInStep1 12s ease-in-out infinite; }
+      .step2 { animation: fadeInStep2 12s ease-in-out infinite; }
+      .step3 { animation: fadeInStep3 12s ease-in-out infinite; }
+      .bgp-flow { animation: dashFlow 1s linear infinite, bgpPulse 2s ease-in-out infinite; }
+
+      /* Barra de estado inferior */
+      @keyframes status1 { 0%, 33% { fill: #58a6ff; font-weight: 700; } 34%, 100% { fill: #6e7681; font-weight: 400; } }
+      @keyframes status2 { 0%, 33% { fill: #6e7681; } 34%, 66% { fill: #d2a8ff; font-weight: 700; } 67%, 100% { fill: #6e7681; } }
+      @keyframes status3 { 0%, 66% { fill: #6e7681; } 67%, 100% { fill: #3fb950; font-weight: 700; } }
+      
+      .s1 { animation: status1 12s infinite; }
+      .s2 { animation: status2 12s infinite; }
+      .s3 { animation: status3 12s infinite; }
+    </style>
+  </defs>
+
+  <!-- Fondo Principal -->
+  <rect class="bg" x="0" y="0" width="960" height="420" />
+
+  <!-- Títulos -->
+  <text class="title" x="28" y="34">Configuración BGP y Alta Disponibilidad (HA VPN)</text>
+  <text class="subtitle" x="28" y="54">Relación entre add-interface (Túnel) y add-bgp-peer (Sesión de Enrutamiento)</text>
+
+  <!-- Zonas (Backgrounds) -->
+  <rect class="zone-gcp" x="24" y="74" width="380" height="260" />
+  <text class="zone-label" x="38" y="94">GOOGLE CLOUD (VPC-demo)</text>
+
+  <rect class="zone-wan" x="418" y="74" width="124" height="260" />
+  <text class="zone-label" x="480" y="94" text-anchor="middle">TÚNEL</text>
+
+  <rect class="zone-onprem" x="556" y="74" width="380" height="260" />
+  <text class="zone-label" x="570" y="94">ON-PREMISES (Simulado)</text>
+
+  <!-- Líneas de conexión base -->
+  <line class="link-line" x1="154" y1="162" x2="220" y2="162" />
+  <line class="link-line" x1="330" y1="162" x2="380" y2="162" />
+  <line class="link-line" x1="580" y1="162" x2="630" y2="162" />
+  <line class="link-line" x1="740" y1="162" x2="806" y2="162" />
+
+  <!-- El Túnel IPsec -->
+  <rect class="tunnel-pipe" x="405" y="146" width="150" height="32" />
+  <text class="tunnel-label" x="480" y="138">vpc-demo-tunnel0 (IPsec)</text>
+
+  <!-- ================= LADO GCP ================= -->
+  <!-- Router GCP -->
+  <g transform="translate(40, 110)">
+    <rect class="node-box" width="114" height="104" />
+    <text class="node-title" x="57" y="24">Cloud Router</text>
+    <text class="node-ip" x="57" y="40">vpc-demo-router1</text>
+    <text class="node-ip" x="57" y="54">ASN: 65001</text>
+  </g>
+
+  <!-- Paso 1: Interfaz GCP -->
+  <g class="step1" transform="translate(40, 234)">
+    <rect class="node-vpn" width="114" height="80" />
+    <text class="node-cmd" x="57" y="20">add-interface</text>
+    <text class="node-ip" x="57" y="38">if-tunnel0...</text>
+    <text class="node-ip" x="57" y="52">IP: 169.254.0.1</text>
+  </g>
+
+  <!-- Paso 2: BGP GCP -->
+  <g class="step2" transform="translate(40, 234)">
+    <rect class="node-bgp" width="114" height="80" />
+    <text class="node-cmd-red" x="57" y="20">add-bgp-peer</text>
+    <text class="node-ip" x="57" y="38">peer: 169.254.0.2</text>
+    <text class="node-ip" x="57" y="52">ASN: 65002</text>
+  </g>
+
+  <!-- ================= LADO ON-PREM ================= -->
+  <!-- Router On-Prem -->
+  <g transform="translate(806, 110)">
+    <rect class="node-onprem" width="114" height="104" />
+    <text class="node-title" x="57" y="24">On-Prem Router</text>
+    <text class="node-ip" x="57" y="40">on-prem-router1</text>
+    <text class="node-ip" x="57" y="54">ASN: 65002</text>
+  </g>
+
+  <!-- Paso 1: Interfaz On-Prem -->
+  <g class="step1" transform="translate(806, 234)">
+    <rect class="node-vpn" width="114" height="80" />
+    <text class="node-cmd" x="57" y="20">add-interface</text>
+    <text class="node-ip" x="57" y="38">if-tunnel0...</text>
+    <text class="node-ip" x="57" y="52">IP: 169.254.0.2</text>
+  </g>
+
+  <!-- Paso 2: BGP On-Prem -->
+  <g class="step2" transform="translate(806, 234)">
+    <rect class="node-onprem" width="114" height="80" />
+    <text class="node-cmd-red" x="57" y="20">add-bgp-peer</text>
+    <text class="node-ip" x="57" y="38">peer: 169.254.0.1</text>
+    <text class="node-ip" x="57" y="52">ASN: 65001</text>
+  </g>
+
+  <!-- Flechas de relación (Interfaz -> Túnel) -->
+  <g class="step1">
+    <line x1="380" y1="274" x2="405" y2="274" stroke="#3fb950" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#arrow-green)"/>
+    <line x1="556" y1="274" x2="580" y2="274" stroke="#3fb950" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#arrow-green)"/>
+  </g>
+
+  <!-- Flechas de relación (BGP Peer -> Interfaz) -->
+  <g class="step2">
+    <!-- Flecha GCP subiendo -->
+    <line x1="97" y1="234" x2="97" y2="214" stroke="#f85149" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <text x="105" y="228" fill="#f85149" font-size="10" font-family="sans-serif" font-weight="bold">Usa interfaz</text>
+    
+    <!-- Flecha On-Prem subiendo -->
+    <line x1="863" y1="234" x2="863" y2="214" stroke="#f85149" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <text x="871" y="228" fill="#f85149" font-size="10" font-family="sans-serif" font-weight="bold">Usa interfaz</text>
+  </g>
+
+  <!-- SESIÓN BGP ESTABLECIDA (Fase 3) -->
+  <g class="step3">
+    <!-- Línea punteada que cruza el túnel -->
+    <path d="M 154 274 Q 480 360 806 274" fill="none" stroke="#3fb950" stroke-width="3" stroke-dasharray="8 4" class="bgp-flow" />
+    
+    <!-- Etiqueta de sesión BGP -->
+    <rect x="380" y="330" width="200" height="30" rx="6" fill="#1f242d" stroke="#3fb950" stroke-width="1.5" />
+    <text x="480" y="349" fill="#3fb950" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" text-anchor="middle">BGP Session: ESTABLISHED</text>
+  </g>
+
+  <!-- Marcadores de flecha -->
+  <defs>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#3fb950" />
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#f85149" />
+    </marker>
+  </defs>
+
+  <!-- Barra de estado inferior -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12">
+    <text class="s1" x="28" y="390">1. add-interface (Crea la puerta lógica)</text>
+    <text class="s2" x="360" y="390">2. add-bgp-peer (Establece vecindad)</text>
+    <text class="s3" x="680" y="390">3. Intercambio de Rutas Dinámicas</text>
+  </g>
+</svg>
