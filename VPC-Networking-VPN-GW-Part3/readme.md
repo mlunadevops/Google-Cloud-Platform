@@ -35,7 +35,7 @@
 
 ![CONFIGURACION](images/01tunnel0.png)
 
-Configuracion 
+Configuracion de la interface extremo CLOUD ROUTER 
 
 **1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
 
