@@ -67,6 +67,8 @@ A) Interface tunnel0
 
 B) Interface tunnel1
 
+CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER **(vpc-demo-router1)** :
+
 **1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
 
 ```text
