@@ -20,7 +20,7 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
-![BGP WEIGTH](images/01Topologia.png)
+![BGP WEIGTH](images/01Topologia.svg)
 
 ## 3. IMPLEMENTATION ROUTER TUNNEL0 INTERFACE CONFIGURATION (vpc-demo-router1):
 
