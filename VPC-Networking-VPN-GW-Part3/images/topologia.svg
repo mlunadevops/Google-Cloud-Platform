@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0d1117; rx: 12px; }
+      .zone-cloud { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+      .zone-wan { fill: #12161c; stroke: #21262d; stroke-width: 1; rx: 8px; }
+      .zone-onprem { fill: #161b22; stroke: #30363d; stroke-width: 1.5; stroke-dasharray: 6 4; rx: 8px; }
+
+      .node-router { fill: #1f242d; stroke: #79c0ff; stroke-width: 1.8; rx: 8px; }
+      .node-vpn { fill: #1f242d; stroke: #3fb950; stroke-width: 1.8; rx: 8px; }
+
+      .title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 700; }
+      .subtitle { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; }
+      .zone-label { fill: #8b949e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.8px; }
+      .node-title { fill: #f0f6fc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 600; text-anchor: middle; }
+      .node-ip { fill: #8b949e; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9px; text-anchor: middle; }
+      .bgp-badge { fill: #d29922; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9px; font-weight: 700; text-anchor: middle; }
+
+      .link-line { stroke: #30363d; stroke-width: 2.5; fill: none; }
+      .tunnel-pipe { fill: rgba(63, 185, 80, 0.08); stroke: #3fb950; stroke-width: 1.5; stroke-dasharray: 5 3; rx: 14px; }
+      .tunnel-label { fill: #3fb950; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 9.5px; font-weight: 600; text-anchor: middle; }
+      .bgp-link { stroke: #d29922; stroke-width: 1.2; stroke-dasharray: 3 3; fill: none; }
+
+      /* Paquete 1: Recorrido por TUNNEL 0 (y = 172) */
+      @keyframes packetJourneyT0 {
+        0%   { transform: translate(115px, 232px); opacity: 0; }
+        6%   { transform: translate(115px, 232px); opacity: 1; }
+        18%  { transform: translate(215px, 172px); opacity: 1; }
+        32%  { transform: translate(345px, 172px); opacity: 1; } /* if-tunnel0-to-on-prem */
+        62%  { transform: translate(635px, 172px); opacity: 1; } /* if-tunnel0-to-vpc-demo */
+        76%  { transform: translate(765px, 172px); opacity: 1; }
+        88%  { transform: translate(865px, 232px); opacity: 1; } /* on-prem-router1 */
+        95%  { transform: translate(865px, 232px); opacity: 1; }
+        100% { transform: translate(865px, 232px); opacity: 0; }
+      }
+
+      /* Paquete 2: Recorrido por TUNNEL 1 (y = 304) con ligero desfase para mostrar HA/ECMP */
+      @keyframes packetJourneyT1 {
+        0%, 10% { transform: translate(115px, 232px); opacity: 0; }
+        16%     { transform: translate(115px, 232px); opacity: 1; }
+        28%     { transform: translate(215px, 304px); opacity: 1; }
+        42%     { transform: translate(345px, 304px); opacity: 1; } /* if-tunnel1-to-on-prem */
+        70%     { transform: translate(635px, 304px); opacity: 1; } /* if-tunnel1-to-vpc-demo */
+        82%     { transform: translate(765px, 304px); opacity: 1; }
+        92%     { transform: translate(865px, 232px); opacity: 1; } /* on-prem-router1 */
+        98%     { transform: translate(865px, 232px); opacity: 1; }
+        100%    { transform: translate(865px, 232px); opacity: 0; }
+      }
+
+      /* Cambio plano vs cifrado para Tunnel 0 */
+      @keyframes plainT0 {
+        0%, 34%   { opacity: 1; }
+        36%, 60%  { opacity: 0; }
+        62%, 100% { opacity: 1; }
+      }
+      @keyframes encT0 {
+        0%, 34%   { opacity: 0; }
+        36%, 60%  { opacity: 1; }
+        62%, 100% { opacity: 0; }
+      }
+
+      /* Cambio plano vs cifrado para Tunnel 1 */
+      @keyframes plainT1 {
+        0%, 44%   { opacity: 1; }
+        46%, 68%  { opacity: 0; }
+        70%, 100% { opacity: 1; }
+      }
+      @keyframes encT1 {
+        0%, 44%   { opacity: 0; }
+        46%, 68%  { opacity: 1; }
+        70%, 100% { opacity: 0; }
+      }
+
+      @keyframes bgpPulse {
+        0%, 10%  { opacity: 0.4; }
+        35%, 65% { opacity: 1; }
+        90%, 100%{ opacity: 0.4; }
+      }
+
+      @keyframes step1 { 0%, 25% { fill: #79c0ff; font-weight: 700; } 26%, 100% { fill: #6e7681; font-weight: 400; } }
+      @keyframes step2 { 0%, 25% { fill: #6e7681; } 26%, 55% { fill: #3fb950; font-weight: 700; } 56%, 100% { fill: #6e7681; } }
+      @keyframes step3 { 0%, 55% { fill: #6e7681; } 56%, 80% { fill: #d29922; font-weight: 700; } 81%, 100% { fill: #6e7681; } }
+      @keyframes step4 { 0%, 80% { fill: #6e7681; } 81%, 100% { fill: #79c0ff; font-weight: 700; } }
+
+      .pkt-t0-mover { animation: packetJourneyT0 10s ease-in-out infinite; }
+      .pkt-t1-mover { animation: packetJourneyT1 10s ease-in-out infinite; }
+      .t0-plain { animation: plainT0 10s linear infinite; }
+      .t0-enc { animation: encT0 10s linear infinite; }
+      .t1-plain { animation: plainT1 10s linear infinite; }
+      .t1-enc { animation: encT1 10s linear infinite; }
+      .bgp-active { animation: bgpPulse 10s ease-in-out infinite; }
+
+      .s1 { animation: step1 10s infinite; }
+      .s2 { animation: step2 10s infinite; }
+      .s3 { animation: step3 10s infinite; }
+      .s4 { animation: step4 10s infinite; }
+    </style>
+  </defs>
+
+  
+  <rect class="bg" x="0" y="0" width="980" height="460" />
+
+  
+  <text class="title" x="28" y="34">GCP HA VPN Dual-Tunnel &amp; Dynamic BGP Topology (GSP619)</text>
+  <text class="subtitle" x="28" y="54">Active/Active BGP Peering (TUNNEL0: 169.254.0.1/30 ↔ .0.2/30 | TUNNEL1: 169.254.1.1/30 ↔ .1.2/30) in us-west1</text>
+
+  
+  <rect class="zone-cloud" x="20" y="74" width="435" height="325" />
+  <text class="zone-label" x="34" y="94">CLOUD ROUTER: vpc-demo-router1 (us-west1)</text>
+
+  <rect class="zone-wan" x="463" y="74" width="54" height="325" />
+  <text class="zone-label" x="490" y="94" text-anchor="middle">WAN</text>
+
+  <rect class="zone-onprem" x="525" y="74" width="435" height="325" />
+  <text class="zone-label" x="539" y="94">ON-PREMISE ROUTER: on-prem-router1 (us-west1)</text>
+
+  
+  
+  <path class="link-line" d="M 190 218 L 215 172 L 270 172" />
+  <path class="link-line" d="M 190 246 L 215 304 L 270 304" />
+  
+  <path class="link-line" d="M 710 172 L 765 172 L 790 218" />
+  <path class="link-line" d="M 710 304 L 765 304 L 790 246" />
+
+  
+  <rect class="tunnel-pipe" x="445" y="156" width="90" height="32" />
+  <text class="tunnel-label" x="490" y="148">IPsec Tunnel 0</text>
+
+  <rect class="tunnel-pipe" x="445" y="288" width="90" height="32" />
+  <text class="tunnel-label" x="490" y="280">IPsec Tunnel 1</text>
+
+  
+  <g class="bgp-active">
+    
+    <path class="bgp-link" d="M 345 140 L 345 114 L 635 114 L 635 140" />
+    <rect x="370" y="103" width="240" height="19" rx="4" fill="#161b22" stroke="#d29922" stroke-width="1" />
+    <text class="bgp-badge" x="490" y="116">BGP T0: 169.254.0.1 ↔ 169.254.0.2</text>
+
+    
+    <path class="bgp-link" d="M 345 336 L 345 364 L 635 364 L 635 336" />
+    <rect x="370" y="354" width="240" height="19" rx="4" fill="#161b22" stroke="#d29922" stroke-width="1" />
+    <text class="bgp-badge" x="490" y="367">BGP T1: 169.254.1.1 ↔ 169.254.1.2</text>
+  </g>
+
+  
+  <g transform="translate(36, 184)">
+    <rect class="node-router" width="154" height="96" />
+    <text class="node-title" x="77" y="22">vpc-demo-router1</text>
+    <text class="node-ip" x="77" y="38">Local ASN: 65001</text>
+    <text class="node-ip" x="77" y="56">Peer0: bgp-on-prem-tunnel0</text>
+    <text class="node-ip" x="77" y="70">Peer1: bgp-on-prem-tunnel1</text>
+    <text class="node-ip" x="77" y="84">Remote ASN: 65002</text>
+  </g>
+
+  
+  <g transform="translate(270, 140)">
+    <rect class="node-vpn" width="150" height="64" />
+    <text class="node-title" x="75" y="20">if-tunnel0-to-on-prem</text>
+    <text class="node-ip" x="75" y="36">169.254.0.1/30</text>
+    <text class="node-ip" x="75" y="50">vpc-demo-tunnel0</text>
+  </g>
+
+  
+  <g transform="translate(270, 272)">
+    <rect class="node-vpn" width="150" height="64" />
+    <text class="node-title" x="75" y="20">if-tunnel1-to-on-prem</text>
+    <text class="node-ip" x="75" y="36">169.254.1.1/30</text>
+    <text class="node-ip" x="75" y="50">vpc-demo-tunnel1</text>
+  </g>
+
+  
+  <g transform="translate(560, 140)">
+    <rect class="node-vpn" width="150" height="64" />
+    <text class="node-title" x="75" y="20">if-tunnel0-to-vpc-demo</text>
+    <text class="node-ip" x="75" y="36">169.254.0.2/30</text>
+    <text class="node-ip" x="75" y="50">on-prem-tunnel0</text>
+  </g>
+
+  
+  <g transform="translate(560, 272)">
+    <rect class="node-vpn" width="150" height="64" />
+    <text class="node-title" x="75" y="20">if-tunnel1-to-vpc-demo</text>
+    <text class="node-ip" x="75" y="36">169.254.1.2/30</text>
+    <text class="node-ip" x="75" y="50">on-prem-tunnel1</text>
+  </g>
+
+  
+  <g transform="translate(790, 184)">
+    <rect class="node-router" width="154" height="96" />
+    <text class="node-title" x="77" y="22">on-prem-router1</text>
+    <text class="node-ip" x="77" y="38">Local ASN: 65002</text>
+    <text class="node-ip" x="77" y="56">Peer0: bgp-vpc-demo-tunnel0</text>
+    <text class="node-ip" x="77" y="70">Peer1: bgp-vpc-demo-tunnel1</text>
+    <text class="node-ip" x="77" y="84">Remote ASN: 65001</text>
+  </g>
+
+  
+  <g class="pkt-t0-mover">
+    <g class="t0-plain">
+      <rect x="-36" y="-12" width="72" height="24" rx="5" fill="#1f6feb" stroke="#79c0ff" stroke-width="1.5" />
+      <text x="0" y="3.5" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">PKT T0</text>
+    </g>
+    <g class="t0-enc">
+      <rect x="-44" y="-12" width="88" height="24" rx="5" fill="#238636" stroke="#7ee787" stroke-width="1.5" />
+      <text x="0" y="3.5" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">🔒 ESP T0</text>
+    </g>
+  </g>
+
+  
+  <g class="pkt-t1-mover">
+    <g class="t1-plain">
+      <rect x="-36" y="-12" width="72" height="24" rx="5" fill="#1f6feb" stroke="#79c0ff" stroke-width="1.5" />
+      <text x="0" y="3.5" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">PKT T1</text>
+    </g>
+    <g class="t1-enc">
+      <rect x="-44" y="-12" width="88" height="24" rx="5" fill="#238636" stroke="#7ee787" stroke-width="1.5" />
+      <text x="0" y="3.5" fill="#ffffff" font-family="ui-monospace, monospace" font-size="9" font-weight="700" text-anchor="middle">🔒 ESP T1</text>
+    </g>
+  </g>
+
+  
+  <g font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, sans-serif" font-size="11">
+    <text class="s1" x="28" y="428">1.1–2.2 Tunnel 0 (.0.1/30 ↔ .0.2/30)</text>
+    <text class="s2" x="295" y="428">3.1–4.2 Tunnel 1 (.1.1/30 ↔ .1.2/30)</text>
+    <text class="s3" x="565" y="428">Dual BGP Peering (ASN 65001 ↔ 65002)</text>
+    <text class="s4" x="820" y="428">HA Active/Active</text>
+  </g>
+</svg>
