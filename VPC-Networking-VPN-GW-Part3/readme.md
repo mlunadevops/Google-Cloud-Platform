@@ -62,7 +62,7 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
     --region us-west1
 ```
 
-## **TUNNEL0** INTERFACE CONFIGURATION OF THE ROUTER **(on-prem-router1)**:
+## TUNNEL0** INTERFACE CONFIGURATION OF THE ROUTER **(on-prem-router1):
 
 **2.1)** Creation in CLOUD ROUTER **(on-prem-router1)** of the interface **(if-tunnel0-to-vpc-demo)** that will connect to the tunnel **(if-tunnel0-to-vpc-demo)**:
 
