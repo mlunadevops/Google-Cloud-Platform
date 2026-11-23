@@ -80,6 +80,9 @@ gcloud compute routers add-interface vpc-demo-router1 \
     --region us-west1
 ```
 
+![CONFIGURACION](images/vpn.svg)
+
+
 **1.2)** Configuracion en CLOUD ROUTER **(vpc-demo-router1)** del peer BGP **(169.254.0.2)** que se conectara a la interface tunel **(if-tunnel0-to-on-prem**) creada en el paso **1.1**:
 
 ```text
