@@ -37,14 +37,34 @@
 
 Creacion de la interface **tunnel0** en el router **(vpc-demo-router1)** en el pvc network **(vpc-demo)**: 
 
-Tenemos 2 VPC routers por localidad:
+Tenemos 2 VPC: 
 
-A) Interface tunnel0
-B) Interface tunnel1
+A) **vpc-demo**: 
+
+B) **on-prem-vpc**: 
+
+Tenemos 2 Gateway VPN: 
+
+A) **vpc-demo-vpn-gw1**: 
+
+B) **on-prem-vpn-gw1**: 
+
+Tenemos 2 Cloud Router: 
+
+A) **vpc-demo-router1**: 
+
+B) **on-prem-router1**: 
+
+Tenemos 2 Interfaces por Gateway VPN: 
+
+A) **vpc-demo-router1**: 
+
+B) **on-prem-router1**: 
 
 Tenemos que crear 2 interfaces tunnel por Cloud Router:
 
 A) Interface tunnel0
+
 B) Interface tunnel1
 
 **1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
