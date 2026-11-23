@@ -91,6 +91,12 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ![Tunnel0](images/vpn1.svg)
 
+We have to create 2 tunnel interfaces per Cloud Router:
+
+A) Interface **tunnel0**
+
+B) Interface **tunnel1**
+
 
 **3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel1-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel1)**:
 
