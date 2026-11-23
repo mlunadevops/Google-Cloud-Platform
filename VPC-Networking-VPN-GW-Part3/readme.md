@@ -28,7 +28,7 @@
 
 ![CONFIGURACION](images/01tunnel0.png)
 
-CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER **(vpc-demo-router1)**:
+**CONFIGURACION DE INTERFACES TUNNEL0 DEL ROUTER (vpc-demo-router1)**:
 
 Tenemos que crear 2 interfaces tunnel por Cloud Router:
 
