@@ -39,7 +39,7 @@ B) Interface tunnel1
 
 ![Tunnel0](images/Configtunnel0.jpg)
 
-**1.1)** Creacion en CLOUD ROUTER **(vpc-demo-router1)** de la interface **(if-tunnel0-to-on-prem)** que se conectara al tunel **(vpc-demo-tunnel0)**:
+**1.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel0-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel0)**:
 
 ```text
 gcloud compute routers add-interface vpc-demo-router1 \
@@ -50,8 +50,7 @@ gcloud compute routers add-interface vpc-demo-router1 \
     --region us-west1
 ```
 
-
-**1.2)** Configuracion en CLOUD ROUTER **(vpc-demo-router1)** del peer BGP **(169.254.0.2)** que se conectara a la interface tunel **(if-tunnel0-to-on-prem**) creada en el paso **1.1**:
+**1.2)** Configuration in CLOUD ROUTER **(vpc-demo-router1)** of the BGP peer **(169.254.0.2)** that will connect to the tunnel interface **(if-tunnel0-to-on-prem)** created in step **1.1**:
 
 ```text
 gcloud compute routers add-bgp-peer vpc-demo-router1 \
