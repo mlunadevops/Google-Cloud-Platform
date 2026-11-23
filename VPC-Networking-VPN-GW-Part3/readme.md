@@ -3,8 +3,6 @@
 ## GCP CLOUD HA GSP619
 **CCNP Miguelangel Luna**
 
-![Diagrama de VPN](./images/diagram.svg)
-
 ![Diagrama de VPN](./images/diagram1.svg)
 ---
 
