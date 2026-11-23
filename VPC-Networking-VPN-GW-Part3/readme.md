@@ -23,19 +23,10 @@
 
 ## 3. IMPLEMENTATION:
 
-**Parts 1 and 2:** Create a Python virtual environment (venv).
-We are going to create an "isolated space" to install pyATS without affecting the VM's base system.
-
 **1.1) Create the working folder and enter it::**
 
 ```text
 python3 -m venv csr1kv
-```
-
-**1.2) Enter the virtual environment:**
-
-```text
-cd csr1kv
 ```
 
 **Part 3:** Use the pyATS Testing Library
@@ -47,7 +38,6 @@ Inside the virtual environment (make sure you see (csr1kv) in your terminal), ru
 ```text
 pip3 install pyats[full]
 ```
-
 
 **3.2) Verify the installation**
 
