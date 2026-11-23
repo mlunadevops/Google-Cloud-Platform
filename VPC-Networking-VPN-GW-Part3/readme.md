@@ -92,6 +92,8 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 **TUNNEL1** INTERFACE CONFIGURATION OF THE ROUTER **(vpc-demo-router1)**:
 
+![CONFIGURACION](images/01tunnel1.png)
+
 **3.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel0-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel0)**:
 
 ```text
