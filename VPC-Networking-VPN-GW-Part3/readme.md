@@ -89,7 +89,7 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ![Tunnel0](images/Configtunnel0.jpg)
 
-##TUNNEL1** INTERFACE CONFIGURATION OF THE ROUTER **(vpc-demo-router1)**:
+## TUNNEL1** INTERFACE CONFIGURATION OF THE ROUTER **(vpc-demo-router1)**:
 
 ![CONFIGURACION](images/01tunnel1.png)
 
