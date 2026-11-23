@@ -32,9 +32,9 @@
 
 We have to create 2 tunnel interfaces per Cloud Router:
 
-A) Interface tunnel0
+A) Interface **tunnel0**
 
-B) Interface tunnel1
+B) Interface **tunnel1**
 
 ![CONFIGURACION](images/vpn.svg)
 
