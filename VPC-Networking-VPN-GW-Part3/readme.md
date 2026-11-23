@@ -38,8 +38,6 @@ B) Interface tunnel1
 
 ![CONFIGURACION](images/vpn.svg)
 
-![Tunnel0](images/Configtunnel0.jpg)
-
 **TUNNEL0** INTERFACE CONFIGURATION OF THE ROUTER **(vpc-demo-router1)**:
 
 **1.1)** Creation in CLOUD ROUTER **(vpc-demo-router1)** of the interface **(if-tunnel0-to-on-prem)** that will connect to the tunnel **(vpc-demo-tunnel0)**:
@@ -87,6 +85,9 @@ gcloud compute routers add-bgp-peer on-prem-router1 \
     --peer-asn 65001 \
     --region us-west1
 ```
+We already have tunnel0 configured on both ends, as shown in the following image:
+
+![Tunnel0](images/Configtunnel0.jpg)
 
 **Part 3:** Use the pyATS Testing Library
 
