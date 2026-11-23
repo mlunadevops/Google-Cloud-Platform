@@ -38,8 +38,23 @@
 **1.1) Create the working folder and enter it::**
 
 ```text
-python3 -m venv csr1kv
+gcloud compute routers add-interface vpc-demo-router1 \
+    --interface-name if-tunnel0-to-on-prem \
+    --ip-address 169.254.0.1 \
+    --mask-length 30 \
+    --vpn-tunnel vpc-demo-tunnel0 \
+    --region us-west1
 ```
+
+```text
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel0 \
+    --interface if-tunnel0-to-on-prem \
+    --peer-ip-address 169.254.0.2 \
+    --peer-asn 65002 \
+    --region us-west1
+```
+
 
 **Part 3:** Use the pyATS Testing Library
 
