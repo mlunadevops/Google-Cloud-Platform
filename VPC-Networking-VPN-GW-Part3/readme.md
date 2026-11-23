@@ -96,13 +96,19 @@ We already have tunnel0 configured on both ends, as shown in the following image
 
 ```text
 gcloud compute routers add-interface vpc-demo-router1 \
-    --interface-name if-tunnel0-to-on-prem \
-    --ip-address 169.254.0.1 \
+    --interface-name if-tunnel1-to-on-prem \
+    --ip-address 169.254.1.1 \
     --mask-length 30 \
-    --vpn-tunnel vpc-demo-tunnel0 \
+    --vpn-tunnel vpc-demo-tunnel1 \
     --region us-west1
 ```
+**3.2)** Configuration in CLOUD ROUTER **(vpc-demo-router1)** of the BGP peer **(169.254.0.2)** that will connect to the tunnel interface **(if-tunnel0-to-on-prem)** created in step **1.1**:
 
 ```text
-
+gcloud compute routers add-bgp-peer vpc-demo-router1 \
+    --peer-name bgp-on-prem-tunnel1 \
+    --interface if-tunnel1-to-on-prem \
+    --peer-ip-address 169.254.1.2 \
+    --peer-asn 65002 \
+    --region us-west1
 ```
