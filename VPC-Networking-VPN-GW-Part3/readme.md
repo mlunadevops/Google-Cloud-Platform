@@ -12,11 +12,11 @@
 
 ## 1. Introduction and Theoretical Framework
 
-![CONFIGURACION](images/01Topologia.png)
+![OBJETIVE](images/topologia.svg)
 
 ## 2. Topology and BGP Neighbor Establishment
 
-![BGP WEIGTH](images/topologia.svg)
+![CONFIGURACION](images/01Topologia.png)
 
 ## 3. IMPLEMENTATION ROUTER TUNNEL0 INTERFACE CONFIGURATION (vpc-demo-router1):
 
