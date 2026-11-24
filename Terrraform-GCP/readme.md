@@ -54,6 +54,17 @@ Estructura de carpetas:
 variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)
 
 ```text
+variable "region" {
+  type = string
+}
+
+variable "zone" {
+  type = string
+}
+
+variable "project_id" {
+  type = string
+}
 
 ```
 
