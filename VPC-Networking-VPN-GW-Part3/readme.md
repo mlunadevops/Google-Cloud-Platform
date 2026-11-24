@@ -53,6 +53,7 @@ gcloud compute routers add-bgp-peer vpc-demo-router1 \
     --peer-asn 65002 \
     --region us-west1
 ```
+![CONFIGURACION](images/02tunnel0.png)
 
 ## TUNNEL0** INTERFACE CONFIGURATION OF THE ROUTER **(on-prem-router1):
 
