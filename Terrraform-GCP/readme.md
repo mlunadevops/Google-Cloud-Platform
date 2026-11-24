@@ -16,15 +16,14 @@
 
 ## 1. Introduction and Theoretical Framework
 
-Topologia:
+**Topologia:**
 
 ![Topologia](images/topologia.svg)
 
 
-
 ## 2. Topology and BGP Neighbor Establishment
 
-Variables de entorno:
+**Variables de entorno:**
 
 ```text
 export BUCKET="your-bucket-name"
@@ -38,7 +37,7 @@ gcloud config set compute/zone "$ZONE"
 gcloud config set compute/region "$REGION"
 ```
 
-Estructura de carpetas:
+**Estructura de carpetas:**
 
 ```text
 .
@@ -55,7 +54,7 @@ Estructura de carpetas:
         └── variables.tf
 ```
 
-variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)
+**variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)**
 
 ```text
 variable "region" {
@@ -71,7 +70,7 @@ variable "project_id" {
 }
 ```
 
-modules/instances/instances.tf (estado final: VMs e2-standard-2 en subnet-01 y subnet-02):
+**modules/instances/instances.tf (estado final: VMs e2-standard-2 en subnet-01 y subnet-02):**
 
 ```text
 resource "google_compute_instance" "tf-instance-1" {
@@ -121,7 +120,7 @@ resource "google_compute_instance" "tf-instance-2" {
 }
 ```
 
-modules/storage/storage.tf:
+**modules/storage/storage.tf:**
 
 ```text
 resource "google_storage_bucket" "storage-bucket" {
@@ -132,6 +131,7 @@ resource "google_storage_bucket" "storage-bucket" {
 }
 ```
 
+****
 
 ```text
 terraform {
