@@ -18,6 +18,10 @@
 
 **pyATS =** The infrastructure for organizing, running, and reporting automated network tests in a professional way.
 
+![Topologia](images/topologia.svg)
+
+
+
 ## 2. Topology and BGP Neighbor Establishment
 
 Variables de entorno:
@@ -198,10 +202,6 @@ resource "google_compute_firewall" "tf-firewall" {
   depends_on = [module.vpc]
 }
 ```
-
-
-
-![BGP WEIGTH](images/01Topologia.jpg)
 
 ## 3. IMPLEMENTATION:
 
