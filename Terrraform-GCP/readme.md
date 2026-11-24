@@ -51,6 +51,14 @@ Estructura de carpetas:
         └── variables.tf
 ```
 
+variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)
+
+```text
+
+```
+
+
+
 
 ![BGP WEIGTH](images/01Topologia.jpg)
 
