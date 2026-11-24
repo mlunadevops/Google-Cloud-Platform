@@ -8,7 +8,7 @@
 
 ## CONTENT:
 
-[Google](https://www.google.com)
+[Google Skills HA GSP619](https://www.skills.google/)
 
 ## 1. Introduction and Theoretical Framework
 
