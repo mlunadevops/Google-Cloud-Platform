@@ -65,9 +65,139 @@ variable "zone" {
 variable "project_id" {
   type = string
 }
-
 ```
 
+modules/instances/instances.tf (estado final: VMs e2-standard-2 en subnet-01 y subnet-02):
+
+```text
+resource "google_compute_instance" "tf-instance-1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network    = var.vpc_name
+    subnetwork = "subnet-01"
+  }
+
+  metadata_startup_script = <<-EOT
+    #!/bin/bash
+  EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network    = var.vpc_name
+    subnetwork = "subnet-02"
+  }
+
+  metadata_startup_script = <<-EOT
+    #!/bin/bash
+  EOT
+
+  allow_stopping_for_update = true
+}
+```
+
+modules/storage/storage.tf:
+
+```text
+resource "google_storage_bucket" "storage-bucket" {
+  name                        = var.bucket_name
+  location                    = "US"
+  force_destroy               = true
+  uniform_bucket_level_access = true
+}
+```
+
+
+```text
+terraform {
+  backend "gcs" {
+    bucket = "REPLACE_WITH_BUCKET"
+    prefix = "terraform/state"
+  }
+
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+
+module "vpc" {
+  source       = "terraform-google-modules/network/google"
+  version      = "10.0.0"
+  project_id   = var.project_id
+  network_name = var.vpc_name
+  routing_mode = "GLOBAL"
+
+  subnets = [
+    {
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = var.region
+    },
+    {
+      subnet_name   = "subnet-02"
+      subnet_ip     = "10.10.20.0/24"
+      subnet_region = var.region
+    }
+  ]
+}
+
+module "instances" {
+  source   = "./modules/instances"
+  zone     = var.zone
+  vpc_name = module.vpc.network_name
+
+  depends_on = [module.vpc]
+}
+
+module "storage" {
+  source      = "./modules/storage"
+  bucket_name = var.bucket_name
+}
+
+resource "google_compute_firewall" "tf-firewall" {
+  name    = "tf-firewall"
+  network = module.vpc.network_self_link
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+
+  depends_on = [module.vpc]
+}
+```
 
 
 
