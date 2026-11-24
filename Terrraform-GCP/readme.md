@@ -20,6 +20,36 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
+```text
+export BUCKET="your-bucket-name"
+export VPC="your-vpc-name"
+export INSTANCE="your-instance-name"
+export ZONE="your-zone"
+export REGION="${ZONE%-*}"
+export PROJECT_ID="$(gcloud config get-value project 2>/dev/null)"
+
+gcloud config set compute/zone "$ZONE"
+gcloud config set compute/region "$REGION"
+```
+
+Estructura de carpetas:
+
+```text
+.
+├── main.tf
+├── variables.tf
+└── modules/
+    ├── instances/
+    │   ├── instances.tf
+    │   ├── outputs.tf
+    │   └── variables.tf
+    └── storage/
+        ├── storage.tf
+        ├── outputs.tf
+        └── variables.tf
+```
+
+
 ![BGP WEIGTH](images/01Topologia.jpg)
 
 ## 3. IMPLEMENTATION:
@@ -35,9 +65,7 @@ python3 -m venv csr1kv
 
 **1.2) Enter the virtual environment:**
 
-```text
-cd csr1kv
-```
+
 
 **Part 3:** Use the pyATS Testing Library
 
