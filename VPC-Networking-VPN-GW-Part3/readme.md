@@ -142,6 +142,7 @@ gcloud compute routers add-bgp-peer  on-prem-router1 \
     --peer-asn 65001 \
     --region us-west1
 ```
+![Tunnel0](images/03tunnel1.png)
 
 We already have tunnel0 configured on both ends, as shown in the following image:
 
