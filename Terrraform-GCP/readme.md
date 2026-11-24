@@ -131,7 +131,7 @@ resource "google_storage_bucket" "storage-bucket" {
 }
 ```
 
-****
+Define tf-instance-1 and tf-instance-2 in modules/instances/instances.tf:   
 
 ```text
 terraform {
