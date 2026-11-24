@@ -22,7 +22,7 @@
 
 ![CONFIGURACION](images/01tunnel0.png)
 
-We have to create 2 tunnel interfaces per Cloud Router:
+We have to create 2 tunnel interfaces per Cloud Router, we are going ton configure the following interfaces in **(vpc-demo-router1)**:
 
 A) Interface **tunnel0**
 
