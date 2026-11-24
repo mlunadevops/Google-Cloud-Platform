@@ -16,7 +16,7 @@
 
 ## 1. Introduction and Theoretical Framework
 
-**pyATS =** The infrastructure for organizing, running, and reporting automated network tests in a professional way.
+Topologia:
 
 ![Topologia](images/topologia.svg)
 
