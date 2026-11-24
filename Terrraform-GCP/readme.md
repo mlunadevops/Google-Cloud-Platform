@@ -20,6 +20,8 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
+Variables de entorno:
+
 ```text
 export BUCKET="your-bucket-name"
 export VPC="your-vpc-name"
