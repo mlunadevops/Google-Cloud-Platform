@@ -314,7 +314,7 @@ EOF
 
 terraform init
 ```
-
+![Configurar Backend Remoto](images/03Configurarbackendremoto.png)
 
 
 
