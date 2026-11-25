@@ -49,6 +49,15 @@
 
 **1)** Instalacion de Terraform:
 
+**1.1)** añade la clave GPG de HashiCorp.
+
+**1.2)** registra su repositorio APT. 
+
+**1.3)** instala Terraform. Luego lo ejecuta para aplicarlo de inmediato.
+
+
+
+
 ```text
 cat <<'EOF' > ~/.customize_environment
 # Set up HashiCorp repository and install Terraform
