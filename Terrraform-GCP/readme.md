@@ -98,6 +98,11 @@ resource "google_compute_instance" "instance_2" {
 }
 ```
 
+**Archivo variables.tf:**  Define los parámetros de entrada (valores que pueden cambiar)
+
+```text
+
+```
 
 
 **Topologia:**
