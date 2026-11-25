@@ -86,10 +86,7 @@ terraform --version
 ![Flujo Trabajo](images/02Flujo.jpg)
 
 
-
-2) 
-
-
+## 3. IMPLEMENTATION:
 
 **Variables de entorno:**
 
