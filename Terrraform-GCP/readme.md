@@ -438,5 +438,8 @@ echo "gcp-key.json" >> .gitignore # Crucial
 **Paso 3:**  Hacer commit y push del código de Terraform:
 
 ```text
+git add .
+git commit -m "Initial Terraform configuration"
+git push -u origin main
 
 ```
