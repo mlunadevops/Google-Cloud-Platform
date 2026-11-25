@@ -187,6 +187,18 @@ terraform import module.instances.google_compute_instance.tf-instance-1 39314944
 terraform import module.instances.google_compute_instance.tf-instance-2 2474986924686394572
 ```
 
+**2.3)**Siguiente paso para cerrar la Task 2
+Ejecuta terraform plan y terraform apply -auto-approve para aplicar los cambios pendientes sobre las instancias importadas:
+
+
+```text
+terraform plan
+terraform apply -auto-approve
+```
+
+
+
+
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
