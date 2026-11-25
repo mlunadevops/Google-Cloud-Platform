@@ -71,7 +71,6 @@ Paso 3: Configurar main.tf (Terraform block + Google Provider ~> 6.0)
 Creamos main.tf con el bloque required_providers apuntando a hashicorp/google versión ~> 6.0 y el bloque provider "google" incluyendo project, region y zone:
 
 ```text
-cat << 'EOF' > main.tf
 terraform {
   required_providers {
     google = {
@@ -86,7 +85,13 @@ provider "google" {
   region  = var.region
   zone    = var.zone
 }
-EOF
+
+module "instances" {
+  source     = "./modules/instances"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
 ```
 
 ![Crear la Carpetsa](images/01Maintf.png)
