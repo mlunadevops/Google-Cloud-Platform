@@ -187,16 +187,17 @@ terraform import module.instances.google_compute_instance.tf-instance-1 39314944
 terraform import module.instances.google_compute_instance.tf-instance-2 2474986924686394572
 ```
 
-**2.3)**Siguiente paso para cerrar la Task 2
-Ejecuta terraform plan y terraform apply -auto-approve para aplicar los cambios pendientes sobre las instancias importadas:
+![Terraform Importe](images/02terraformimport.png)
 
+
+**2.3)** Siguiente paso para cerrar la Task 2
+Ejecuta terraform plan y terraform apply -auto-approve para aplicar los cambios pendientes sobre las instancias importadas:
 
 ```text
 terraform plan
 terraform apply -auto-approve
 ```
-
-
+![Terraform plan](images/02terraformplan.png)
 
 
 
