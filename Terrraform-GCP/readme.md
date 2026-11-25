@@ -201,6 +201,38 @@ terraform apply -auto-approve
 
 ![Terraform plan](images/02terraformplandestroy.png)
 
+**Paso 3:** Escribir modules/instances/instances.tf
+
+**3.1)** Crear el bucket en modules/storage/storage.tf (y salida opcional en outputs.tf):
+
+Ejecuta este bloque para definir google_storage_bucket con name = "tf-bucket-732974", location = "US", force_destroy = true y uniform_bucket_level_access = true:
+
+```text
+cat << 'EOF' > modules/storage/storage.tf
+resource "google_storage_bucket" "tf-bucket" {
+  name                        = "tf-bucket-732974"
+  location                    = "US"
+  force_destroy               = true
+  uniform_bucket_level_access = true
+}
+EOF
+
+cat << 'EOF' > modules/storage/outputs.tf
+output "bucket_name" {
+  value = google_storage_bucket.tf-bucket.name
+}
+EOF
+```
+
+![Terraform plan](images/03Storagebucket.png)
+
+
+
+
+
+
+
+
 
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
