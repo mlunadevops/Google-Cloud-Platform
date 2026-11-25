@@ -118,6 +118,58 @@ gcloud compute instances list \
 
 
 
+**Paso 2:** Escribir modules/instances/instances.tf
+
+Ejecuta este bloque en Cloud Shell para definir los dos recursos con el formato mínimo requerido (debian-12, e2-micro, var.zone, metadata_startup_script y allow_stopping_for_update = true):
+
+```text
+cat << 'EOF' > modules/instances/instances.tf
+resource "google_compute_instance" "tf-instance-1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-micro"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-micro"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+EOF
+```
+
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
