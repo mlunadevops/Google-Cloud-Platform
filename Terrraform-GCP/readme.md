@@ -307,6 +307,26 @@ jobs:
         run: terraform apply -auto-approve -input=false
 ```
 
+Parte 7: Verificación y Ejecución del Flujo
+Al hacer commit del archivo terraform.yml, el workflow de GitHub Actions se iniciará automáticamente.
+
+Ve a la pestaña Actions de tu repositorio para ver el progreso.
+
+Si el workflow falla en Terraform Plan, revisa los logs para corregir errores en tus archivos .tf (normalmente de sintaxis o permisos).
+
+Si el workflow llega a Terraform Apply y termina con éxito, GitHub Actions habrá creado tu infraestructura en GCP.
+
+Verificación final en GCP (Opcional pero recomendado):
+
+Entra a la consola de Google Cloud.
+
+Ve a VPC networks -> tf-vpc-345.
+
+Ve a VM instances -> tf-instance-1 y tf-instance-2.
+
+Verifica que ambas VMs existan, estén corriendo y tengan acceso a la red correcta.
+
+Verifica que la regla de firewall tf-firewall esté aplicada.
 
 
 **Topologia:**
