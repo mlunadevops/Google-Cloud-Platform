@@ -418,12 +418,25 @@ gcloud iam service-accounts keys create gcp-key.json \
     --iam-account="github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com"
 ```
 
-Paso 1: Subir el código a GitHub:
+**Paso 1:** Subir el código a GitHub:
 
 ```text
 git init
 git remote add origin git@github.com:TU_USUARIO/TU_REPOSITORIO.git
 ```
 
+**Paso 2:** Crear un archivo .gitignore (para no subir archivos sensibles):
 
+```text
+echo ".terraform/" >> .gitignore
+echo "terraform.tfstate" >> .gitignore
+echo "terraform.tfstate.backup" >> .gitignore
+echo "*.tfvars" >> .gitignore
+echo "gcp-key.json" >> .gitignore # Crucial
+```
 
+**Paso 3:**  Hacer commit y push del código de Terraform:
+
+```text
+
+```
