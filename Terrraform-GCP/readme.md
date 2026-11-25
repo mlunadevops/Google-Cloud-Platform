@@ -314,7 +314,99 @@ EOF
 
 terraform init
 ```
+
 ![Configurar Backend Remoto](images/03Configurarbackendremoto.png)
+
+**Paso 4:**. Usaremos el nombre de la tercera instancia de tu panel del laboratorio (tf-instance-428597), el tipo de máquina e2-standard-2 para las tres instancias y la imagen debian-cloud/debian-12 para la tercera instancia.
+
+Paso 1: Actualizar modules/instances/instances.tf (y opcionalmente outputs.tf)
+Ejecuta este bloque en Cloud Shell para cambiar tf-instance-1 y tf-instance-2 a e2-standard-2 y agregar tf-instance-428597 con e2-standard-2 y debian-12:
+
+```text
+cat << 'EOF' > modules/instances/instances.tf
+resource "google_compute_instance" "tf-instance-1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-428597" {
+  name         = "tf-instance-428597"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+EOF
+
+cat << 'EOF' > modules/instances/outputs.tf
+output "instance_1_name" {
+  value = google_compute_instance.tf-instance-1.name
+}
+
+output "instance_2_name" {
+  value = google_compute_instance.tf-instance-2.name
+}
+
+output "instance_428597_name" {
+  value = google_compute_instance.tf-instance-428597.name
+}
+EOF
+```
+
+![Configurar Backend Remoto](images/04Instances.png)
 
 
 
