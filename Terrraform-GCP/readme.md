@@ -16,6 +16,11 @@
 
 ## 1. Introduction and Theoretical Framework
 
+
+El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions
+
+Estructura de archivos:
+
 **Archivo main.tf:**  Archivo de configuración principal de un proyecto Terraform, define la infraestructura que deseas crear, modificar o gestionar, ya sea declarando los recursos directamente o llamando a módulos que los contengan. Es el plano principal de tu infraestructura: es el lugar donde se describe, de forma legible, qué quieres construir en la nube.
 
 **Ejemplo:**
@@ -97,6 +102,7 @@ resource "google_compute_instance" "instance_2" {
   }
 }
 ```
+--------------------------------------------------------------------------------------
 
 **Archivo variables.tf:**  Define los parámetros de entrada (valores que pueden cambiar)
 
