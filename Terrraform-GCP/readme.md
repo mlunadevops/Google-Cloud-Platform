@@ -488,6 +488,79 @@ terraform init
 terraform apply -auto-approve
 ```
 
+**Paso 6:** Usaremos el módulo oficial de red de Google (terraform-google-modules/network/google) versión 10.0.0, el nombre de VPC de tu panel (tf-vpc-007596), modo de enrutamiento global (GLOBAL) y las dos subredes subnet-01 (10.10.10.0/24) y subnet-02 (10.10.20.0/24) en us-west1.   Paso 1: Agregar el módulo network en main.tf, inicializar y crear la VPC y subredesActualizamos main.tf con el bloque module "vpc" (versión 10.0.0), ejecutamos terraform init para descargar el módulo desde el Terraform Registry y aplicamos para crear la red y ambas subredes:
+
+```text
+cat << 'EOF' > main.tf
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+
+  backend "gcs" {
+    bucket = "tf-bucket-732974"
+    prefix = "terraform/state"
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "10.0.0"
+
+  project_id   = var.project_id
+  network_name = "tf-vpc-007596"
+  routing_mode = "GLOBAL"
+
+  subnets = [
+    {
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = "us-west1"
+    },
+    {
+      subnet_name   = "subnet-02"
+      subnet_ip     = "10.10.20.0/24"
+      subnet_region = "us-west1"
+    }
+  ]
+}
+
+module "instances" {
+  source     = "./modules/instances"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+
+module "storage" {
+  source     = "./modules/storage"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+EOF
+
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+
+
+
+
+
+
+
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
