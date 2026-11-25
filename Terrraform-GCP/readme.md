@@ -49,6 +49,8 @@
 
 **1)** Instalacion de Terraform:
 
+cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un archivo llamado **(customize_environment)**
+
 **1.1)** añade la clave GPG de HashiCorp.
 
 **1.2)** registra su repositorio APT. 
