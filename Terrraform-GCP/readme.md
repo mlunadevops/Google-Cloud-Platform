@@ -63,7 +63,7 @@ Nota: esto se hace para que durante la instalacion todos los paquetes que se des
 
 sudo apt update && sudo apt install -y terraform
 
-Nota: El -y es para que lo instale, sin pedir confirmacion. 
+**Nota:** El -y es para que lo instale, sin pedir confirmacion. 
 
 Hacer todo mediante el siguiente script:
 
