@@ -65,6 +65,29 @@ cp variables.tf modules/storage/variables.tf
 
 
 
+Paso 3: Configurar main.tf (Terraform block + Google Provider ~> 6.0)
+Creamos main.tf con el bloque required_providers apuntando a hashicorp/google versión ~> 6.0 y el bloque provider "google" incluyendo project, region y zone:
+
+```text
+cat << 'EOF' > main.tf
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+EOF
+```
+
+
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
 **Estructura de carpetas:**
