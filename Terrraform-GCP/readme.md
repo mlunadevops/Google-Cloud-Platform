@@ -83,8 +83,11 @@ EOF
 bash ~/.customize_environment
 ```
 
+1.4) Verificar que Terraform se ha instalado correctamente:
 
-
+```text
+terraform --version
+```
 
 2) 
 
