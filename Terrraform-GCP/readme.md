@@ -16,7 +16,89 @@
 
 ## 1. Introduction and Theoretical Framework
 
-**Archivo main.tf:** 
+**Archivo main.tf:**  Archivo de configuración principal de un proyecto Terraform, define la infraestructura que deseas crear, modificar o gestionar, ya sea declarando los recursos directamente o llamando a módulos que los contengan. Es el plano principal de tu infraestructura: es el lugar donde se describe, de forma legible, qué quieres construir en la nube.
+
+**Ejemplo:**
+
+```text
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# 1. VPC Network
+resource "google_compute_network" "vpc_network" {
+  name                    = "tf-vpc-345"
+  auto_create_subnetworks = false
+}
+
+# 2. Subnets
+resource "google_compute_subnetwork" "subnet_1" {
+  name          = "tf-subnet-1"
+  ip_cidr_range = "10.0.1.0/24"
+  region        = "us-central1"
+  network       = google_compute_network.vpc_network.id
+}
+
+resource "google_compute_subnetwork" "subnet_2" {
+  name          = "tf-subnet-2"
+  ip_cidr_range = "10.0.2.0/24"
+  region        = "europe-west1" # Región diferente para la segunda instancia
+  network       = google_compute_network.vpc_network.id
+}
+
+# 3. Firewall Rule
+resource "google_compute_firewall" "firewall_rule" {
+  name    = "tf-firewall"
+  network = google_compute_network.vpc_network.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "80"] # Permitir SSH (22) y HTTP (80)
+  }
+
+  source_ranges = ["0.0.0.0/0"] # Permite tráfico desde cualquier lugar (inseguro para producción, pero aceptable en labs)
+}
+
+# 4. Instances
+resource "google_compute_instance" "instance_1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-medium"
+  zone         = "us-central1-a"
+  tags         = ["web"] # Tag para aplicar la regla de firewall
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.subnet_1.name
+    # Sin acceso a IP externa explícito; por defecto se asigna una efímera en GCP
+  }
+}
+
+resource "google_compute_instance" "instance_2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-medium"
+  zone         = "europe-west1-b"
+  tags         = ["web"] # Tag para aplicar la regla de firewall
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    subnetwork = google_compute_subnetwork.subnet_2.name
+    # Sin acceso a IP externa explícito; por defecto se asigna una efímera en GCP
+  }
+}
+```
+
+
 
 **Topologia:**
 
