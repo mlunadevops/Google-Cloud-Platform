@@ -17,7 +17,27 @@
 ## 1. Introduction and Theoretical Framework
 
 
-El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions
+El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
+
+
+**Estructura de carpetas:**
+
+```text
+.
+├── main.tf
+├── variables.tf
+└── modules/
+    ├── instances/
+    │   ├── instances.tf
+    │   ├── outputs.tf
+    │   └── variables.tf
+    └── storage/
+        ├── storage.tf
+        ├── outputs.tf
+        └── variables.tf
+```
+
+
 
 Estructura de archivos:
 
@@ -137,23 +157,6 @@ Primero, debes crear un Bucket en GCP para esto, por ejemplo: tf-state-bucket-gs
 3. **Remote State Backend:** Provisioning a GCS bucket and migrating local `terraform.tfstate` to a remote `gcs` backend.
 4. **Lifecycle Management:** Scaling machine types (`n1-standard-1` → `e2-standard-2`), provisioning a third instance, and cleanly destroying it via declarative state updates.
 5. **VPC & Firewall:** Deploying a custom global VPC with two regional subnets (`10.10.10.0/24`, `10.10.20.0/24`) using the official Google Terraform network module, migrating VM network interfaces, and opening HTTP ingress (TCP/80).
-
-**Estructura de carpetas:**
-
-```text
-.
-├── main.tf
-├── variables.tf
-└── modules/
-    ├── instances/
-    │   ├── instances.tf
-    │   ├── outputs.tf
-    │   └── variables.tf
-    └── storage/
-        ├── storage.tf
-        ├── outputs.tf
-        └── variables.tf
-```
 
 
 ## 2. Topology and BGP Neighbor Establishment
