@@ -171,7 +171,7 @@ gcloud iam service-accounts create github-actions-sa \
     --display-name "GitHub Actions Service Account"
 ```
 
-**3.3) Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos.
+**3.3)** Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos..
 
 ```text
 gcloud projects add-iam-policy-binding $PROJECT_ID \
@@ -179,7 +179,7 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
     --role="roles/editor"
 ```
 
-**3.3) Crear la clave JSON de la cuenta de servicio:**
+**3.4)** Crear la clave JSON de la cuenta de servicio:**
 
 ```text
 gcloud iam service-accounts keys create gcp-key.json \
