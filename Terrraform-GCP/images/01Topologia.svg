@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 460" width="980" height="460" role="img" aria-label="GSP345 Terraform GCP Network and Remote State Blueprint">
+  <defs>
+    <style>
+      .title-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        fill: #FFFFFF;
+      }
+      .subtitle-text {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 400;
+        fill: #8B949E;
+      }
+      .area-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        font-weight: 600;
+        fill: #8B949E;
+        letter-spacing: 0.8px;
+      }
+      .node-title-main {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        font-weight: 700;
+        fill: #FFFFFF;
+      }
+      .node-title-sec {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        fill: #FFFFFF;
+      }
+      .mono-meta {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 9.5px;
+        fill: #8B949E;
+      }
+      .transit-label {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 9px;
+        font-weight: 600;
+        fill: #3FB950;
+      }
+      .control-text {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 9px;
+        font-weight: 600;
+        fill: #D29922;
+      }
+      .footer-inactive {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        font-weight: 500;
+        fill: #8B949E;
+      }
+      .footer-active {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        font-weight: 700;
+        fill: #58A6FF;
+      }
+      .zone-box {
+        fill: #161B22;
+        fill-opacity: 0.45;
+        stroke: #30363D;
+        stroke-width: 1.5;
+        stroke-dasharray: 4,4;
+      }
+      .wan-strip {
+        fill: #161B22;
+        fill-opacity: 0.25;
+        stroke: #21262D;
+        stroke-width: 1;
+      }
+      .core-card {
+        fill: #1C2128;
+        stroke: #58A6FF;
+        stroke-width: 2;
+      }
+      .sec-card {
+        fill: #1C2128;
+        stroke: #3FB950;
+        stroke-width: 1.5;
+      }
+      .transit-box {
+        fill: rgba(63, 185, 80, 0.12);
+        stroke: #3FB950;
+        stroke-width: 1.5;
+        stroke-dasharray: 4,3;
+      }
+      .control-box {
+        fill: #161B22;
+        stroke: #D29922;
+        stroke-width: 1.5;
+      }
+      .phys-line {
+        stroke: #484F58;
+        stroke-width: 1.5;
+        fill: none;
+      }
+      .control-dash {
+        stroke: #D29922;
+        stroke-width: 1.4;
+        stroke-dasharray: 4,4;
+        fill: none;
+        animation: dashFlow 12s linear infinite;
+      }
+      .core-pulse {
+        animation: statusPulse 12s ease-in-out infinite;
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 0; }
+        to   { stroke-dashoffset: -80; }
+      }
+      @keyframes statusPulse {
+        0%, 100% { stroke: #58A6FF; filter: drop-shadow(0 0 0px rgba(88, 166, 255, 0)); }
+        50%      { stroke: #79C0FF; filter: drop-shadow(0 0 5px rgba(88, 166, 255, 0.35)); }
+      }
+    </style>
+  </defs>
+
+  
+  <rect x="0" y="0" width="980" height="460" fill="#0B1016" />
+
+  
+  <text x="20" y="34" class="title-text">GSP345 Terraform GCP VPC &amp; Remote State Blueprint</text>
+  <text x="20" y="54" class="subtitle-text">Project qwiklabs-gcp-04-152eeefe5bf9 | Region us-west1 | Provider google ~&gt; 6.0 | Network v10.0.0</text>
+
+  
+  
+  <rect x="20" y="72" width="350" height="342" rx="8" class="zone-box" />
+  <text x="34" y="90" class="area-label">GCP VPC · TF-VPC-007596 (GLOBAL)</text>
+
+  
+  <rect x="390" y="72" width="200" height="342" rx="8" class="wan-strip" />
+  <text x="490" y="90" text-anchor="middle" class="area-label">INGRESS / TRANSIT</text>
+
+  
+  <rect x="610" y="72" width="350" height="342" rx="8" class="zone-box" />
+  <text x="624" y="90" class="area-label">COMPUTE (US-WEST1-A) &amp; GCS STATE</text>
+
+  
+  <rect x="315" y="102" width="350" height="36" rx="6" class="control-box" />
+  <text x="490" y="118" text-anchor="middle" class="control-text">TF REMOTE BACKEND (GCS): gs://tf-bucket-732974</text>
+  <text x="490" y="131" text-anchor="middle" class="mono-meta">prefix: terraform/state | uniform_bucket_level_access = true</text>
+
+  
+  <polyline points="315,120 265,120 265,152" class="control-dash" />
+  <polyline points="665,120 785,120 785,152" class="control-dash" />
+
+  
+  <rect x="42" y="152" width="306" height="58" rx="6" class="core-card core-pulse" />
+  <text x="195" y="173" text-anchor="middle" class="node-title-main">tf-vpc-007596</text>
+  <text x="195" y="188" text-anchor="middle" class="mono-meta">module.vpc (v10.0.0) · routing: GLOBAL</text>
+  <text x="195" y="201" text-anchor="middle" class="mono-meta">projects/qwiklabs-gcp-04-152eeefe5bf9/global/networks/tf-vpc-007596</text>
+
+  <rect x="42" y="236" width="306" height="62" rx="6" class="sec-card" />
+  <text x="195" y="257" text-anchor="middle" class="node-title-sec">subnet-01</text>
+  <text x="195" y="272" text-anchor="middle" class="mono-meta">CIDR: 10.10.10.0/24 · region: us-west1</text>
+  <text x="195" y="286" text-anchor="middle" class="mono-meta">Target VM: tf-instance-1 (us-west1-a)</text>
+
+  <rect x="42" y="322" width="306" height="62" rx="6" class="sec-card" />
+  <text x="195" y="343" text-anchor="middle" class="node-title-sec">subnet-02</text>
+  <text x="195" y="358" text-anchor="middle" class="mono-meta">CIDR: 10.10.20.0/24 · region: us-west1</text>
+  <text x="195" y="372" text-anchor="middle" class="mono-meta">Target VM: tf-instance-2 (us-west1-a)</text>
+
+  
+  <polyline points="110,210 110,236" class="phys-line" />
+  <polyline points="195,210 195,322" class="phys-line" />
+
+  
+  <rect x="406" y="162" width="168" height="62" rx="6" class="core-card core-pulse" />
+  <text x="490" y="182" text-anchor="middle" class="node-title-main">tf-firewall</text>
+  <text x="490" y="197" text-anchor="middle" class="mono-meta">INGRESS · ALLOW TCP:80</text>
+  <text x="490" y="211" text-anchor="middle" class="mono-meta">source_ranges: 0.0.0.0/0</text>
+
+  
+  <rect x="406" y="244" width="168" height="46" rx="6" class="transit-box" />
+  <text x="490" y="259" text-anchor="middle" class="transit-label">PATH 01 · TCP/80 ACTIVE</text>
+  <text x="490" y="275" text-anchor="middle" class="mono-meta">10.10.10.0/24 &lt;-&gt; tf-instance-1</text>
+
+  
+  <rect x="406" y="330" width="168" height="46" rx="6" class="transit-box" />
+  <text x="490" y="345" text-anchor="middle" class="transit-label">PATH 02 · TCP/80 ACTIVE</text>
+  <text x="490" y="361" text-anchor="middle" class="mono-meta">10.10.20.0/24 &lt;-&gt; tf-instance-2</text>
+
+  
+  <line x1="348" y1="181" x2="406" y2="181" class="phys-line" />
+  <line x1="348" y1="267" x2="406" y2="267" class="phys-line" />
+  <line x1="574" y1="267" x2="632" y2="267" class="phys-line" />
+  <line x1="348" y1="353" x2="406" y2="353" class="phys-line" />
+  <line x1="574" y1="353" x2="632" y2="353" class="phys-line" />
+
+  
+  <rect x="632" y="152" width="306" height="58" rx="6" class="core-card core-pulse" />
+  <text x="785" y="173" text-anchor="middle" class="node-title-main">tf-bucket-732974</text>
+  <text x="785" y="188" text-anchor="middle" class="mono-meta">module.storage · location: US · force_destroy</text>
+  <text x="785" y="201" text-anchor="middle" class="mono-meta">Remote State: terraform/default.tfstate</text>
+
+  <rect x="632" y="236" width="306" height="62" rx="6" class="sec-card" />
+  <text x="785" y="257" text-anchor="middle" class="node-title-sec">tf-instance-1</text>
+  <text x="785" y="272" text-anchor="middle" class="mono-meta">e2-standard-2 · debian-12 · us-west1-a</text>
+  <text x="785" y="286" text-anchor="middle" class="mono-meta">nic0: tf-vpc-007596 / subnet-01</text>
+
+  <rect x="632" y="322" width="306" height="62" rx="6" class="sec-card" />
+  <text x="785" y="343" text-anchor="middle" class="node-title-sec">tf-instance-2</text>
+  <text x="785" y="358" text-anchor="middle" class="mono-meta">e2-standard-2 · debian-12 · us-west1-a</text>
+  <text x="785" y="372" text-anchor="middle" class="mono-meta">nic0: tf-vpc-007596 / subnet-02</text>
+
+  
+  <circle cx="348" cy="267" r="4" fill="#3FB950">
+    <animate attributeName="cx" values="348;632;348" dur="14s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="14s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="632" cy="353" r="4" fill="#58A6FF">
+    <animate attributeName="cx" values="632;348;632" dur="18s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.9;1;0.9" dur="18s" repeatCount="indefinite" />
+  </circle>
+
+  
+  <rect x="335" y="392" width="310" height="20" rx="4" class="control-box" />
+  <text x="490" y="405" text-anchor="middle" class="control-text">POLICY: tf-firewall -&gt; tf-vpc-007596 (TCP/80)</text>
+  <polyline points="335,402 195,402 195,384" class="control-dash" />
+  <polyline points="645,402 785,402 785,384" class="control-dash" />
+
+  
+  <line x1="20" y1="424" x2="960" y2="424" stroke="#21262D" stroke-width="1" />
+  <text x="20" y="440" class="footer-inactive">1. Import &amp; e2-standard-2</text>
+  <text x="245" y="440" class="footer-inactive">2. GCS Backend (terraform/state)</text>
+  <text x="515" y="440" class="footer-inactive">3. VPC tf-vpc-007596 + 2 Subnets</text>
+  <text x="775" y="440" class="footer-active">4. Firewall TCP:80 Active</text>
+</svg>
