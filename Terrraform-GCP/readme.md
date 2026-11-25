@@ -15,6 +15,9 @@
 [Google](https://www.google.com)
 
 ## 1. Introduction and Theoretical Framework
+
+## 1. TAREA 1:
+
 1.1)  Instalacion de TERRAFORM:
 
 ![Terraform Install](images/01Terraform.png)
@@ -98,6 +101,21 @@ terraform init
 ```
 
 ![Terraforminit](images/01Terraforminit.png)
+
+
+## 1. TAREA 2:
+
+**Paso 1:** Consultar los datos exactos de tf-instance-1 y tf-instance-2 en Cloud Shell
+Ejecuta este comando en Cloud Shell para ver la zona, el machine_type y el id de ambas instancias:
+
+```text
+gcloud compute instances list \
+  --filter="name=('tf-instance-1','tf-instance-2')" \
+  --format="table(name,zone,machineType.basename(),id)"
+```
+
+![Terraforminit](images/02instancias.png)
+
 
 
 
