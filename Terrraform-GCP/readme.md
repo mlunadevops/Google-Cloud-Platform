@@ -48,8 +48,6 @@
 
 ![Topologia](images/01Topologia.jpg)
 
-
-
 **1)** Instalacion de Terraform:
 
 cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un archivo llamado **(customize_environment)**
@@ -84,6 +82,10 @@ bash ~/.customize_environment
 ```text
 terraform --version
 ```
+
+![Flujo Trabajo](images/02Flujo.jpg)
+
+
 
 2) 
 
