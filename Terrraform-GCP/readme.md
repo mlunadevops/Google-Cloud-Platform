@@ -101,7 +101,16 @@ resource "google_compute_instance" "instance_2" {
 **Archivo variables.tf:**  Define los parámetros de entrada (valores que pueden cambiar)
 
 ```text
+variable "project_id" {
+  description = "The ID of the project where resources will be created"
+  type        = string
+}
 
+variable "region" {
+  description = "The region for the resources"
+  type        = string
+  default     = "us-central1" # Cambia esto si el lab pide otra
+}
 ```
 
 
