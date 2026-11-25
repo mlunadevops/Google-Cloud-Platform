@@ -19,7 +19,6 @@
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
-
 **Estructura de carpetas:**
 
 ```text
@@ -36,7 +35,6 @@ El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red V
         ├── outputs.tf
         └── variables.tf
 ```
-
 
 
 Estructura de archivos:
@@ -154,9 +152,16 @@ terraform {
 
 --------------------------------------------------------------------------------------
 
-
-
 Primero, debes crear un Bucket en GCP para esto, por ejemplo: tf-state-bucket-gsp345-xyz. Sustituye TU-BUCKET por el nombre real.
+
+
+
+Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions
+GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
+
+
+
+
 
 
 **Topologia:**
@@ -379,19 +384,24 @@ resource "google_compute_firewall" "tf-firewall" {
 }
 ```
 
-## 3. IMPLEMENTATION:
+## 3. Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions
 
-**Parts 1 and 2:** Create a Python virtual environment (venv).
-We are going to create an "isolated space" to install pyATS without affecting the VM's base system.
+GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
 
-**1.1) Create the working folder and enter it::**
+
+**3.1) Obtener el ID de tu proyecto::**
 
 ```text
-python3 -m venv csr1kv
+PROJECT_ID=$(gcloud config get-value project)
+echo $PROJECT_ID
 ```
 
-**1.2) Enter the virtual environment:**
+**3.2) Crear la cuenta de servicios:**
 
+```text
+gcloud iam service-accounts create github-actions-sa \
+    --display-name "GitHub Actions Service Account"
+```
 
 
 **Part 3:** Use the pyATS Testing Library
