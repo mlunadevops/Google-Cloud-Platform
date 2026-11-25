@@ -613,12 +613,97 @@ terraform plan
 terraform apply -auto-approve
 ```
 
+**Paso 7:** 
+
+**Paso 7.1:**  crearemos el recurso google_compute_firewall llamado tf-firewall en main.tf, asociado a la red tf-vpc-007596 (projects/qwiklabs-gcp-04-152eeefe5bf9/global/networks/tf-vpc-007596), permitiendo tráfico de entrada (ingress) desde 0.0.0.0/0 en el puerto TCP 80.   Paso 1: Inspeccionar el estado para verificar el ID/self_link de la redAntes de escribir el recurso, puedes revisar el recurso de red dentro del estado remoto en Cloud Shell:
+
+
+```text
+terraform state list
+terraform state show 'module.vpc.module.vpc.google_compute_network.network'
+```
+
+**Paso 7.2:** Agregar el recurso google_compute_firewall (tf-firewall) en main.tfActualiza main.tf incluyendo resource "google_compute_firewall" "tf-firewall" con name = "tf-firewall", network apuntando a projects/${var.project_id}/global/networks/tf-vpc-007596 (o module.vpc.network_id), source_ranges = ["0.0.0.0/0"] y allow en tcp puerto 80:   
+
+```text
+cat << 'EOF' > main.tf
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+
+  backend "gcs" {
+    bucket = "tf-bucket-732974"
+    prefix = "terraform/state"
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+
+module "vpc" {
+  source  = "terraform-google-modules/network/google"
+  version = "10.0.0"
+
+  project_id   = var.project_id
+  network_name = "tf-vpc-007596"
+  routing_mode = "GLOBAL"
+
+  subnets = [
+    {
+      subnet_name   = "subnet-01"
+      subnet_ip     = "10.10.10.0/24"
+      subnet_region = "us-west1"
+    },
+    {
+      subnet_name   = "subnet-02"
+      subnet_ip     = "10.10.20.0/24"
+      subnet_region = "us-west1"
+    }
+  ]
+}
+
+resource "google_compute_firewall" "tf-firewall" {
+  name    = "tf-firewall"
+  network = "projects/${var.project_id}/global/networks/tf-vpc-007596"
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+}
+
+module "instances" {
+  source     = "./modules/instances"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+
+module "storage" {
+  source     = "./modules/storage"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+EOF
+```
+
+![Terraform List](images/07Terrafomstatelist.png)
 
 
 
 
-
-
+**Paso 7.3:** Inicializar, revisar el plan y aplicar los cambios
+Ejecuta estos comandos en Cloud Shell para crear la regla de firewall:
 
 
 
