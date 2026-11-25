@@ -171,7 +171,7 @@ gcloud iam service-accounts create github-actions-sa \
     --display-name "GitHub Actions Service Account"
 ```
 
-**3.3)** Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos..
+**3.3) Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos**.
 
 ```text
 gcloud projects add-iam-policy-binding $PROJECT_ID \
@@ -185,6 +185,46 @@ gcloud projects add-iam-policy-binding $PROJECT_ID \
 gcloud iam service-accounts keys create gcp-key.json \
     --iam-account="github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com"
 ```
+
+**IMPORTANTE:** El contenido del archivo gcp-key.json se usará en la configuración de GitHub. No subas este archivo a tu repositorio público.
+
+##  Parte 4: Configuración en GitHub (Repositorio y Actions):
+
+En este punto, configurarás tu repositorio de GitHub para almacenar el código y ejecutar el flujo de CI/CD.
+
+**4.1)Subir el código a GitHub:**
+
+Paso 1:
+Inicializar Git y conectar con tu repositorio remoto:Si ya clonaste el repo base, salta este paso y ve a "Paso 2: Configurar Secretos".
+
+# Si empezaste desde cero:
+```text
+git init
+git remote add origin git@github.com:TU_USUARIO/TU_REPOSITORIO.git
+```
+
+**4.2)Crear un archivo .gitignore (para no subir archivos sensibles)::**
+
+```text
+echo ".terraform/" >> .gitignore
+echo "terraform.tfstate" >> .gitignore
+echo "terraform.tfstate.backup" >> .gitignore
+echo "*.tfvars" >> .gitignore
+echo "gcp-key.json" >> .gitignore # Crucial
+```
+
+**4.3)Hacer commit y push del código de Terraform:**.
+
+```text
+git add .
+git commit -m "Initial Terraform configuration"
+git push -u origin main
+```
+
+
+
+
+
 
 **Topologia:**
 
