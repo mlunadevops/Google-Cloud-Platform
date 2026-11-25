@@ -30,7 +30,13 @@ touch modules/instances/instances.tf modules/instances/outputs.tf modules/instan
 touch modules/storage/storage.tf modules/storage/outputs.tf modules/storage/variables.tf
 ```
 
-![Crear la Carpetsa](images/01Terraform.png)
+![Crear la Carpetsa](images/01carpetas.png)
+
+
+Paso 2: Rellenar los tres archivos variables.tf
+El enunciado pide agregar las variables region, zone y project_id con sus valores por defecto en el variables.tf raíz y dentro de ambos módulos:
+
+
 
 
 
