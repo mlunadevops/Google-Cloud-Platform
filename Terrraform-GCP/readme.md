@@ -16,6 +16,8 @@
 
 ## 1. Introduction and Theoretical Framework
 
+**Archivo main.tf:** 
+
 **Topologia:**
 
 ![Topologia](images/topologia.svg)
