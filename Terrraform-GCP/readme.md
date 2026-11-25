@@ -488,7 +488,9 @@ terraform init
 terraform apply -auto-approve
 ```
 
-**Paso 6:** Usaremos el módulo oficial de red de Google (terraform-google-modules/network/google) versión 10.0.0, el nombre de VPC de tu panel (tf-vpc-007596), modo de enrutamiento global (GLOBAL) y las dos subredes subnet-01 (10.10.10.0/24) y subnet-02 (10.10.20.0/24) en us-west1.   Paso 1: Agregar el módulo network en main.tf, inicializar y crear la VPC y subredesActualizamos main.tf con el bloque module "vpc" (versión 10.0.0), ejecutamos terraform init para descargar el módulo desde el Terraform Registry y aplicamos para crear la red y ambas subredes:
+**Paso 6:** 
+
+**Paso 6.1:** Usaremos el módulo oficial de red de Google (terraform-google-modules/network/google) versión 10.0.0, el nombre de VPC de tu panel (tf-vpc-007596), modo de enrutamiento global (GLOBAL) y las dos subredes subnet-01 (10.10.10.0/24) y subnet-02 (10.10.20.0/24) en us-west1.   Paso 1: Agregar el módulo network en main.tf, inicializar y crear la VPC y subredesActualizamos main.tf con el bloque module "vpc" (versión 10.0.0), ejecutamos terraform init para descargar el módulo desde el Terraform Registry y aplicamos para crear la red y ambas subredes:
 
 ```text
 cat << 'EOF' > main.tf
@@ -553,6 +555,59 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 ```
+
+**Paso 6.2:** Conectar tf-instance-1 a subnet-01 y tf-instance-2 a subnet-02 en modules/instances/instances.tf
+Una vez creada la VPC y las subredes, actualizamos modules/instances/instances.tf para que ambas instancias apunten a network = "tf-vpc-007596" y cada una indique su subnetwork correspondiente (subnet-01 y subnet-02):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
