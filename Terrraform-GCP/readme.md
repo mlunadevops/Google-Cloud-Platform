@@ -178,7 +178,7 @@ EOF
 ![TInstancestf](images/02instancestf.png)
 
 
-**2.2)** Importar ambas instancias al estado de Terraform
+**2.2)** Importar ambas instancias al estado de Terraform:
 
 Ejecuta estos dos comandos terraform import (usando los IDs exactos de tu salida):
 
