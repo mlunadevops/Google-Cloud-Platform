@@ -227,12 +227,48 @@ EOF
 ![Terraform plan](images/03Storagebucket.png)
 
 
+**3.2)** Agregar el módulo storage a main.tf, inicializar y crear el bucket
 
+Primero agregamos module "storage" sin configurar todavía el backend "gcs", para que Terraform cree el bucket en Google Cloud antes de migrar el estado a él:
 
+```text
+cat << 'EOF' > main.tf
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+}
 
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
 
+module "instances" {
+  source     = "./modules/instances"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
 
+module "storage" {
+  source     = "./modules/storage"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+EOF
 
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+![Terraform plan](images/03Storagebucketexecute.png)
 
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
