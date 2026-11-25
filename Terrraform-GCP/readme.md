@@ -46,6 +46,19 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
+
+**1)** Instalacino de Terraform:
+
+```text
+```
+
+
+
+
+2) 
+
+
+
 **Variables de entorno:**
 
 ```text
