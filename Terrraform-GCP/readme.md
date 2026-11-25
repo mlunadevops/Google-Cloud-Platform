@@ -15,9 +15,24 @@
 [Google](https://www.google.com)
 
 ## 1. Introduction and Theoretical Framework
-
+1.1)  Instalacion de TERRAFORM:
 
 ![Terraform Install](images/01Terraform.png)
+
+
+Paso 1: Crear la estructura de directorios y archivos vacíos
+Ejecuta este bloque para crear las carpetas modules/instances y modules/storage junto con todos los archivos requeridos:
+
+```text
+mkdir -p modules/instances modules/storage
+touch main.tf variables.tf
+touch modules/instances/instances.tf modules/instances/outputs.tf modules/instances/variables.tf
+touch modules/storage/storage.tf modules/storage/outputs.tf modules/storage/variables.tf
+```
+
+![Crear la Carpetsa](images/01Terraform.png)
+
+
 
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
