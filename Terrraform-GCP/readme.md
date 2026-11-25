@@ -89,6 +89,13 @@ EOF
 ![Crear la Carpetsa](images/01Maintf.png)
 
 
+Paso 4: Inicializar Terraform
+Ejecuta terraform init para descargar el proveedor de Google y verificar que no haya errores de sintaxis:
+
+
+```text
+terraform init
+```
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
