@@ -55,11 +55,17 @@ cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un ar
 
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
+Nota: esto se hace para que durante la instalacion todos los paquetes que se descarguen sean legitimos.
+
 **1.2)** registra su repositorio APT. 
 
 **1.3)** instala Terraform. Luego lo ejecuta para aplicarlo de inmediato.
 
+sudo apt update && sudo apt install -y terraform
 
+Nota: El -y es para que lo instale, sin pedir confirmacion. 
+
+Hacer todo mediante el siguiente script:
 
 
 ```text
