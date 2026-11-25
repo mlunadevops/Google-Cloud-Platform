@@ -120,7 +120,7 @@ gcloud compute instances list \
 
 **Paso 2:** Escribir modules/instances/instances.tf
 
-Ejecuta este bloque en Cloud Shell para definir los dos recursos con el formato mínimo requerido (debian-12, e2-micro, var.zone, metadata_startup_script y allow_stopping_for_update = true):
+**2.1)** Ejecuta este bloque en Cloud Shell para definir los dos recursos con el formato mínimo requerido (debian-12, e2-micro, var.zone, metadata_startup_script y allow_stopping_for_update = true):
 
 ```text
 cat << 'EOF' > modules/instances/instances.tf
@@ -173,7 +173,14 @@ EOF
 ![TInstancestf](images/02instancestf.png)
 
 
+**2.2)** Importar ambas instancias al estado de Terraform
 
+Ejecuta estos dos comandos terraform import (usando los IDs exactos de tu salida):
+
+```text
+terraform import module.instances.google_compute_instance.tf-instance-1 3931494400154879181
+terraform import module.instances.google_compute_instance.tf-instance-2 2474986924686394572
+```
 
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
