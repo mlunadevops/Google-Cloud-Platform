@@ -55,9 +55,14 @@ cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un ar
 
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
-Nota: esto se hace para que durante la instalacion todos los paquetes que se descarguen sean legitimos.
+**Nota:** esto se hace para que durante la instalacion todos los paquetes que se descarguen sean legitimos.
 
-**1.2)** registra su repositorio APT. 
+**1.2)** registra (agregar) su repositorio APT. 
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+**Nota:** crea un pequeño archivo de texto (hashicorp.list) con una línea que le dice a apt dónde ir a buscar los paquetes cuando tú ejecutes apt update o apt install
+
 
 **1.3)** instala Terraform. Luego lo ejecuta para aplicarlo de inmediato.
 
