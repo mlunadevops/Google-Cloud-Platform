@@ -152,12 +152,39 @@ terraform {
 
 --------------------------------------------------------------------------------------
 
-Primero, debes crear un Bucket en GCP para esto, por ejemplo: tf-state-bucket-gsp345-xyz. Sustituye TU-BUCKET por el nombre real.
+## 3. Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions.
 
-
-
-Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions
 GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
+
+
+**3.1) Obtener el ID de tu proyecto::**
+
+```text
+PROJECT_ID=$(gcloud config get-value project)
+echo $PROJECT_ID
+```
+
+**3.2) Crear la cuenta de servicios:**
+
+```text
+gcloud iam service-accounts create github-actions-sa \
+    --display-name "GitHub Actions Service Account"
+```
+
+**3.3) Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos.
+
+```text
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com" \
+    --role="roles/editor"
+```
+
+**3.3) Crear la clave JSON de la cuenta de servicio:**
+
+```text
+gcloud iam service-accounts keys create gcp-key.json \
+    --iam-account="github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com"
+```
 
 **Topologia:**
 
@@ -377,39 +404,7 @@ resource "google_compute_firewall" "tf-firewall" {
 }
 ```
 
-## 3. Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions
 
-GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
-
-
-**3.1) Obtener el ID de tu proyecto::**
-
-```text
-PROJECT_ID=$(gcloud config get-value project)
-echo $PROJECT_ID
-```
-
-**3.2) Crear la cuenta de servicios:**
-
-```text
-gcloud iam service-accounts create github-actions-sa \
-    --display-name "GitHub Actions Service Account"
-```
-
-**3.3) Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos.
-
-```text
-gcloud projects add-iam-policy-binding $PROJECT_ID \
-    --member="serviceAccount:github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com" \
-    --role="roles/editor"
-```
-
-**3.3) Crear la clave JSON de la cuenta de servicio:**
-
-```text
-gcloud iam service-accounts keys create gcp-key.json \
-    --iam-account="github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com"
-```
 
 **Paso 1:** Subir el código a GitHub:
 
