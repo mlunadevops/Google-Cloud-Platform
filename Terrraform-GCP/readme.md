@@ -403,27 +403,27 @@ gcloud iam service-accounts create github-actions-sa \
     --display-name "GitHub Actions Service Account"
 ```
 
-
-**Part 3:** Use the pyATS Testing Library
-
-**3.1) Install pyATS**
-
-Inside the virtual environment (make sure you see (csr1kv) in your terminal), run:
+**3.3) Asignar roles necesarios (Editor/Project IAM Admin): El rol de Editor es suficiente para crear los recursos. En producción, se usarían roles más específicos.
 
 ```text
-pip3 install pyats[full]
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+    --member="serviceAccount:github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com" \
+    --role="roles/editor"
 ```
 
-
-**3.2) Verify the installation**
-
-Verify that it was installed correctly by running:
+**3.3) Crear la clave JSON de la cuenta de servicio:**
 
 ```text
-pyats --help
+gcloud iam service-accounts keys create gcp-key.json \
+    --iam-account="github-actions-sa@$PROJECT_ID.iam.gserviceaccount.com"
 ```
 
+Paso 1: Subir el código a GitHub:
 
+```text
+git init
+git remote add origin git@github.com:TU_USUARIO/TU_REPOSITORIO.git
+```
 
 
 
