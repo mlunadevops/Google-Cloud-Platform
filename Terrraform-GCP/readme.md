@@ -221,8 +221,91 @@ git commit -m "Initial Terraform configuration"
 git push -u origin main
 ```
 
+##  Parte 5:  Configurar Secretos de GitHub
 
+GitHub Actions necesita acceder a tus credenciales de GCP de forma segura.
 
+**5.1) Ve a tu repositorio en GitHub -> Settings (Configuración).**
+
+En el menú de la izquierda, busca Security -> Secrets and variables -> Actions.
+
+Haz clic en New repository secret.
+
+Crea el siguiente secreto:
+
+Name: GCP_CREDENTIALS
+
+Value: Pega todo el contenido de tu archivo gcp-key.json que generaste en la Parte 1, Paso 3.
+
+Haz clic en Add secret.
+
+También es buena práctica agregar el GCP_PROJECT_ID para simplificar el workflow.
+6.  Crea otro secreto:
+*   Name: GCP_PROJECT_ID
+*   Value: El ID de tu proyecto de GCP (ej. qwiklabs-gcp-04-7c...).
+
+##  Parte 6: Crear el Workflow de GitHub Actions:
+
+Este archivo define los pasos que se ejecutarán automáticamente al hacer push al repositorio.
+
+En tu repositorio en GitHub, ve a la pestaña Actions y haz clic en "set up a workflow yourself".
+
+Esto abrirá un editor de texto con un archivo llamado main.yml (o terraform.yml) dentro de la carpeta .github/workflows/.
+
+Pega el siguiente código YAML (asegúrate de que el nombre del bucket en main.tf y en la variable de entorno coincida):
+
+```text
+name: "Terraform CI/CD Workflow"
+
+on:
+  push:
+    branches:
+      - main # Ejecutar solo al hacer push a la rama main
+
+env:
+  # Define las variables de entorno que usará el workflow
+  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  TF_STATE_BUCKET: "TU-BUCKET" # ELIMINAR: Sustituir por el nombre real del bucket
+  GOOGLE_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }} # Necesario para que el proveedor de Google se autentique
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del código
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 2. Instalar Terraform
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        # with:
+        #   terraform_version: 1.5.7 # Opcional, fija la versión
+
+      # 3. Terraform Init
+      - name: Terraform Init
+        id: init
+        # El backend.tf ya apunta al bucket remoto. Se usa la autenticación definida en GOOGLE_CREDENTIALS.
+        run: terraform init
+
+      # 4. Terraform Validate
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      # 5. Terraform Plan
+      - name: Terraform Plan
+        id: plan
+        # Ejecuta el plan para ver qué cambios se realizarán. -no-color para logs limpios.
+        run: terraform plan -no-color
+
+      # 6. Terraform Apply
+      - name: Terraform Apply
+        # Ejecutar 'apply' SOLO si el push ocurre en la rama main y el plan fue exitoso.
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve -input=false
+```
 
 
 
