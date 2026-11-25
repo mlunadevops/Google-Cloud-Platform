@@ -409,6 +409,14 @@ EOF
 ![Configurar Backend Remoto](images/04Instances.png)
 
 
+**Paso 4.2:** Inicializar, revisar el plan y aplicar los cambiosEjecuta estos comandos para que Terraform actualice el tamaño de las dos instancias existentes y cree tf-instance-428597:   
+
+```text
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
