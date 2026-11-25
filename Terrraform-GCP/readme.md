@@ -107,7 +107,7 @@ gcloud config set compute/region "$REGION"
 
 
 
-**variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)**
+Define los valores para tu proyecto y región, en el file **variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)** 
 
 ```text
 variable "region" {
