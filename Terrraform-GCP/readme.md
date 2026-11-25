@@ -64,7 +64,6 @@ cp variables.tf modules/storage/variables.tf
 ![Crear la Carpetsa](images/01Carpetavariables.png)
 
 
-
 Paso 3: Configurar main.tf (Terraform block + Google Provider ~> 6.0)
 Creamos main.tf con el bloque required_providers apuntando a hashicorp/google versión ~> 6.0 y el bloque provider "google" incluyendo project, region y zone:
 
@@ -86,6 +85,9 @@ provider "google" {
 }
 EOF
 ```
+
+![Crear la Carpetsa](images/01Maintf.png)
+
 
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
