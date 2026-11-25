@@ -159,11 +159,6 @@ Primero, debes crear un Bucket en GCP para esto, por ejemplo: tf-state-bucket-gs
 Paso 3: Crear la Cuenta de Servicio de GCP para GitHub Actions
 GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
 
-
-
-
-
-
 **Topologia:**
 
 ![Topologia](images/topologia.svg)
@@ -181,22 +176,21 @@ GitHub Actions necesitará permisos para ejecutar Terraform en tu proyecto.
 
 **1)** Instalacion de Terraform:
 
-cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un archivo llamado **(customize_environment)**
+**cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un archivo llamado (customize_environment)**
 
 **1.1)** Descarga la clave publica GPG de HashiCorp asegurando que durante la instalacion todos los paquetes que se descarguen sean legitimos.
 
-wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+**wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg**
 
 **1.2)** Registra (agregar) su repositorio APT, crear archivo de texto (hashicorp.list) con una línea que le dice a apt dónde buscar los paquetes al ejecutar apt update o apt install.
 
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+**echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list**
 
 **1.3)** instala Terraform. Luego lo ejecuta para aplicarlo de inmediato.
 
-sudo apt update && sudo apt install -y terraform
+**sudo apt update && sudo apt install -y terraform**
 
 Hacer todo mediante el siguiente script:
-
 
 ```text
 cat <<'EOF' > ~/.customize_environment
@@ -208,7 +202,7 @@ EOF
 bash ~/.customize_environment
 ```
 
-1.4) Verificar que Terraform se ha instalado correctamente:
+**1.4)** Verificar que Terraform se ha instalado correctamente:
 
 ```text
 terraform --version
@@ -232,7 +226,6 @@ export PROJECT_ID="$(gcloud config get-value project 2>/dev/null)"
 gcloud config set compute/zone "$ZONE"
 gcloud config set compute/region "$REGION"
 ```
-
 
 
 Define los valores para tu proyecto y región, en el file **variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)** 
