@@ -18,6 +18,7 @@
 
 TOPOLOGIA:
 
+![Terraform Install](images/01Topologia.svg)
 
 
 
