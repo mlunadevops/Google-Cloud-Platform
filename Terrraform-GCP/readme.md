@@ -36,8 +36,30 @@ touch modules/storage/storage.tf modules/storage/outputs.tf modules/storage/vari
 Paso 2: Rellenar los tres archivos variables.tf
 El enunciado pide agregar las variables region, zone y project_id con sus valores por defecto en el variables.tf raíz y dentro de ambos módulos:
 
+```text
+cat << 'EOF' > variables.tf
+variable "region" {
+  description = "The GCP region"
+  type        = string
+  default     = "us-west1"
+}
 
+variable "zone" {
+  description = "The GCP zone"
+  type        = string
+  default     = "us-west1-a"
+}
 
+variable "project_id" {
+  description = "The GCP Project ID"
+  type        = string
+  default     = "qwiklabs-gcp-04-152eeefe5bf9"
+}
+EOF
+
+cp variables.tf modules/instances/variables.tf
+cp variables.tf modules/storage/variables.tf
+```
 
 
 
