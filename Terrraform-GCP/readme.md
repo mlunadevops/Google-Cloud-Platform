@@ -271,6 +271,53 @@ terraform apply -auto-approve
 ![Terraform plan](images/03Storagebucketexecute.png)
 
 
+**3.3)** Configurar el backend remoto (gcs) en main.tf y migrar el estado:
+
+Ahora que el bucket tf-bucket-732974 ya existe, actualizamos el bloque terraform en main.tf para incluir backend "gcs" con bucket = "tf-bucket-732974" y prefix = "terraform/state":
+
+```text
+cat << 'EOF' > main.tf
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 6.0"
+    }
+  }
+
+  backend "gcs" {
+    bucket = "tf-bucket-732974"
+    prefix = "terraform/state"
+  }
+}
+
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+
+module "instances" {
+  source     = "./modules/instances"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+
+module "storage" {
+  source     = "./modules/storage"
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+}
+EOF
+
+terraform init
+```
+
+
+
+
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
 **Estructura de carpetas:**
