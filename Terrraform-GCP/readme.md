@@ -16,6 +16,11 @@
 
 ## 1. Introduction and Theoretical Framework
 
+TOPOLOGIA:
+
+
+
+
 **tf-vpc-007596:** Red VPC global creada con el módulo oficial de red de GCP (v10.0.0).
 
 **subnet-01:** Subred en us-west1 (10.10.10.0/24) asignada a **tf-instance-1**.
