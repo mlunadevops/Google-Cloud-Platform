@@ -46,6 +46,9 @@
 
 ## 2. Topology and BGP Neighbor Establishment
 
+![Topologia](images/01Topologia.jpg)
+
+
 
 **1)** Instalacion de Terraform:
 
