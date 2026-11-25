@@ -97,6 +97,10 @@ Ejecuta terraform init para descargar el proveedor de Google y verificar que no 
 terraform init
 ```
 
+![Terraforminit](images/01Terraforminit.png)
+
+
+
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
 **Estructura de carpetas:**
