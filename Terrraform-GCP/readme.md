@@ -417,6 +417,72 @@ terraform plan
 terraform apply -auto-approve
 ```
 
+**Paso 5:**
+
+
+**Paso 5.1:** debes eliminar el bloque resource "google_compute_instance" "tf-instance-428597" de tu archivo modules/instances/instances.tf (y limpiar su salida en modules/instances/outputs.tf si la agregaste en el paso anterior) y luego ejecutar terraform init y terraform apply para que Terraform destruya la instancia en Google Cloud.   Paso 1: Eliminar tf-instance-428597 de modules/instances/instances.tf (y outputs.tf)Ejecuta este bloque en Cloud Shell para dejar solo tf-instance-1 y tf-instance-2 en modules/instances/instances.tf y actualizar modules/instances/outputs.tf:
+
+```text
+cat << 'EOF' > modules/instances/instances.tf
+resource "google_compute_instance" "tf-instance-1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network = "default"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+EOF
+
+cat << 'EOF' > modules/instances/outputs.tf
+output "instance_1_name" {
+  value = google_compute_instance.tf-instance-1.name
+}
+
+output "instance_2_name" {
+  value = google_compute_instance.tf-instance-2.name
+}
+EOF
+```
+
+
+
+
 
 El objetivo **(GSP345)** es crear una infraestructura en Google Cloud (una red VPC, subredes, instancias de VM y reglas de firewall) utilizando Terraform, siguiendo el flujo de trabajo de CI/CD con GitHub Actions.
 
