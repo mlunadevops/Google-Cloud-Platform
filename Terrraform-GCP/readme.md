@@ -119,6 +119,10 @@ variable "region" {
 }
 ```
 
+--------------------------------------------------------------------------------------
+
+
+
 **Archivo backend.tf:**   (Configuración para guardar el estado de Terraform de forma remota en un Bucket de GCS).
 
 Primero, debes crear un Bucket en GCP para esto, por ejemplo: tf-state-bucket-gsp345-xyz. Sustituye TU-BUCKET por el nombre real.
