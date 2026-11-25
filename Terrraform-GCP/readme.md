@@ -51,7 +51,9 @@
 
 cat <<'EOF' > ~/.customize_environment ... EOF: Escribe bloque de texto en un archivo llamado **(customize_environment)**
 
-**1.1)** añade la clave GPG de HashiCorp.
+**1.1)** añade la clave GPG de HashiCorp (descarga la llave publica).
+
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 **1.2)** registra su repositorio APT. 
 
