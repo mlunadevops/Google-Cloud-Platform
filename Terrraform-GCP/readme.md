@@ -26,6 +26,23 @@
 4. **Lifecycle Management:** Scaling machine types (`n1-standard-1` → `e2-standard-2`), provisioning a third instance, and cleanly destroying it via declarative state updates.
 5. **VPC & Firewall:** Deploying a custom global VPC with two regional subnets (`10.10.10.0/24`, `10.10.20.0/24`) using the official Google Terraform network module, migrating VM network interfaces, and opening HTTP ingress (TCP/80).
 
+**Estructura de carpetas:**
+
+```text
+.
+├── main.tf
+├── variables.tf
+└── modules/
+    ├── instances/
+    │   ├── instances.tf
+    │   ├── outputs.tf
+    │   └── variables.tf
+    └── storage/
+        ├── storage.tf
+        ├── outputs.tf
+        └── variables.tf
+```
+
 
 ## 2. Topology and BGP Neighbor Establishment
 
@@ -43,22 +60,7 @@ gcloud config set compute/zone "$ZONE"
 gcloud config set compute/region "$REGION"
 ```
 
-**Estructura de carpetas:**
 
-```text
-.
-├── main.tf
-├── variables.tf
-└── modules/
-    ├── instances/
-    │   ├── instances.tf
-    │   ├── outputs.tf
-    │   └── variables.tf
-    └── storage/
-        ├── storage.tf
-        ├── outputs.tf
-        └── variables.tf
-```
 
 **variables.tf (raíz, modules/instances/variables.tf y modules/storage/variables.tf)**
 
