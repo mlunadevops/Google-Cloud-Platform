@@ -560,7 +560,58 @@ terraform apply -auto-approve
 Una vez creada la VPC y las subredes, actualizamos modules/instances/instances.tf para que ambas instancias apunten a network = "tf-vpc-007596" y cada una indique su subnetwork correspondiente (subnet-01 y subnet-02):
 
 
+```text
+cat << 'EOF' > modules/instances/instances.tf
+resource "google_compute_instance" "tf-instance-1" {
+  name         = "tf-instance-1"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
 
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network    = "tf-vpc-007596"
+    subnetwork = "subnet-01"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+
+resource "google_compute_instance" "tf-instance-2" {
+  name         = "tf-instance-2"
+  machine_type = "e2-standard-2"
+  zone         = var.zone
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-12"
+    }
+  }
+
+  network_interface {
+    network    = "tf-vpc-007596"
+    subnetwork = "subnet-02"
+  }
+
+  metadata_startup_script = <<-EOT
+        #!/bin/bash
+    EOT
+
+  allow_stopping_for_update = true
+}
+EOF
+
+terraform plan
+terraform apply -auto-approve
+```
 
 
 
